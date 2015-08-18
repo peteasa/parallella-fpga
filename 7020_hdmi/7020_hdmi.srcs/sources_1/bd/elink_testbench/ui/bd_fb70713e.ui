@@ -1,5 +1,5 @@
 {
-   guistr: "# # String gsaved with Nlview 6.4.7  2014-07-30 bk=1.3165 VDI=35 GEI=35 GUI=JA:1.8
+   guistr: "# # String gsaved with Nlview 6.4.10  2014-10-02 bk=1.3207 VDI=35 GEI=35 GUI=JA:1.8
 #  -string -flagsOSRD
 preplace port csysreq -pg 1 -y 450 -defaultsOSRD
 preplace port done0 -pg 1 -y 250 -defaultsOSRD
@@ -15,13 +15,13 @@ preplace port error2 -pg 1 -y 550 -defaultsOSRD
 preplace port reset -pg 1 -y 770 -defaultsOSRD
 preplace port aresetn -pg 1 -y 290 -defaultsOSRD
 preplace inst elink2 -pg 1 -lvl 3 -y 740 -defaultsOSRD
-preplace inst axi_traffic_controller_0 -pg 1 -lvl 1 -y 290 -defaultsOSRD
 preplace inst axi_protocol_converter_0 -pg 1 -lvl 2 -y 290 -defaultsOSRD
+preplace inst axi_traffic_controller_0 -pg 1 -lvl 1 -y 290 -defaultsOSRD
+preplace inst axi_protocol_converter_1 -pg 1 -lvl 4 -y 320 -defaultsOSRD
 preplace inst elink_gold_0 -pg 1 -lvl 3 -y 370 -defaultsOSRD
 preplace inst axi_traffic_controller_1 -pg 1 -lvl 1 -y 540 -defaultsOSRD
-preplace inst axi_protocol_converter_1 -pg 1 -lvl 4 -y 320 -defaultsOSRD
-preplace inst axi_traffic_controller_2 -pg 1 -lvl 1 -y 700 -defaultsOSRD
 preplace inst axi_protocol_converter_2 -pg 1 -lvl 2 -y 610 -defaultsOSRD
+preplace inst axi_traffic_controller_2 -pg 1 -lvl 1 -y 700 -defaultsOSRD
 preplace inst blk_mem_gen_0 -pg 1 -lvl 4 -y 50 -defaultsOSRD -orient R180
 preplace inst blk_mem_gen_1 -pg 1 -lvl 4 -y 660 -defaultsOSRD -orient R180
 preplace inst axi_bram_ctrl_0 -pg 1 -lvl 4 -y 180 -defaultsOSRD

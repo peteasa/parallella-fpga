@@ -1,5 +1,5 @@
 {
-   guistr: "# # String gsaved with Nlview 6.4.7  2014-07-30 bk=1.3165 VDI=35 GEI=35 GUI=JA:1.8
+   guistr: "# # String gsaved with Nlview 6.4.10  2014-10-02 bk=1.3207 VDI=35 GEI=35 GUI=JA:1.8
 #  -string -flagsOSRD
 preplace port RX -pg 1 -y 340 -defaultsOSRD
 preplace port DDR -pg 1 -y 690 -defaultsOSRD
@@ -15,8 +15,8 @@ preplace portBus GPIO_P -pg 1 -y 620 -defaultsOSRD
 preplace inst elink2 -pg 1 -lvl 3 -y 380 -defaultsOSRD
 preplace inst axi_protocol_converter_0 -pg 1 -lvl 2 -y 450 -defaultsOSRD
 preplace inst axi_protocol_converter_1 -pg 1 -lvl 2 -y 100 -defaultsOSRD
-preplace inst proc_sys_reset_0 -pg 1 -lvl 1 -y 250 -defaultsOSRD
 preplace inst axi_protocol_converter_2 -pg 1 -lvl 2 -y 270 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 1 -y 250 -defaultsOSRD
 preplace inst parallella_gpio_emio_0 -pg 1 -lvl 4 -y 620 -defaultsOSRD
 preplace inst parallella_i2c_0 -pg 1 -lvl 4 -y 770 -defaultsOSRD
 preplace inst processing_system7_0 -pg 1 -lvl 3 -y 730 -defaultsOSRD
