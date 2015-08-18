@@ -1,0 +1,52 @@
+{
+   guistr: "# # String gsaved with Nlview 6.4.7  2014-07-30 bk=1.3165 VDI=35 GEI=35 GUI=JA:1.8
+#  -string -flagsOSRD
+preplace port RX -pg 1 -y 340 -defaultsOSRD
+preplace port DDR -pg 1 -y 690 -defaultsOSRD
+preplace port CCLK_N -pg 1 -y 410 -defaultsOSRD
+preplace port I2C_SDA -pg 1 -y 760 -defaultsOSRD
+preplace port CCLK_P -pg 1 -y 390 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y 710 -defaultsOSRD
+preplace port TX -pg 1 -y 330 -defaultsOSRD
+preplace port I2C_SCL -pg 1 -y 780 -defaultsOSRD
+preplace port DSP_RESET_N -pg 1 -y 430 -defaultsOSRD
+preplace portBus GPIO_N -pg 1 -y 640 -defaultsOSRD
+preplace portBus GPIO_P -pg 1 -y 620 -defaultsOSRD
+preplace inst elink2 -pg 1 -lvl 3 -y 380 -defaultsOSRD
+preplace inst axi_protocol_converter_0 -pg 1 -lvl 2 -y 450 -defaultsOSRD
+preplace inst axi_protocol_converter_1 -pg 1 -lvl 2 -y 100 -defaultsOSRD
+preplace inst proc_sys_reset_0 -pg 1 -lvl 1 -y 250 -defaultsOSRD
+preplace inst axi_protocol_converter_2 -pg 1 -lvl 2 -y 270 -defaultsOSRD
+preplace inst parallella_gpio_emio_0 -pg 1 -lvl 4 -y 620 -defaultsOSRD
+preplace inst parallella_i2c_0 -pg 1 -lvl 4 -y 770 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 3 -y 730 -defaultsOSRD
+preplace netloc processing_system7_0_DDR 1 3 2 N 690 NJ
+preplace netloc elink2_CCLK_N 1 3 2 N 410 NJ
+preplace netloc axi_protocol_converter_2_M_AXI 1 2 1 740
+preplace netloc RX_1 1 0 3 N 340 NJ 350 NJ
+preplace netloc processing_system7_0_GPIO_O 1 3 1 1290
+preplace netloc elink2_CCLK_P 1 3 2 N 390 NJ
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 3 470 20 NJ 180 1250
+preplace netloc EMS_FROMMMU_1 1 2 2 780 210 1230
+preplace netloc processing_system7_0_M_AXI_GP1 1 1 3 470 200 NJ 200 1240
+preplace netloc parallella_gpio_emio_0_PS_GPIO_I 1 3 2 1280 550 1580
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 4 70 150 NJ 30 NJ 190 1270
+preplace netloc processing_system7_0_IIC_0 1 3 1 1300
+preplace netloc elink2_mcfg4_sw_reset 1 3 2 N 430 NJ
+preplace netloc axi_protocol_converter_0_M_AXI 1 2 1 730
+preplace netloc processing_system7_0_GPIO_T 1 3 1 1300
+preplace netloc processing_system7_0_FIXED_IO 1 3 2 N 710 NJ
+preplace netloc proc_sys_reset_0_peripheral_reset 1 1 2 450 190 NJ
+preplace netloc proc_sys_reset_0_peripheral_aresetn 1 1 2 440 380 780
+preplace netloc elink2_M00_AXI 1 1 3 460 10 NJ 170 1260
+preplace netloc Net1 1 4 1 N
+preplace netloc Net 1 4 1 N
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 4 80 160 430 340 740 920 1230
+preplace netloc elink2_TX 1 3 2 N 330 NJ
+preplace netloc Net2 1 4 1 N
+preplace netloc axi_protocol_converter_1_M_AXI 1 2 1 760
+preplace netloc Net3 1 4 1 N
+levelinfo -pg 1 50 250 600 1010 1440 1600
+",
+}
+0

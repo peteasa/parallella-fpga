@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2014.3 (64-bit)
+# SW Build 1034051 on Fri Oct  3 16:31:15 MDT 2014
+# IP Build 1028902 on Fri Sep 26 17:35:13 MDT 2014
+# Start of session at: Thu Mar 12 01:23:15 2015
+# Process ID: 3130
+# Log file: /home/frhuettig/vivado.log
+# Journal file: /home/frhuettig/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/parallella_7020_headless_gpiose_elink2/parallella_7020_headless_gpiose_elink2.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+reset_target all [get_files  /mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/parallella_7020_headless_gpiose_elink2/parallella_7020_headless_gpiose_elink2.srcs/sources_1/bd/elink2_top/elink2_top.bd]
+archive_project /mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/parallella_7020_headless_gpiose_elink2.xpr.zip -force -exclude_run_results -include_config_settings
