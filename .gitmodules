@@ -1,0 +1,3 @@
+[submodule "parallella-hw"]
+	path = parallella-hw
+	url = https://github.com/parallella/parallella-hw.git
