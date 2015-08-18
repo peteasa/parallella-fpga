@@ -83,3 +83,263 @@ Successfully read diagram <elink_testbench> from BD file <~/parallella/parallell
 Wrote  : <~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/elink_testbench.bd> 
 upgrade_ip: Time (s): cpu = 00:00:40 ; elapsed = 00:00:35 . Memory (MB): peak = 5915.176 ; gain = 163.957 ; free physical = 4117 ; free virtual = 29481
 close_project
+                                                                                                                                                                                                                                                                open_project ~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.xpr
+INFO: [Project 1-313] Project file moved from '~/parallella/parallella-fpga/7020_hdmi' since last save.
+Scanning sources...
+Finished scanning sources
+update_compile_order -fileset sources_1
+report_ip_status -name ip_status 
+open_bd_design {~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd}
+Adding component instance block -- adapteva.com:Adapteva:parallella_gpio_emio:1.0 - parallella_gpio_emio_0
+Adding component instance block -- adapteva.com:Adapteva:parallella_i2c:1.0 - parallella_i2c_0
+Adding component instance block -- xilinx.com:ip:proc_sys_reset:5.0 - proc_sys_reset_0
+Adding component instance block -- xilinx.com:ip:processing_system7:5.5 - processing_system7_0
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - axi_protocol_converter_0
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - axi_protocol_converter_1
+Adding component instance block -- xilinx.com:ip:axi_protocol_converter:2.1 - axi_protocol_converter_2
+Adding component instance block -- adapteva.com:Adapteva:eCfg:1.0 - eCfg_0
+Adding component instance block -- adapteva.com:Adapteva:earb:1.0 - earb_0
+Adding component instance block -- adapteva.com:Adapteva:ecfg_split:1.0 - ecfg_split_0
+Adding component instance block -- adapteva.com:Adapteva:eclock:1.0 - eclock_0
+Adding component instance block -- adapteva.com:Adapteva:edistrib:1.0 - edistrib_0
+Adding component instance block -- adapteva.com:Adapteva:eio_rx:1.0 - eio_rx_0
+Adding component instance block -- adapteva.com:Adapteva:emaxi:1.0 - emaxi_0
+Adding component instance block -- adapteva.com:Adapteva:emesh_split:1.0 - emesh_split_0
+Adding component instance block -- adapteva.com:Adapteva:eproto_rx:1.0 - eproto_rx_0
+Adding component instance block -- adapteva.com:Adatpeva:eproto_tx:1.0 - eproto_tx_0
+Adding component instance block -- adapteva.com:Adapteva:esaxi:1.0 - esaxi_0
+Adding component instance block -- adapteva.com:Adapteva:eio_tx:1.0 - eio_tx_0
+Adding component instance block -- xilinx.com:ip:axi_bram_ctrl:4.0 - axi_bram_ctrl_2
+Adding component instance block -- xilinx.com:ip:fifo_generator:12.0 - fifo_103x16_rdreq
+Adding component instance block -- xilinx.com:ip:fifo_generator:12.0 - fifo_103x16_rresp
+Adding component instance block -- xilinx.com:ip:fifo_generator:12.0 - fifo_103x16_write
+Adding component instance block -- xilinx.com:ip:fifo_generator:12.0 - fifo_103x32_rdreq
+Adding component instance block -- xilinx.com:ip:fifo_generator:12.0 - fifo_103x32_rresp
+Adding component instance block -- xilinx.com:ip:fifo_generator:12.0 - fifo_103x32_write
+Adding component instance block -- xilinx.com:ip:util_vector_logic:2.0 - util_vector_logic_0
+Successfully read diagram <elink2_top> from BD file <~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd>
+set_property ip_repo_paths  {~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.ipdefs/src ~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.ipdefs/ip_repo ~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.ipdefs/elink-gold ~/parallella/parallella-fpga/AdiHDLLib/library} [current_project]
+update_ip_catalog -rebuild
+WARNING: [IP_Flow 19-474] Invalid Parameter 'Component_Name'
+startgroup
+set_property -dict [list CONFIG.PCW_FPGA1_PERIPHERAL_FREQMHZ {200} CONFIG.PCW_USE_S_AXI_HP0 {1} CONFIG.PCW_USE_DMA0 {1} CONFIG.PCW_USE_FABRIC_INTERRUPT {1} CONFIG.PCW_EN_CLK1_PORT {1} CONFIG.PCW_EN_CLK3_PORT {0} CONFIG.PCW_IRQ_F2P_INTR {1}] [get_bd_cells processing_system7_0]
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect_0
+create_bd_cell: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 5991.445 ; gain = 0.000 ; free physical = 3024 ; free virtual = 28695
+endgroup
+set_property location {1 259 623} [get_bd_cells axi_interconnect_0]
+set_property location {1 200 569} [get_bd_cells axi_interconnect_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0
+endgroup
+set_property location {2 410 758} [get_bd_cells xlconcat_0]
+create_bd_cell -type hier HDMI_0
+/HDMI_0
+set_property location {2 551 549} [get_bd_cells HDMI_0]
+startgroup
+create_bd_cell -type ip -vlnv analog.com:user:axi_clkgen:1.0 HDMI_0/axi_clkgen_0
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv analog.com:user:axi_hdmi_tx:1.0 HDMI_0/axi_hdmi_tx_0
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv analog.com:user:axi_spdif_tx:1.0 HDMI_0/axi_spdif_tx_0
+endgroup
+set_property location {3 768 -50} [get_bd_cells HDMI_0/axi_hdmi_tx_0]
+set_property location {1.5 389 480} [get_bd_cells HDMI_0/axi_spdif_tx_0]
+set_property location {0.5 -127 258} [get_bd_cells HDMI_0/axi_clkgen_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 HDMI_0/axi_interconnect_0
+create_bd_cell: Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 6006.332 ; gain = 0.000 ; free physical = 2999 ; free virtual = 28673
+endgroup
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:5.1 HDMI_0/clk_wiz_0
+endgroup
+set_property location {2 759 579} [get_bd_cells HDMI_0/axi_spdif_tx_0]
+set_property location {2 650 837} [get_bd_cells HDMI_0/axi_interconnect_0]
+set_property location {1 147 491} [get_bd_cells HDMI_0/clk_wiz_0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vdma:6.2 HDMI_0/axi_vdma_0
+endgroup
+set_property location {1 175 539} [get_bd_cells HDMI_0/clk_wiz_0]
+set_property location {1 174 398} [get_bd_cells HDMI_0/axi_clkgen_0]
+set_property location {1 177 211} [get_bd_cells HDMI_0/axi_vdma_0]
+set_property location {1 193 186} [get_bd_cells HDMI_0/axi_vdma_0]
+startgroup
+set_property -dict [list CONFIG.C_S_AXI_ADDR_WIDTH {16} CONFIG.C_DMA_TYPE {1}] [get_bd_cells HDMI_0/axi_spdif_tx_0]
+endgroup
+set_property -dict [list CONFIG.NUM_MI {1}] [get_bd_cells HDMI_0/axi_interconnect_0]
+startgroup
+set_property -dict [list CONFIG.PRIM_IN_FREQ.VALUE_SRC USER] [get_bd_cells HDMI_0/clk_wiz_0]
+set_property -dict [list CONFIG.PRIM_IN_FREQ {200.000} CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {12.288} CONFIG.USE_LOCKED {false} CONFIG.RESET_TYPE {ACTIVE_LOW} CONFIG.CLKIN1_JITTER_PS {50.0} CONFIG.MMCM_DIVCLK_DIVIDE {9} CONFIG.MMCM_CLKFBOUT_MULT_F {44.375} CONFIG.MMCM_CLKIN1_PERIOD {5.0} CONFIG.MMCM_CLKOUT0_DIVIDE_F {80.250} CONFIG.RESET_PORT {resetn} CONFIG.CLKOUT1_JITTER {327.996} CONFIG.CLKOUT1_PHASE_ERROR {264.435}] [get_bd_cells HDMI_0/clk_wiz_0]
+endgroup
+startgroup
+set_property -dict [list CONFIG.c_m_axis_mm2s_tdata_width {64} CONFIG.c_use_mm2s_fsync {1} CONFIG.c_include_s2mm {0} CONFIG.c_s2mm_genlock_mode {0}] [get_bd_cells HDMI_0/axi_vdma_0]
+endgroup
+set_property location {1.5 537 173} [get_bd_cells HDMI_0/axi_vdma_0]
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_vdma_0/M_AXIS_MM2S] [get_bd_intf_pins HDMI_0/axi_hdmi_tx_0/m_axis_mm2s]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins HDMI_0/axi_interconnect_0/S00_AXI] [get_bd_intf_pins HDMI_0/axi_vdma_0/M_AXI_MM2S]
+set_property location {1 119 260} [get_bd_cells HDMI_0/axi_clkgen_0]
+connect_bd_net [get_bd_pins HDMI_0/axi_clkgen_0/clk_0] [get_bd_pins HDMI_0/axi_hdmi_tx_0/hdmi_clk]
+connect_bd_net [get_bd_pins HDMI_0/axi_hdmi_tx_0/m_axis_mm2s_fsync] [get_bd_pins HDMI_0/axi_hdmi_tx_0/m_axis_mm2s_fsync_ret]
+connect_bd_net -net [get_bd_nets HDMI_0/axi_hdmi_tx_0_m_axis_mm2s_fsync] [get_bd_pins HDMI_0/axi_vdma_0/mm2s_fsync] [get_bd_pins HDMI_0/axi_hdmi_tx_0/m_axis_mm2s_fsync]
+set_property location {1 154 92} [get_bd_cells proc_sys_reset_0]
+set_property location {2 982 117} [get_bd_cells axi_protocol_converter_1]
+set_property location {2 923 290} [get_bd_cells axi_protocol_converter_2]
+set_property location {2 902 422} [get_bd_cells axi_protocol_converter_0]
+set_property location {1 302 1879} [get_bd_cells xlconcat_0]
+set_property -dict [list CONFIG.NUM_PORTS {16}] [get_bd_cells xlconcat_0]
+set_property location {1 263 1645} [get_bd_cells xlconcat_0]
+startgroup
+create_bd_port -dir O -type clk hdmi_out_clk
+connect_bd_net [get_bd_pins /HDMI_0/axi_hdmi_tx_0/hdmi_out_clk] [get_bd_ports hdmi_out_clk]
+endgroup
+set_property location {2562 1036} [get_bd_ports hdmi_out_clk]
+set_property location {2 577 1095} [get_bd_cells HDMI_0]
+startgroup
+create_bd_port -dir O hdmi_16_hsync
+connect_bd_net [get_bd_pins /HDMI_0/axi_hdmi_tx_0/hdmi_16_hsync] [get_bd_ports hdmi_16_hsync]
+endgroup
+startgroup
+create_bd_port -dir O hdmi_16_vsync
+connect_bd_net [get_bd_pins /HDMI_0/axi_hdmi_tx_0/hdmi_16_vsync] [get_bd_ports hdmi_16_vsync]
+endgroup
+startgroup
+create_bd_port -dir O hdmi_16_data_e
+connect_bd_net [get_bd_pins /HDMI_0/axi_hdmi_tx_0/hdmi_16_data_e] [get_bd_ports hdmi_16_data_e]
+endgroup
+startgroup
+create_bd_port -dir O -from 15 -to 0 hdmi_16_data
+connect_bd_net [get_bd_pins /HDMI_0/axi_hdmi_tx_0/hdmi_16_data] [get_bd_ports hdmi_16_data]
+endgroup
+connect_bd_net [get_bd_pins HDMI_0/clk_wiz_0/clk_out1] [get_bd_pins HDMI_0/axi_spdif_tx_0/spdif_data_clk]
+startgroup
+create_bd_port -dir O spdif_tx_o
+connect_bd_net [get_bd_pins /HDMI_0/axi_spdif_tx_0/spdif_tx_o] [get_bd_ports spdif_tx_o]
+endgroup
+set_property location {3 753 -126} [get_bd_cells HDMI_0/axi_interconnect_0]
+set_property location {2 600 926} [get_bd_cells HDMI_0]
+delete_bd_objs [get_bd_nets HDMI_0/axi_spdif_tx_0_spdif_tx_o]
+delete_bd_objs [get_bd_nets HDMI_0_spdif_tx_o]
+delete_bd_objs [get_bd_pins HDMI_0/spdif_tx_o]
+set_property location {2562 1104} [get_bd_ports hdmi_out_clk]
+startgroup
+create_bd_port -dir O spdif_tx_o_1
+connect_bd_net [get_bd_pins /HDMI_0/axi_spdif_tx_0/spdif_tx_o] [get_bd_ports spdif_tx_o_1]
+endgroup
+delete_bd_objs [get_bd_nets HDMI_0/axi_spdif_tx_0_spdif_tx_o] [get_bd_pins HDMI_0/spdif_tx_o]
+connect_bd_net [get_bd_pins HDMI_0/axi_spdif_tx_0/spdif_tx_o] [get_bd_pins processing_system7_0/DMA0_ACLK]
+delete_bd_objs [get_bd_nets HDMI_0_spdif_tx_o1]
+delete_bd_objs [get_bd_nets HDMI_0/axi_spdif_tx_0_spdif_tx_o] [get_bd_pins HDMI_0/spdif_tx_o]
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_spdif_tx_0/DMA_REQ] [get_bd_intf_pins processing_system7_0/DMA0_REQ]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins HDMI_0/axi_interconnect_0/M00_AXI] [get_bd_intf_pins processing_system7_0/S_AXI_HP0]
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_spdif_tx_0/DMA_ACK] [get_bd_intf_pins processing_system7_0/DMA0_ACK]
+startgroup
+create_bd_port -dir O spdif_tx_o_2
+connect_bd_net [get_bd_pins /HDMI_0/axi_spdif_tx_0/spdif_tx_o] [get_bd_ports spdif_tx_o_2]
+endgroup
+set_property location {2628 1243} [get_bd_ports spdif_tx_o_2]
+delete_bd_objs [get_bd_nets HDMI_0_spdif_tx_o] [get_bd_ports spdif_tx_o_1]
+set_property location {2577 1208} [get_bd_ports spdif_tx_o_2]
+set_property -dict [list CONFIG.NUM_MI {4}] [get_bd_cells axi_interconnect_0]
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_hdmi_tx_0/s_axi] -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M03_AXI]
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_clkgen_0/s_axi] -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M02_AXI]
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_vdma_0/S_AXI_LITE] -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M01_AXI]
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_spdif_tx_0/S_AXI] -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M00_AXI]
+undo
+undo
+undo
+undo
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_spdif_tx_0/S_AXI] -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M00_AXI]
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_vdma_0/S_AXI_LITE] -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M01_AXI]
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_clkgen_0/s_axi] -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M02_AXI]
+connect_bd_intf_net [get_bd_intf_pins HDMI_0/axi_hdmi_tx_0/s_axi] -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M03_AXI]
+connect_bd_net [get_bd_pins HDMI_0/axi_vdma_0/mm2s_introut] [get_bd_pins xlconcat_0/In15]
+connect_bd_net -net [get_bd_nets processing_system7_0_FCLK_CLK0] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net -net [get_bd_nets processing_system7_0_FCLK_CLK0] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net -net [get_bd_nets processing_system7_0_FCLK_CLK0] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+startgroup
+set_property -dict [list CONFIG.NUM_MI {5}] [get_bd_cells axi_interconnect_0]
+endgroup
+delete_bd_objs [get_bd_intf_nets axi_interconnect_0_M03_AXI]
+delete_bd_objs [get_bd_intf_nets axi_interconnect_0_M02_AXI]
+delete_bd_objs [get_bd_intf_nets axi_interconnect_0_M01_AXI]
+delete_bd_objs [get_bd_intf_nets axi_interconnect_0_M00_AXI]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M04_AXI] [get_bd_intf_pins HDMI_0/s_axi2]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M03_AXI] [get_bd_intf_pins HDMI_0/s_axi1]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M02_AXI] [get_bd_intf_pins HDMI_0/S_AXI_LITE]
+connect_bd_intf_net -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M01_AXI] [get_bd_intf_pins HDMI_0/S_AXI]
+delete_bd_objs [get_bd_intf_nets processing_system7_0_M_AXI_GP0]
+connect_bd_intf_net [get_bd_intf_pins axi_protocol_converter_1/S_AXI] -boundary_type upper [get_bd_intf_pins axi_interconnect_0/M00_AXI]
+connect_bd_intf_net [get_bd_intf_pins processing_system7_0/M_AXI_GP0] -boundary_type upper [get_bd_intf_pins axi_interconnect_0/S00_AXI]
+connect_bd_net -net [get_bd_nets processing_system7_0_FCLK_CLK0] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net -net [get_bd_nets processing_system7_0_FCLK_CLK0] [get_bd_pins axi_interconnect_0/M02_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net -net [get_bd_nets processing_system7_0_FCLK_CLK0] [get_bd_pins axi_interconnect_0/M03_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net -net [get_bd_nets processing_system7_0_FCLK_CLK0] [get_bd_pins axi_interconnect_0/M04_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net -net [get_bd_nets proc_sys_reset_0_peripheral_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net -net [get_bd_nets proc_sys_reset_0_peripheral_aresetn] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net -net [get_bd_nets proc_sys_reset_0_peripheral_aresetn] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net -net [get_bd_nets proc_sys_reset_0_peripheral_aresetn] [get_bd_pins axi_interconnect_0/M01_ARESETN] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net -net [get_bd_nets proc_sys_reset_0_peripheral_aresetn] [get_bd_pins axi_interconnect_0/M02_ARESETN] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net -net [get_bd_nets proc_sys_reset_0_peripheral_aresetn] [get_bd_pins axi_interconnect_0/M03_ARESETN] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net -net [get_bd_nets proc_sys_reset_0_peripheral_aresetn] [get_bd_pins axi_interconnect_0/M04_ARESETN] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net [get_bd_pins HDMI_0/axi_clkgen_0/s_axi_aclk] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net -net [get_bd_nets HDMI_0/s_axi_aclk_1] [get_bd_pins HDMI_0/s_axi_aclk] [get_bd_pins HDMI_0/axi_vdma_0/s_axi_lite_aclk]
+connect_bd_net -net [get_bd_nets HDMI_0/s_axi_aclk_1] [get_bd_pins HDMI_0/s_axi_aclk] [get_bd_pins HDMI_0/axi_vdma_0/m_axi_mm2s_aclk]
+connect_bd_net -net [get_bd_nets HDMI_0/s_axi_aclk_1] [get_bd_pins HDMI_0/s_axi_aclk] [get_bd_pins HDMI_0/axi_vdma_0/m_axis_mm2s_aclk]
+connect_bd_net [get_bd_pins HDMI_0/axi_vdma_0/axi_resetn] [get_bd_pins proc_sys_reset_0/peripheral_aresetn]
+connect_bd_net -net [get_bd_nets HDMI_0/axi_resetn_1] [get_bd_pins HDMI_0/axi_resetn] [get_bd_pins HDMI_0/axi_clkgen_0/s_axi_aresetn]
+connect_bd_net [get_bd_pins processing_system7_0/FCLK_CLK1] [get_bd_pins HDMI_0/axi_clkgen_0/clk]
+connect_bd_net -net [get_bd_nets HDMI_0/clk_1] [get_bd_pins HDMI_0/clk] [get_bd_pins HDMI_0/clk_wiz_0/clk_in1]
+connect_bd_net -net [get_bd_nets HDMI_0/axi_resetn_1] [get_bd_pins HDMI_0/axi_resetn] [get_bd_pins HDMI_0/clk_wiz_0/resetn]
+connect_bd_net -net [get_bd_nets HDMI_0/axi_resetn_1] [get_bd_pins HDMI_0/axi_resetn] [get_bd_pins HDMI_0/axi_hdmi_tx_0/s_axi_aresetn]
+connect_bd_net -net [get_bd_nets HDMI_0/axi_resetn_1] [get_bd_pins HDMI_0/axi_resetn] [get_bd_pins HDMI_0/axi_interconnect_0/M00_ARESETN]
+connect_bd_net -net [get_bd_nets HDMI_0/axi_resetn_1] [get_bd_pins HDMI_0/axi_resetn] [get_bd_pins HDMI_0/axi_interconnect_0/S00_ARESETN]
+connect_bd_net -net [get_bd_nets HDMI_0/axi_resetn_1] [get_bd_pins HDMI_0/axi_resetn] [get_bd_pins HDMI_0/axi_interconnect_0/ARESETN]
+connect_bd_net -net [get_bd_nets HDMI_0/axi_resetn_1] [get_bd_pins HDMI_0/axi_resetn] [get_bd_pins HDMI_0/axi_spdif_tx_0/S_AXI_ARESETN]
+connect_bd_net -net [get_bd_nets HDMI_0/axi_resetn_1] [get_bd_pins HDMI_0/axi_resetn] [get_bd_pins HDMI_0/axi_spdif_tx_0/DMA_REQ_RSTN]
+connect_bd_net -net [get_bd_nets HDMI_0/s_axi_aclk_1] [get_bd_pins HDMI_0/s_axi_aclk] [get_bd_pins HDMI_0/axi_spdif_tx_0/S_AXI_ACLK]
+connect_bd_net -net [get_bd_nets HDMI_0/s_axi_aclk_1] [get_bd_pins HDMI_0/s_axi_aclk] [get_bd_pins HDMI_0/axi_spdif_tx_0/DMA_REQ_ACLK]
+connect_bd_net -net [get_bd_nets HDMI_0/s_axi_aclk_1] [get_bd_pins HDMI_0/s_axi_aclk] [get_bd_pins HDMI_0/axi_interconnect_0/ACLK]
+connect_bd_net -net [get_bd_nets HDMI_0/s_axi_aclk_1] [get_bd_pins HDMI_0/s_axi_aclk] [get_bd_pins HDMI_0/axi_interconnect_0/S00_ACLK]
+connect_bd_net -net [get_bd_nets HDMI_0/s_axi_aclk_1] [get_bd_pins HDMI_0/s_axi_aclk] [get_bd_pins HDMI_0/axi_interconnect_0/M00_ACLK]
+connect_bd_net -net [get_bd_nets HDMI_0/s_axi_aclk_1] [get_bd_pins HDMI_0/s_axi_aclk] [get_bd_pins HDMI_0/axi_hdmi_tx_0/m_axis_mm2s_clk]
+connect_bd_net -net [get_bd_nets HDMI_0/s_axi_aclk_1] [get_bd_pins HDMI_0/s_axi_aclk] [get_bd_pins HDMI_0/axi_hdmi_tx_0/s_axi_aclk]
+connect_bd_net [get_bd_pins xlconcat_0/dout] [get_bd_pins processing_system7_0/IRQ_F2P]
+connect_bd_net -net [get_bd_nets processing_system7_0_FCLK_CLK0] [get_bd_pins processing_system7_0/S_AXI_HP0_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+connect_bd_net -net [get_bd_nets processing_system7_0_FCLK_CLK0] [get_bd_pins processing_system7_0/DMA0_ACLK] [get_bd_pins processing_system7_0/FCLK_CLK0]
+delete_bd_objs [get_bd_ports spdif_tx_o]
+set_property name HDMI_CLK [get_bd_ports hdmi_out_clk]
+set_property name HDMI_HSYNC [get_bd_ports hdmi_16_hsync]
+set_property name HDMI_VSYNC [get_bd_ports hdmi_16_vsync]
+set_property name HDMI_DE [get_bd_ports hdmi_16_data_e]
+set_property name HDMI_D [get_bd_ports hdmi_16_data]
+set_property name HDMI_SPDIF [get_bd_ports spdif_tx_o_2]
+save_bd_design
+Wrote  : <~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd> 
+assign_bd_address [get_bd_addr_segs {HDMI_0/axi_vdma_0/S_AXI_LITE/Reg }]
+</HDMI_0/axi_vdma_0/S_AXI_LITE/Reg> is being mapped into </processing_system7_0/Data> at <0x43000000[ 64K ]>
+assign_bd_address [get_bd_addr_segs {HDMI_0/axi_clkgen_0/s_axi/axi_lite }]
+</HDMI_0/axi_clkgen_0/s_axi/axi_lite> is being mapped into </processing_system7_0/Data> at <0x43C00000[ 64K ]>
+assign_bd_address [get_bd_addr_segs {HDMI_0/axi_hdmi_tx_0/s_axi/axi_lite }]
+</HDMI_0/axi_hdmi_tx_0/s_axi/axi_lite> is being mapped into </processing_system7_0/Data> at <0x43C10000[ 64K ]>
+assign_bd_address [get_bd_addr_segs {elink2/axi_bram_ctrl_2/S_AXI/Mem0 }]
+</elink2/axi_bram_ctrl_2/S_AXI/Mem0> is being mapped into </processing_system7_0/Data> at <0x40000000[ 8K ]>
+set_property offset 0x70000000 [get_bd_addr_segs {processing_system7_0/Data/SEG_axi_bram_ctrl_2_Mem0}]
+assign_bd_address [get_bd_addr_segs {HDMI_0/axi_spdif_tx_0/S_AXI/reg0 }]
+</HDMI_0/axi_spdif_tx_0/S_AXI/reg0> is being mapped into </processing_system7_0/Data> at <0x43C20000[ 64K ]>
+assign_bd_address [get_bd_addr_segs {processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM }]
+</processing_system7_0/S_AXI_HP0/HP0_DDR_LOWOCM> is being mapped into </HDMI_0/axi_vdma_0/Data_MM2S> at <0x00000000[ 1G ]>
+save_bd_design
+Wrote  : <~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd> 
+startgroup
+create_bd_port -dir I -from 0 -to 0 In14
+connect_bd_net [get_bd_pins /xlconcat_0/In14] [get_bd_ports In14]
+endgroup
+set_property name HDMI_INT [get_bd_ports In14]
+save_bd_design
+Wrote  : <~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd> 
+close_project
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Aug 18 22:31:25 2015...
