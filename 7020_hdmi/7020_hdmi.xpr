@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2014 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="2" Path="/home/frhuettig/.Xil/Vivado-3130-FredsLaptop/PrjAr/_X_/parallella_7020_headless_gpiose_elink2.xpr">
+<Project Version="7" Minor="2" Path="~/parallella/parallella-fpga/7020_hdmi/7020_hdmi.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="8881c09146fe4448958dd97039494f7e"/>
@@ -13,9 +13,9 @@
     <Option Name="BoardPart" Val=""/>
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/parallella_7020_headless_gpiose_elink2.ipdefs/src"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/parallella_7020_headless_gpiose_elink2.ipdefs/ip_repo"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/parallella_7020_headless_gpiose_elink2.ipdefs/elink-gold"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/7020_hdmi.ipdefs/src"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/7020_hdmi.ipdefs/ip_repo"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/7020_hdmi.ipdefs/elink-gold"/>
   </Configuration>
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
@@ -55,28 +55,10 @@
           <Attr Name="ImportTime" Val="1414530390"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/bd/elink_testbench/ip/elink_testbench_elink_gold_0_1/elink_testbench_elink_gold_0_1.upgrade_log">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/elink_testbench/elink_testbench.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_elink_gold_0_1/elink_testbench_elink_gold_0_1.upgrade_log"/>
-          <Attr Name="ImportTime" Val="1415202180"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/bd/elink_testbench/ip/elink_testbench_elink_gold_0_0/elink_testbench_elink_gold_0_0.upgrade_log">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/elink_testbench/elink_testbench.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_elink_gold_0_0/elink_testbench_elink_gold_0_0.upgrade_log"/>
           <Attr Name="ImportTime" Val="1415137984"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/bd/elink_testbench/ip/elink_testbench_eio_tx_0_0/elink_testbench_eio_tx_0_0.upgrade_log">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/elink2_testbench/elink2_testbench.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eio_tx_0_0/elink_testbench_eio_tx_0_0.upgrade_log"/>
-          <Attr Name="ImportTime" Val="1415358314"/>
-        </FileInfo>
-      </File>
-      <File Path="$PSRCDIR/sources_1/bd/elink_testbench/ip/elink_testbench_eCfg_0_2/elink_testbench_eCfg_0_2.upgrade_log">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/elink2new_testbench/elink2new_testbench.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eCfg_0_2/elink_testbench_eCfg_0_2.upgrade_log"/>
-          <Attr Name="ImportTime" Val="1418693813"/>
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/elink_testbench/ip/elink_testbench_eio_tx_0_2/elink_testbench_eio_tx_0_2.upgrade_log">
@@ -393,13 +375,13 @@
       </File>
       <File Path="$PSRCDIR/sources_1/bd/elink2_top/ip/elink2_top_parallella_gpio_emio_0_0/elink2_top_parallella_gpio_emio_0_0.upgrade_log">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/parallella_7020_headless_gpiose_elink2/parallella_7020_headless_gpiose_elink2.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_gpio_emio_0_0/elink2_top_parallella_gpio_emio_0_0.upgrade_log"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_gpio_emio_0_0/elink2_top_parallella_gpio_emio_0_0.upgrade_log"/>
           <Attr Name="ImportTime" Val="1421445404"/>
         </FileInfo>
       </File>
       <File Path="$PSRCDIR/sources_1/bd/elink2_top/ip/elink2_top_parallella_i2c_0_0/elink2_top_parallella_i2c_0_0.upgrade_log">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/parallella_7020_headless_gpiose_elink2/parallella_7020_headless_gpiose_elink2.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_i2c_0_0/elink2_top_parallella_i2c_0_0.upgrade_log"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../../../mnt/windowsC/Adapteva/Parallella/parallella-hwelink/fpga/projects-vivado/7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_i2c_0_0/elink2_top_parallella_i2c_0_0.upgrade_log"/>
           <Attr Name="ImportTime" Val="1421445404"/>
         </FileInfo>
       </File>
