@@ -1,7 +1,7 @@
-# parallella-fpga
+# parallella-fpga - elink-redesign branch
 
 The aim is to create an environment for fpga development. Longer term this will move to use open hardware libaries to build the parallella fpga
-START IN https://github.com/peteasa/parallella
+START IN https://github.com/peteasa/parallella - elink-redesign branch
 
 ### Brief note about this repository
 
