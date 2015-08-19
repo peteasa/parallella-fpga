@@ -1,3 +1,6 @@
 [submodule "parallella-hw"]
 	path = parallella-hw
 	url = https://github.com/parallella/parallella-hw.git
+[submodule "device-tree-xlnx"]
+	path = device-tree-xlnx
+	url = https://github.com/Xilinx/device-tree-xlnx.git

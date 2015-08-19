@@ -401,6 +401,9 @@
         <spirit:internalPortReference spirit:componentRef="axi_protocol_converter_0" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="axi_protocol_converter_1" spirit:portRef="aclk"/>
         <spirit:internalPortReference spirit:componentRef="axi_protocol_converter_2" spirit:portRef="aclk"/>
+        <spirit:internalPortReference spirit:componentRef="HDMI_0" spirit:portRef="s_axi_aclk"/>
+        <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="S_AXI_HP0_ACLK"/>
+        <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="DMA0_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M00_ACLK"/>
@@ -408,9 +411,6 @@
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M02_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M03_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M04_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="HDMI_0" spirit:portRef="s_axi_aclk"/>
-        <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="S_AXI_HP0_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="DMA0_ACLK"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>elink2_CCLK_P</spirit:name>
@@ -436,6 +436,7 @@
         <spirit:internalPortReference spirit:componentRef="axi_protocol_converter_0" spirit:portRef="aresetn"/>
         <spirit:internalPortReference spirit:componentRef="axi_protocol_converter_1" spirit:portRef="aresetn"/>
         <spirit:internalPortReference spirit:componentRef="axi_protocol_converter_2" spirit:portRef="aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="HDMI_0" spirit:portRef="axi_resetn"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M00_ARESETN"/>
@@ -443,7 +444,6 @@
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M02_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M03_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M04_ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="HDMI_0" spirit:portRef="axi_resetn"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>proc_sys_reset_0_peripheral_reset</spirit:name>
@@ -891,11 +891,11 @@
         <spirit:internalPortReference spirit:componentRef="axi_vdma_0" spirit:portRef="m_axis_mm2s_aclk"/>
         <spirit:internalPortReference spirit:componentRef="axi_spdif_tx_0" spirit:portRef="S_AXI_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_spdif_tx_0" spirit:portRef="DMA_REQ_ACLK"/>
+        <spirit:internalPortReference spirit:componentRef="axi_hdmi_tx_0" spirit:portRef="m_axis_mm2s_clk"/>
+        <spirit:internalPortReference spirit:componentRef="axi_hdmi_tx_0" spirit:portRef="s_axi_aclk"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="S00_ACLK"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M00_ACLK"/>
-        <spirit:internalPortReference spirit:componentRef="axi_hdmi_tx_0" spirit:portRef="m_axis_mm2s_clk"/>
-        <spirit:internalPortReference spirit:componentRef="axi_hdmi_tx_0" spirit:portRef="s_axi_aclk"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>axi_resetn_1</spirit:name>
@@ -904,11 +904,11 @@
         <spirit:internalPortReference spirit:componentRef="axi_clkgen_0" spirit:portRef="s_axi_aresetn"/>
         <spirit:internalPortReference spirit:componentRef="clk_wiz_0" spirit:portRef="resetn"/>
         <spirit:internalPortReference spirit:componentRef="axi_hdmi_tx_0" spirit:portRef="s_axi_aresetn"/>
+        <spirit:internalPortReference spirit:componentRef="axi_spdif_tx_0" spirit:portRef="S_AXI_ARESETN"/>
+        <spirit:internalPortReference spirit:componentRef="axi_spdif_tx_0" spirit:portRef="DMA_REQ_RSTN"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="M00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="S00_ARESETN"/>
         <spirit:internalPortReference spirit:componentRef="axi_interconnect_0" spirit:portRef="ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="axi_spdif_tx_0" spirit:portRef="S_AXI_ARESETN"/>
-        <spirit:internalPortReference spirit:componentRef="axi_spdif_tx_0" spirit:portRef="DMA_REQ_RSTN"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>clk_1</spirit:name>
@@ -3770,27 +3770,27 @@
             <spirit:range>64K</spirit:range>
           </spirit:segment>
           <spirit:segment>
-            <spirit:name>SEG_axi_clkgen_0_axi_lite</spirit:name>
-            <spirit:displayName>/HDMI_0/axi_clkgen_0/s_axi/axi_lite</spirit:displayName>
-            <spirit:addressOffset>0x43C00000</spirit:addressOffset>
-            <spirit:range>64K</spirit:range>
-          </spirit:segment>
-          <spirit:segment>
-            <spirit:name>SEG_axi_hdmi_tx_0_axi_lite</spirit:name>
-            <spirit:displayName>/HDMI_0/axi_hdmi_tx_0/s_axi/axi_lite</spirit:displayName>
-            <spirit:addressOffset>0x43C10000</spirit:addressOffset>
-            <spirit:range>64K</spirit:range>
-          </spirit:segment>
-          <spirit:segment>
             <spirit:name>SEG_axi_bram_ctrl_2_Mem0</spirit:name>
             <spirit:displayName>/elink2/axi_bram_ctrl_2/S_AXI/Mem0</spirit:displayName>
             <spirit:addressOffset>0x70000000</spirit:addressOffset>
             <spirit:range>8K</spirit:range>
           </spirit:segment>
           <spirit:segment>
+            <spirit:name>SEG_axi_clkgen_0_axi_lite</spirit:name>
+            <spirit:displayName>/HDMI_0/axi_clkgen_0/s_axi/axi_lite</spirit:displayName>
+            <spirit:addressOffset>0x66000000</spirit:addressOffset>
+            <spirit:range>64K</spirit:range>
+          </spirit:segment>
+          <spirit:segment>
+            <spirit:name>SEG_axi_hdmi_tx_0_axi_lite</spirit:name>
+            <spirit:displayName>/HDMI_0/axi_hdmi_tx_0/s_axi/axi_lite</spirit:displayName>
+            <spirit:addressOffset>0x6C000000</spirit:addressOffset>
+            <spirit:range>64K</spirit:range>
+          </spirit:segment>
+          <spirit:segment>
             <spirit:name>SEG_axi_spdif_tx_0_reg0</spirit:name>
             <spirit:displayName>/HDMI_0/axi_spdif_tx_0/S_AXI/reg0</spirit:displayName>
-            <spirit:addressOffset>0x43C20000</spirit:addressOffset>
+            <spirit:addressOffset>0x75C00000</spirit:addressOffset>
             <spirit:range>64K</spirit:range>
           </spirit:segment>
         </spirit:segments>
