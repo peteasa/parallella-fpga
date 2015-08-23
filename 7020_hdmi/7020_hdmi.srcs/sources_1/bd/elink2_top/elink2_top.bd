@@ -225,7 +225,8 @@
           <spirit:configurableElementValue spirit:referenceId="PCW_UIPARAM_DDR_BOARD_DELAY3">.455</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_SDIO_PERIPHERAL_FREQMHZ">50</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_FPGA0_PERIPHERAL_FREQMHZ">100</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="PCW_FPGA1_PERIPHERAL_FREQMHZ">200</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_FPGA1_PERIPHERAL_FREQMHZ">152</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_FPGA2_PERIPHERAL_FREQMHZ">200</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_FPGA3_PERIPHERAL_FREQMHZ">100</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_USE_M_AXI_GP0">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_USE_M_AXI_GP1">1</spirit:configurableElementValue>
@@ -233,7 +234,8 @@
           <spirit:configurableElementValue spirit:referenceId="PCW_USE_S_AXI_HP1">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_USE_DMA0">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_USE_FABRIC_INTERRUPT">1</spirit:configurableElementValue>
-          <spirit:configurableElementValue spirit:referenceId="PCW_EN_CLK1_PORT">1</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_EN_CLK1_PORT">0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="PCW_EN_CLK2_PORT">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_EN_CLK3_PORT">0</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_IRQ_F2P_INTR">1</spirit:configurableElementValue>
           <spirit:configurableElementValue spirit:referenceId="PCW_PRESET_BANK1_VOLTAGE">LVCMOS 1.8V</spirit:configurableElementValue>
@@ -526,11 +528,6 @@
         <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In15"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
-        <spirit:name>processing_system7_0_FCLK_CLK1</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="FCLK_CLK1"/>
-        <spirit:internalPortReference spirit:componentRef="HDMI_0" spirit:portRef="clk"/>
-      </spirit:adHocConnection>
-      <spirit:adHocConnection>
         <spirit:name>xlconcat_0_dout</spirit:name>
         <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="dout"/>
         <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="IRQ_F2P"/>
@@ -539,6 +536,11 @@
         <spirit:name>In14_1</spirit:name>
         <spirit:externalPortReference spirit:portRef="HDMI_INT"/>
         <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In14"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>processing_system7_0_FCLK_CLK2</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="FCLK_CLK2"/>
+        <spirit:internalPortReference spirit:componentRef="HDMI_0" spirit:portRef="clk"/>
       </spirit:adHocConnection>
     </spirit:adHocConnections>
     <spirit:hierConnections>

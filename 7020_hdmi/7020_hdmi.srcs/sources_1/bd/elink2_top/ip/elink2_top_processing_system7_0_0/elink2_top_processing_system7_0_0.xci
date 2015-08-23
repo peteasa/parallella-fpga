@@ -46,8 +46,8 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_TTC1_BASEADDR">0xE0105000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_TTC1_HIGHADDR">0xE0105fff</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK_CLK0_BUF">true</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK_CLK1_BUF">true</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK_CLK2_BUF">false</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK_CLK1_BUF">false</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK_CLK2_BUF">true</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK_CLK3_BUF">false</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_UIPARAM_DDR_FREQ_MHZ">400</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_UIPARAM_DDR_BANK_ADDR_COUNT">3</spirit:configurableElementValue>
@@ -139,8 +139,8 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_PCAP_PERIPHERAL_FREQMHZ">200</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_TPIU_PERIPHERAL_FREQMHZ">200</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA0_PERIPHERAL_FREQMHZ">100</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA1_PERIPHERAL_FREQMHZ">200</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA2_PERIPHERAL_FREQMHZ">50</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA1_PERIPHERAL_FREQMHZ">152</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA2_PERIPHERAL_FREQMHZ">200</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA3_PERIPHERAL_FREQMHZ">100</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_APU_PERIPHERAL_FREQMHZ">666.666687</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_UIPARAM_ACT_DDR_FREQ_MHZ">400.000000</spirit:configurableElementValue>
@@ -163,8 +163,8 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_PCAP_PERIPHERAL_FREQMHZ">200.000000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_TPIU_PERIPHERAL_FREQMHZ">200.000000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_FPGA0_PERIPHERAL_FREQMHZ">100.000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ">200.000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ">50.000000</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ">142.857132</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ">200.000000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_FPGA3_PERIPHERAL_FREQMHZ">100.000000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_TTC0_CLK0_PERIPHERAL_FREQMHZ">111.111115</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_TTC0_CLK1_PERIPHERAL_FREQMHZ">111.111115</spirit:configurableElementValue>
@@ -173,8 +173,8 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_TTC1_CLK1_PERIPHERAL_FREQMHZ">111.111115</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_ACT_TTC1_CLK2_PERIPHERAL_FREQMHZ">111.111115</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_CLK0_FREQ">100000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_CLK1_FREQ">200000000</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_CLK2_FREQ">50000000</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_CLK1_FREQ">142857132</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_CLK2_FREQ">200000000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_CLK3_FREQ">100000000</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_OVERRIDE_BASIC_CLOCK">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_CPU_PERIPHERAL_DIVISOR0">2</spirit:configurableElementValue>
@@ -187,8 +187,8 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_CAN_PERIPHERAL_DIVISOR0">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_CAN_PERIPHERAL_DIVISOR1">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK0_PERIPHERAL_DIVISOR0">10</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK1_PERIPHERAL_DIVISOR0">5</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK2_PERIPHERAL_DIVISOR0">20</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK1_PERIPHERAL_DIVISOR0">7</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK2_PERIPHERAL_DIVISOR0">5</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK3_PERIPHERAL_DIVISOR0">10</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK0_PERIPHERAL_DIVISOR1">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FCLK1_PERIPHERAL_DIVISOR1">1</spirit:configurableElementValue>
@@ -350,8 +350,8 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_DM_WIDTH">4</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_MIO_PRIMITIVE">54</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_EN_CLK0_PORT">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_EN_CLK1_PORT">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_EN_CLK2_PORT">0</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_EN_CLK1_PORT">0</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_EN_CLK2_PORT">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_EN_CLK3_PORT">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_EN_RST0_PORT">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_EN_RST1_PORT">0</spirit:configurableElementValue>
@@ -826,8 +826,8 @@
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_MIO_TREE_SIGNALS">gpio[0]#qspi0_ss_b#qspi0_io[0]#qspi0_io[1]#qspi0_io[2]#qspi0_io[3]#qspi0_sclk#gpio[7]#tx#rx#data[0]#cmd#clk#data[1]#data[2]#data[3]#tx_clk#txd[0]#txd[1]#txd[2]#txd[3]#tx_ctl#rx_clk#rxd[0]#rxd[1]#rxd[2]#rxd[3]#rx_ctl#data[4]#dir#stp#nxt#data[0]#data[1]#data[2]#data[3]#clk#data[5]#data[6]#data[7]#data[4]#dir#stp#nxt#data[0]#data[1]#data[2]#data[3]#clk#data[5]#data[6]#data[7]#mdc#mdio</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_PS7_SI_REV">PRODUCTION</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA_FCLK0_ENABLE">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA_FCLK1_ENABLE">1</spirit:configurableElementValue>
-        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA_FCLK2_ENABLE">0</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA_FCLK1_ENABLE">0</spirit:configurableElementValue>
+        <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA_FCLK2_ENABLE">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_FPGA_FCLK3_ENABLE">0</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_NOR_SRAM_CS0_T_TR">1</spirit:configurableElementValue>
         <spirit:configurableElementValue spirit:referenceId="PARAM_VALUE.PCW_NOR_SRAM_CS0_T_PC">1</spirit:configurableElementValue>
