@@ -305,6 +305,14 @@
         <spirit:instanceName>HDMI_0</spirit:instanceName>
         <spirit:componentRef spirit:library="BlockDiagram/elink2_top_imp" spirit:name="HDMI_0" spirit:vendor="xilinx.com" spirit:version="1.00.a"/>
       </spirit:componentInstance>
+      <spirit:componentInstance>
+        <spirit:instanceName>xlconstant_0</spirit:instanceName>
+        <spirit:componentRef spirit:library="ip" spirit:name="xlconstant" spirit:vendor="xilinx.com" spirit:version="1.1"/>
+        <spirit:configurableElementValues>
+          <spirit:configurableElementValue spirit:referenceId="bd:xciName">elink2_top_xlconstant_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="CONST_VAL">0</spirit:configurableElementValue>
+        </spirit:configurableElementValues>
+      </spirit:componentInstance>
     </spirit:componentInstances>
     <spirit:interconnections>
       <spirit:interconnection>
@@ -541,6 +549,24 @@
         <spirit:name>processing_system7_0_FCLK_CLK2</spirit:name>
         <spirit:internalPortReference spirit:componentRef="processing_system7_0" spirit:portRef="FCLK_CLK2"/>
         <spirit:internalPortReference spirit:componentRef="HDMI_0" spirit:portRef="clk"/>
+      </spirit:adHocConnection>
+      <spirit:adHocConnection>
+        <spirit:name>xlconstant_0_dout</spirit:name>
+        <spirit:internalPortReference spirit:componentRef="xlconstant_0" spirit:portRef="dout"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In0"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In1"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In2"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In3"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In4"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In5"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In6"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In7"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In8"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In9"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In10"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In11"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In12"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In13"/>
       </spirit:adHocConnection>
     </spirit:adHocConnections>
     <spirit:hierConnections>
