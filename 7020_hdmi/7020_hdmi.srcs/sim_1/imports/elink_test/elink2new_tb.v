@@ -8,7 +8,9 @@ module elink2_tb;
    reg start;
    wire csysreq = 1'b0;
    wire reset = ~aresetn;
-   wire [11:0] param_coreid = 12'h810;
+   // Remove param_coreid, it now seems to come from
+   // ecfg
+   // wire [11:0] param_coreid = 12'h810;
    
    wire [2:0] done;
    wire [2:0] error;
@@ -25,8 +27,12 @@ module elink2_tb;
            .error0        (error[0]),
            .error1        (error[1]),
            .error2        (error[2]),
-           .start         (start),
-           .param_coreid  (param_coreid));
+           .start         (start));
+
+   // Remove param_coreid, it now seems to come from
+   // ecfg
+   //,
+   //        .param_coreid  (param_coreid));
            
    // Reset Generator
    initial begin
