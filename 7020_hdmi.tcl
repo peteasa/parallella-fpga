@@ -597,7 +597,18 @@ current_run -implementation [get_runs impl_1]
 puts "INFO: Project created:7020_hdmi"
 
 update_compile_order -fileset sources_1
-generate_target all [get_files  /home/pas/junk/parallella-fpga/7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/elink_testbench.bd]
-generate_target all [get_files  /home/pas/junk/parallella-fpga/7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd]
+generate_target all [get_files  $orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/elink_testbench.bd]
+generate_target -quiet all [get_files  $orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd]
+
+open_bd_design {./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd}
+startgroup
+set_property -dict [list CONFIG.NUM_MI {5}] [get_bd_cells axi_interconnect_0]
+endgroup
+
+startgroup
+set_property -dict [list CONFIG.NUM_MI {1}] [get_bd_cells /HDMI_0/axi_interconnect_0]
+endgroup
+
+save_bd_design
 
 puts "INFO: Generated Output Products:7020_hdmi"
