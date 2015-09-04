@@ -568,21 +568,21 @@ set_property "xsim.view" "$orig_proj_dir/elink_tb_behav.wcfg" $obj
 
 # Create 'synth_1' run (if not found)
 if {[string equal [get_runs -quiet synth_1] ""]} {
-  create_run -name synth_1 -part xc7z020clg400-1 -flow {Vivado Synthesis 2014} -strategy "Vivado Synthesis Defaults" -constrset constrs_1
+  create_run -name synth_1 -part xc7z010clg400-1 -flow {Vivado Synthesis 2014} -strategy "Vivado Synthesis Defaults" -constrset constrs_1
 } else {
   set_property strategy "Vivado Synthesis Defaults" [get_runs synth_1]
   set_property flow "Vivado Synthesis 2014" [get_runs synth_1]
 }
 set obj [get_runs synth_1]
 set_property "needs_refresh" "1" $obj
-set_property "part" "xc7z020clg400-1" $obj
+set_property "part" "xc7z010clg400-1" $obj
 
 # set the current synth run
 current_run -synthesis [get_runs synth_1]
 
 # Create 'impl_1' run (if not found)
 if {[string equal [get_runs -quiet impl_1] ""]} {
-  create_run -name impl_1 -part xc7z020clg400-1 -flow {Vivado Implementation 2014} -strategy "Vivado Implementation Defaults" -constrset constrs_1 -parent_run synth_1
+  create_run -name impl_1 -part xc7z010clg400-1 -flow {Vivado Implementation 2014} -strategy "Vivado Implementation Defaults" -constrset constrs_1 -parent_run synth_1
 } else {
   set_property strategy "Vivado Implementation Defaults" [get_runs impl_1]
   set_property flow "Vivado Implementation 2014" [get_runs impl_1]
@@ -598,6 +598,17 @@ puts "INFO: Project created:7010_hdmi"
 
 update_compile_order -fileset sources_1
 generate_target all [get_files  /home/pas/junk/parallella-fpga/7010_hdmi/7010_hdmi.srcs/sources_1/bd/elink_testbench/elink_testbench.bd]
-generate_target all [get_files  /home/pas/junk/parallella-fpga/7010_hdmi/7010_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd]
+generate_target -quiet all [get_files  /home/pas/junk/parallella-fpga/7010_hdmi/7010_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd]
+
+open_bd_design {./7010_hdmi/7010_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd}
+startgroup
+set_property -dict [list CONFIG.NUM_MI {5}] [get_bd_cells axi_interconnect_0]
+endgroup
+
+startgroup
+set_property -dict [list CONFIG.NUM_MI {1}] [get_bd_cells /HDMI_0/axi_interconnect_0]
+endgroup
+
+save_bd_design
 
 puts "INFO: Generated Output Products:7010_hdmi"
