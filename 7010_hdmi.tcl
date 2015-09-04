@@ -609,6 +609,12 @@ startgroup
 set_property -dict [list CONFIG.NUM_MI {1}] [get_bd_cells /HDMI_0/axi_interconnect_0]
 endgroup
 
+startgroup
+set_property -dict [list CONFIG.NUM_GPIO_PAIRS {12}] [get_bd_cells parallella_gpio_emio_0]
+endgroup
+set_property LEFT 11 [get_bd_ports GPIO_P]
+set_property LEFT 11 [get_bd_ports GPIO_N]
+
 save_bd_design
 
 puts "INFO: Generated Output Products:7010_hdmi"
