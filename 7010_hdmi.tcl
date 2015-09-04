@@ -89,7 +89,6 @@
 #    "./7010_hdmi/7010_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_i2c_0_0/elink2_top_parallella_i2c_0_0.upgrade_log"
 #    "./7010_hdmi/7010_hdmi.srcs/constrs_1/imports/constraints/parallella_timing.xdc"
 #    "./7010_hdmi/7010_hdmi.srcs/constrs_1/imports/constraints/parallella_z70x0_loc.xdc"
-#    "./7010_hdmi/7010_hdmi.srcs/constrs_1/imports/constraints/parallella_z7020_loc.xdc"
 #    "./7010_hdmi/7010_hdmi.srcs/sim_1/imports/elink_test/elink2new_tb.v"
 #
 #*****************************************************************************************
@@ -527,14 +526,6 @@ set_property "file_type" "XDC" $file_obj
 set file "[file normalize "$orig_proj_dir/7010_hdmi.srcs/constrs_1/imports/constraints/parallella_z70x0_loc.xdc"]"
 set file_added [add_files -norecurse -fileset $obj $file]
 set file "$orig_proj_dir/7010_hdmi.srcs/constrs_1/imports/constraints/parallella_z70x0_loc.xdc"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets constrs_1] [list "*$file"]]
-set_property "file_type" "XDC" $file_obj
-
-# Add/Import constrs file and set constrs file properties
-set file "[file normalize "$orig_proj_dir/7010_hdmi.srcs/constrs_1/imports/constraints/parallella_z7020_loc.xdc"]"
-set file_added [add_files -norecurse -fileset $obj $file]
-set file "$orig_proj_dir/7010_hdmi.srcs/constrs_1/imports/constraints/parallella_z7020_loc.xdc"
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets constrs_1] [list "*$file"]]
 set_property "file_type" "XDC" $file_obj
