@@ -1,8 +1,8 @@
 //Copyright 1986-2014 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2014.3 (lin64) Build 1034051 Fri Oct  3 16:31:15 MDT 2014
-//Date        : Mon Jan 26 14:01:04 2015
-//Host        : FredsLaptop running 64-bit Ubuntu 14.04.1 LTS
+//Tool Version: Vivado v.2014.4.1 (lin64) Build 1149489 Thu Feb 19 16:01:47 MST 2015
+//Date        : Fri Sep  4 18:22:50 2015
+//Host        : HomeMegaUbuntu running 64-bit Ubuntu 15.04
 //Command     : generate_target elink2_top_wrapper.bd
 //Design      : elink2_top_wrapper
 //Purpose     : IP block netlist
@@ -36,6 +36,13 @@ module elink2_top_wrapper
     FIXED_IO_ps_srstb,
     GPIO_N,
     GPIO_P,
+    HDMI_CLK,
+    HDMI_D,
+    HDMI_DE,
+    HDMI_HSYNC,
+    HDMI_INT,
+    HDMI_SPDIF,
+    HDMI_VSYNC,
     I2C_SCL,
     I2C_SDA,
     RX_data_n,
@@ -84,6 +91,13 @@ module elink2_top_wrapper
   inout FIXED_IO_ps_srstb;
   inout [23:0]GPIO_N;
   inout [23:0]GPIO_P;
+  output HDMI_CLK;
+  output [15:0]HDMI_D;
+  output HDMI_DE;
+  output HDMI_HSYNC;
+  input [0:0]HDMI_INT;
+  output HDMI_SPDIF;
+  output HDMI_VSYNC;
   inout I2C_SCL;
   inout I2C_SDA;
   input [7:0]RX_data_n;
@@ -133,6 +147,13 @@ module elink2_top_wrapper
   wire FIXED_IO_ps_srstb;
   wire [23:0]GPIO_N;
   wire [23:0]GPIO_P;
+  wire HDMI_CLK;
+  wire [15:0]HDMI_D;
+  wire HDMI_DE;
+  wire HDMI_HSYNC;
+  wire [0:0]HDMI_INT;
+  wire HDMI_SPDIF;
+  wire HDMI_VSYNC;
   wire I2C_SCL;
   wire I2C_SDA;
   wire [7:0]RX_data_n;
@@ -183,6 +204,13 @@ elink2_top elink2_top_i
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
         .GPIO_N(GPIO_N),
         .GPIO_P(GPIO_P),
+        .HDMI_CLK(HDMI_CLK),
+        .HDMI_D(HDMI_D),
+        .HDMI_DE(HDMI_DE),
+        .HDMI_HSYNC(HDMI_HSYNC),
+        .HDMI_INT(HDMI_INT),
+        .HDMI_SPDIF(HDMI_SPDIF),
+        .HDMI_VSYNC(HDMI_VSYNC),
         .I2C_SCL(I2C_SCL),
         .I2C_SDA(I2C_SDA),
         .RX_data_n(RX_data_n),
