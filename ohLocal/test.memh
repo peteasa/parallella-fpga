@@ -1,0 +1,14 @@
+80A00000_11111111_80800000_05_0000 // control mode 0; data mode 2'b10; write & ext_access
+80B00000_11111401_810f0210_05_0000 // write etx-regs control mode 0; data mode 2'b10; write & ext_access
+810D0000_DEADBEEF_810f0210_04_0000 // read etx-regs control mode 0; data mode 2'b10; read
+82000000_33333333_810f0310_05_0000 // write mailbox 64bit: control mode 0; data mode 2'b10; write & ext_access
+83000000_44444444_810f0310_05_0000 // write mailbox 64bit: control mode 0; data mode 2'b10; write & ext_access
+00000000_11111112_80800000_05_0000 // control mode 0; data mode 2'b10; write & ext_access
+00000000_11111113_80800000_05_0000 // control mode 0; data mode 2'b10; write & ext_access
+810D0000_DEADBEEF_810f0314_04_0000 // read mailbox Hi: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0310_04_0000 // read mailbox Lo: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0314_04_0000 // read mailbox Hi: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0310_04_0000 // read mailbox Lo: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0314_04_0000 // read mailbox Hi: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0310_04_0000 // read mailbox Lo: control mode 0; data mode 2'b10; read
+00000000_00000000_00000000_00 //END OF BURST
