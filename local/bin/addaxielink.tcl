@@ -25,18 +25,22 @@ proc addAxiNoDelete {axi module signal axi_awid axi_awaddr axi_awlen axi_awsize 
     moveSetFocus $module.$axi_aresetn
 }
 
-proc addAxiElink {name module signal axis axim txfer rxfer state intran outtran rxi_lclk_p rxi_frame_p rxi_data_p txi_wr_wait_p txi_rd_wait_p rxo_wr_wait_p rxo_rd_wait_p txo_lclk_p txo_frame_p txo_data_p chipid cclk_p chip_resetb mailbox_not_empty mailbox_full timeout rxwr_access rxwr_packet rxrd_access rxrd_packet rxrr_access rxrr_packet txwr_wait txrd_wait txrr_wait rxwr_wait rxrd_wait rxrr_wait txwr_access txwr_packet txrd_access txrd_packet txrr_access txrr_packet m_axi_awid m_axi_awaddr m_axi_awlen m_axi_awsize m_axi_awburst m_axi_awlock m_axi_awcache m_axi_awprot m_axi_awqos m_axi_awvalid m_axi_wid m_axi_wdata m_axi_wstrb m_axi_wlast m_axi_wvalid m_axi_bready m_axi_arid m_axi_araddr m_axi_arlen m_axi_arsize m_axi_arburst m_axi_arlock m_axi_arcache m_axi_arprot m_axi_arqos m_axi_arvalid m_axi_rready m_axi_aresetn m_axi_awready m_axi_wready m_axi_bid m_axi_bresp m_axi_bvalid m_axi_arready m_axi_rid m_axi_rdata m_axi_rresp m_axi_rlast m_axi_rvalid s_axi_awid s_axi_awaddr s_axi_awlen s_axi_awsize s_axi_awburst s_axi_awlock s_axi_awcache s_axi_awprot s_axi_awqos s_axi_awvalid s_axi_wid s_axi_wdata s_axi_wstrb s_axi_wlast s_axi_wvalid s_axi_bready s_axi_arid s_axi_araddr s_axi_arlen s_axi_arsize s_axi_arburst s_axi_arlock s_axi_arcache s_axi_arprot s_axi_arqos s_axi_arvalid s_axi_rready s_axi_aresetn s_axi_awready s_axi_wready s_axi_bid s_axi_bresp s_axi_bvalid s_axi_arready s_axi_rid s_axi_rdata s_axi_rresp s_axi_rlast s_axi_rvalid} {
-    addElinkNoDelete $name $module $signal $txfer $rxfer $state $intran $outtran $rxi_lclk_p $rxi_frame_p $rxi_data_p $txi_wr_wait_p $txi_rd_wait_p $rxo_wr_wait_p $rxo_rd_wait_p $txo_lclk_p $txo_frame_p $txo_data_p $chipid $cclk_p $chip_resetb $mailbox_not_empty $mailbox_full $timeout $rxwr_access $rxwr_packet $rxrd_access $rxrd_packet $rxrr_access $rxrr_packet $txwr_wait $txrd_wait $txrr_wait $rxwr_wait $rxrd_wait $rxrr_wait $txwr_access $txwr_packet $txrd_access $txrd_packet $txrr_access $txrr_packet
+proc addAxiElink {name module signal axis axim txfer rxfer state intran outtran} {
 
-    addAxiNoDelete $axim.master $module $signal $m_axi_awid $m_axi_awaddr $m_axi_awlen $m_axi_awsize $m_axi_awburst $m_axi_awlock $m_axi_awcache $m_axi_awprot $m_axi_awqos $m_axi_awvalid $m_axi_wid $m_axi_wdata $m_axi_wstrb $m_axi_wlast $m_axi_wvalid $m_axi_bready $m_axi_arid $m_axi_araddr $m_axi_arlen $m_axi_arsize $m_axi_arburst $m_axi_arlock $m_axi_arcache $m_axi_arprot $m_axi_arqos $m_axi_arvalid $m_axi_rready $m_axi_aresetn $m_axi_awready $m_axi_wready $m_axi_bid $m_axi_bresp $m_axi_bvalid $m_axi_arready $m_axi_rid $m_axi_rdata $m_axi_rresp $m_axi_rlast $m_axi_rvalid
+    # first add the elink
+    addElinkNoDelete $name $module $signal $txfer $rxfer $state $intran $outtran rxi_lclk_p rxi_frame_p rxi_data_p txi_wr_wait_p txi_rd_wait_p rxo_wr_wait_p rxo_rd_wait_p txo_lclk_p txo_frame_p txo_data_p chipid cclk_p chip_nreset mailbox_not_empty mailbox_full timeout rxwr_access rxwr_packet rxrd_access rxrd_packet rxrr_access rxrr_packet txwr_wait txrd_wait txrr_wait rxwr_wait rxrd_wait rxrr_wait txwr_access txwr_packet txrd_access txrd_packet txrr_access txrr_packet
+
+    # then add the emaxi interface
+    addAxiNoDelete $axim.master $module $signal m_axi_awid m_axi_awaddr m_axi_awlen m_axi_awsize m_axi_awburst m_axi_awlock m_axi_awcache m_axi_awprot m_axi_awqos m_axi_awvalid m_axi_wid m_axi_wdata m_axi_wstrb m_axi_wlast m_axi_wvalid m_axi_bready m_axi_arid m_axi_araddr m_axi_arlen m_axi_arsize m_axi_arburst m_axi_arlock m_axi_arcache m_axi_arprot m_axi_arqos m_axi_arvalid m_axi_rready m_axi_aresetn m_axi_awready m_axi_wready m_axi_bid m_axi_bresp m_axi_bvalid m_axi_arready m_axi_rid m_axi_rdata m_axi_rresp m_axi_rlast m_axi_rvalid
 
     # close the Axi group
-    closeGroupDeleteSignal $module.$m_axi_aresetn
+    closeGroupDeleteSignal $module.m_axi_aresetn
 
-    addAxiNoDelete $axis.slave $module $signal $s_axi_awid $s_axi_awaddr $s_axi_awlen $s_axi_awsize $s_axi_awburst $s_axi_awlock $s_axi_awcache $s_axi_awprot $s_axi_awqos $s_axi_awvalid $s_axi_wid $s_axi_wdata $s_axi_wstrb $s_axi_wlast $s_axi_wvalid $s_axi_bready $s_axi_arid $s_axi_araddr $s_axi_arlen $s_axi_arsize $s_axi_arburst $s_axi_arlock $s_axi_arcache $s_axi_arprot $s_axi_arqos $s_axi_arvalid $s_axi_rready $s_axi_aresetn $s_axi_awready $s_axi_wready $s_axi_bid $s_axi_bresp $s_axi_bvalid $s_axi_arready $s_axi_rid $s_axi_rdata $s_axi_rresp $s_axi_rlast $s_axi_rvalid
+    # now add the esaxi
+    addAxiNoDelete $axis.slave $module $signal s_axi_awid s_axi_awaddr s_axi_awlen s_axi_awsize s_axi_awburst s_axi_awlock s_axi_awcache s_axi_awprot s_axi_awqos s_axi_awvalid s_axi_wid s_axi_wdata s_axi_wstrb s_axi_wlast s_axi_wvalid s_axi_bready s_axi_arid s_axi_araddr s_axi_arlen s_axi_arsize s_axi_arburst s_axi_arlock s_axi_arcache s_axi_arprot s_axi_arqos s_axi_arvalid s_axi_rready s_axi_aresetn s_axi_awready s_axi_wready s_axi_bid s_axi_bresp s_axi_bvalid s_axi_arready s_axi_rid s_axi_rdata s_axi_rresp s_axi_rlast s_axi_rvalid
     
     # close the Axi group
-    closeGroupDeleteSignal $module.$s_axi_aresetn    
+    closeGroupDeleteSignal $module.s_axi_aresetn    
     # outline the axi and elink groups
 
     # close the elink0 group

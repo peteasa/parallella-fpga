@@ -12,6 +12,9 @@
 -y ../oh/emesh/dv
 -y ../oh/memory/dv
 
+#DV axi
+-y ../oh/axi/dv
+
 #HDL
 -y .
 -y ../oh/common/hdl
@@ -22,6 +25,7 @@
 -y ../oh/emailbox/hdl
 -y ../oh/memory/hdl
 -y ../oh/xilibs/hdl
+-y ../oh/xilibs/ip
 -y ../oh/parallella/hdl
 
 #INCLUDE PATHS (FOR CONSTANTS)

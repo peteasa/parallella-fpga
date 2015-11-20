@@ -1,8 +1,8 @@
 #!/bin/bash
 
-## run with ./maildo.sh test.memh
+## run with ./axido.sh test.memh
 
-./doit.sh axi_mailbox $1
+./doit.sh slave_axi_elink $1
 
 echo "now try"
 echo "gtkwave waveform.vcd -S ../local/bin/addaxielinkslavedvsignals.tcl &"

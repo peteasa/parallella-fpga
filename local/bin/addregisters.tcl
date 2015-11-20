@@ -73,13 +73,17 @@ proc addEcfg_If {name xmit module} {
     addGroup $name_ecfg_if $module_ecfg_if mi_match access_out data_out dstaddr mi_cfg_en mi_dma_en mi_mmu_en mi_en mi_rd mi_we mi_rx_en
 }
 
-proc addEtx_cfg {name module} {
+proc addEcfg {name xmit module} {
     
-    set name_ecfg $name.cfg
-    set module_ecfg $module.etx.etx_core.etx_cfg
-
-    # same clock as etx_cfgif 
-    addGroup $name_ecfg $module_ecfg mi_en mi_we mi_addr ecfg_write mi_din ecfg_read mi_dout
+    set tail_cfg "_cfg"
+    set tail_core "_core"
+    set tail_config_reg "_config_reg"
+    set tail_reg "_reg"
+    set tail_test_access "_test_access"
+    set name_ecfg $name.e$xmit$tail_cfg
+    set module_ecfg $module.e$xmit.e$xmit$tail_core.e$xmit$tail_cfg
+ 
+    addGroup $name_ecfg $module_ecfg clk mi_en mi_we mi_addr ecfg_write mi_din ecfg_$xmit$tail_config_reg ecfg_$xmit$tail_reg ecfg_read mi_dout e$xmit$tail_test_access test_mode
 }
 
 proc addRegRdWr {name module} {
@@ -97,7 +101,7 @@ proc addRegRdWr {name module} {
     addEtx_Protocol $name.Tx $module
     moveSetFocus $module.$signal
     
-    addEtx_cfg $name.Tx $module
+    addEcfg $name.Tx tx $module
     moveSetFocus $module.$signal
         
     addEcfg_If $name.Tx tx $module
@@ -115,6 +119,14 @@ proc addRegRdWr {name module} {
     addGroup $name.Rx $module $signal
     gtkwave::/Edit/Toggle_Group_Open|Close
     moveSetFocus $module.$signal
+    
+    set fifo ecfg_cdc
+    addfifoNoMove "$name.$fifo" $fifo $module
+    moveSetFocus $module.$signal
+    collapseGroup $name.$fifo.$fifo
+    
+    addEcfg $name.Rx rx $module
+    moveSetFocus $module.$signal
 
     addEcfg_If $name.Rx rx $module
     moveSetFocus $module.$signal
@@ -127,6 +139,9 @@ proc addRegRdWr {name module} {
     
     addExfer_Io $name.Rx rx $module
     moveSetFocus $module.$signal
+    
+    # close the $name.Rx group
+    closeGroupDeleteSignal $module.$signal
     
     collapseGroup $name.Rx
 }

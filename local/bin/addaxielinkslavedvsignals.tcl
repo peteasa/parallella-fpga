@@ -5,7 +5,11 @@
 # See gtkwave/src/tcl_commands.c for list of supported commands
 #
 # run like this (or isert the correct path to the script):
-#     gtkwave test.vcd -S addelinkdvsignals.tcl &
+#     gtkwave test.vcd -S addelinkslavedvsignals.tcl &
+#
+# this script is used to display signals when the axi elink is
+# configured so that stimulus is written to the slave interface
+# the master interface (RX path) is stubbed or ignored)
 
 # Enable the full signal hierarchy for better name matching
 gtkwave::/Edit/Toggle_Trace_Hier
@@ -13,8 +17,6 @@ gtkwave::/Edit/Toggle_Trace_Hier
 # Pull in all the helper procedures
 source [file join [file dirname [info script]] addaxielink.tcl]
 source [file join [file dirname [info script]] addemem.tcl]
-source [file join [file dirname [info script]] addregisters.tcl]
-source [file join [file dirname [info script]] addmailbox.tcl]
 
 # add top level signals
 addSignals dv_top.clk dv_top.start state dv_top.nreset
@@ -26,7 +28,7 @@ addGroup stimulus "dv_top.dv_driver.stim\[0\].genblk2.stimulus" stim_count stim_
 addGroup results "dv_top.dut" dut_active access_out packet_out wait_in access_in packet_in wait_out
 
 # add axi elink
-addAxiElink axielink0 "dv_top.dut.elink0" sys_clk emaxi_to_esaxi nc_frm_emaxi elink0_to_elink1 elink0_frm_elink1 elink_state esaxi_to_elink elink_to_esaxi rxi_lclk_p rxi_frame_p rxi_data_p txi_wr_wait_p txi_rd_wait_p rxo_wr_wait_p rxo_rd_wait_p txo_lclk_p txo_frame_p txo_data_p chipid cclk_p chip_resetb mailbox_not_empty mailbox_full timeout rxwr_access rxwr_packet rxrd_access rxrd_packet rxrr_access rxrr_packet txwr_wait txrd_wait txrr_wait rxwr_wait rxrd_wait rxrr_wait txwr_access txwr_packet txrd_access txrd_packet txrr_access txrr_packet m_axi_awid m_axi_awaddr m_axi_awlen m_axi_awsize m_axi_awburst m_axi_awlock m_axi_awcache m_axi_awprot m_axi_awqos m_axi_awvalid m_axi_wid m_axi_wdata m_axi_wstrb m_axi_wlast m_axi_wvalid m_axi_bready m_axi_arid m_axi_araddr m_axi_arlen m_axi_arsize m_axi_arburst m_axi_arlock m_axi_arcache m_axi_arprot m_axi_arqos m_axi_arvalid m_axi_rready m_axi_aresetn m_axi_awready m_axi_wready m_axi_bid m_axi_bresp m_axi_bvalid m_axi_arready m_axi_rid m_axi_rdata m_axi_rresp m_axi_rlast m_axi_rvalid s_axi_awid s_axi_awaddr s_axi_awlen s_axi_awsize s_axi_awburst s_axi_awlock s_axi_awcache s_axi_awprot s_axi_awqos s_axi_awvalid s_axi_wid s_axi_wdata s_axi_wstrb s_axi_wlast s_axi_wvalid s_axi_bready s_axi_arid s_axi_araddr s_axi_arlen s_axi_arsize s_axi_arburst s_axi_arlock s_axi_arcache s_axi_arprot s_axi_arqos s_axi_arvalid s_axi_rready s_axi_aresetn s_axi_awready s_axi_wready s_axi_bid s_axi_bresp s_axi_bvalid s_axi_arready s_axi_rid s_axi_rdata s_axi_rresp s_axi_rlast s_axi_rvalid
+addAxiElink axielink0 "dv_top.dut.elink0" sys_clk emaxi_to_esaxi nc_frm_emaxi elink0_to_elink1 elink0_frm_elink1 elink_state esaxi_to_elink elink_to_esaxi
 
 # add elink1
 addElink elink1 "dv_top.dut" clk elink0_frm_elink1 elink0_to_elink1 elink1_state nc_from_elink1 elink1_to_emem elink0_txo_lclk_p elink0_txo_frame_p elink0_txo_data_p elink0_rxo_wr_wait_p elink0_rxo_rd_wait_p elink1_rxo_wr_wait_p elink1_rxo_rd_wait_p elink1_txo_lclk_p elink1_txo_frame_p elink1_txo_data_p elink1_chipid elink1_cclk_p elink1_chip_resetb elink1_mailbox_not_empty elink1_mailbox_full elink1_timeout elink1_rxwr_access elink1_rxwr_packet elink1_rxrd_access elink1_rxrd_packet elink1_rxrr_access elink1_rxrr_packet elink1_txwr_wait elink1_txrd_wait elink1_txrr_wait elink1_rxwr_wait elink1_rxrd_wait elink1_rxrr_wait elink1_txwr_access elink1_txwr_packet elink1_txrd_access elink1_txrd_packet elink1_txrr_access elink1_txrr_packet
@@ -65,15 +67,6 @@ gtkwave::/Edit/Toggle_Group_Open|Close
 
 ## Now add the emem loopback
 addEmem emem "dv_top.dut.emem" clk
-
-# Add registers
-addRegRdWr axielink0RegRdWr "dv_top.dut.elink0.elink"
-
-# Add mailbox
-set name axielink0Mailbox
-set module "dv_top.dut.elink0.elink"
-
-addmailbox $name $module
 
 # Disable the full signal hierarchy for better viewing
 gtkwave::/Edit/UnHighlight_All

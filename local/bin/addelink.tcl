@@ -33,7 +33,7 @@ proc addElinkNoDelete {name module signal txfer rxfer state intran outtran rxi_l
     gtkwave::/Edit/Toggle_Group_Open|Close
 
     addTransaction $outtran.resp $module $signal $txrr_access $txrr_packet $txrr_wait
-    
+
     # create request elink0 to dv_elink.v
     addTransaction $outtran.req $module $signal $rxrd_access $rxrd_packet $rxrd_wait
 
@@ -45,7 +45,7 @@ proc addElinkNoDelete {name module signal txfer rxfer state intran outtran rxi_l
 
     # create request dv_elinkv to elink0
     addTransaction $intran.req $module $signal $txrd_access $txrd_packet $txrd_wait
-    
+
     # create write dv_elink.v to elink0
     addTransaction $intran.wrt $module $signal $txwr_access $txwr_packet  $txwr_wait
 
@@ -62,8 +62,8 @@ proc addElinkNoDelete {name module signal txfer rxfer state intran outtran rxi_l
     moveSetFocus $module.$signal
 }
 
-proc addElink {name module signal txfer rxfer state intran outtran rxi_lclk_p rxi_frame_p rxi_data_p txi_wr_wait_p txi_rd_wait_p rxo_wr_wait_p rxo_rd_wait_p txo_lclk_p txo_frame_p txo_data_p chipid cclk_p chip_resetb mailbox_not_empty mailbox_full timeout rxwr_access rxwr_packet rxrd_access rxrd_packet rxrr_access rxrr_packet txwr_wait txrd_wait txrr_wait rxwr_wait rxrd_wait rxrr_wait txwr_access txwr_packet txrd_access txrd_packet txrr_access txrr_packet} {
-    addElinkNoDelete $name $module $signal $txfer $rxfer $state $intran $outtran $rxi_lclk_p $rxi_frame_p $rxi_data_p $txi_wr_wait_p $txi_rd_wait_p $rxo_wr_wait_p $rxo_rd_wait_p $txo_lclk_p $txo_frame_p $txo_data_p $chipid $cclk_p $chip_resetb $mailbox_not_empty $mailbox_full $timeout $rxwr_access $rxwr_packet $rxrd_access $rxrd_packet $rxrr_access $rxrr_packet $txwr_wait $txrd_wait $txrr_wait $rxwr_wait $rxrd_wait $rxrr_wait $txwr_access $txwr_packet $txrd_access $txrd_packet $txrr_access $txrr_packet
+proc addElink {name module signal txfer rxfer state intran outtran rxi_lclk_p rxi_frame_p rxi_data_p txi_wr_wait_p txi_rd_wait_p rxo_wr_wait_p rxo_rd_wait_p txo_lclk_p txo_frame_p txo_data_p chipid cclk_p chip_nreset mailbox_not_empty mailbox_full timeout rxwr_access rxwr_packet rxrd_access rxrd_packet rxrr_access rxrr_packet txwr_wait txrd_wait txrr_wait rxwr_wait rxrd_wait rxrr_wait txwr_access txwr_packet txrd_access txrd_packet txrr_access txrr_packet} {
+    addElinkNoDelete $name $module $signal $txfer $rxfer $state $intran $outtran $rxi_lclk_p $rxi_frame_p $rxi_data_p $txi_wr_wait_p $txi_rd_wait_p $rxo_wr_wait_p $rxo_rd_wait_p $txo_lclk_p $txo_frame_p $txo_data_p $chipid $cclk_p $chip_nreset $mailbox_not_empty $mailbox_full $timeout $rxwr_access $rxwr_packet $rxrd_access $rxrd_packet $rxrr_access $rxrr_packet $txwr_wait $txrd_wait $txrr_wait $rxwr_wait $rxrd_wait $rxrr_wait $txwr_access $txwr_packet $txrd_access $txrd_packet $txrr_access $txrr_packet
     
     # close the elink0 group
     closeGroupDeleteSignal $module.$signal
