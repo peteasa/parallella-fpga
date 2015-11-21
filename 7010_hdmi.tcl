@@ -170,7 +170,7 @@ current_run -implementation [get_runs impl_1]
 puts "INFO: Project created:7010_hdmi"
 
 update_compile_order -fileset sources_1
-generate_target -quiet all [get_files $orig_proj_dir/7010_hdmi/7010_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd]
+generate_target -quiet all [get_files $orig_proj_dir/7010_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd]
 
 open_bd_design {./7010_hdmi/7010_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd}
 startgroup
