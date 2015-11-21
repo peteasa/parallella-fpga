@@ -29,68 +29,9 @@
 #
 #    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd"
 #    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/hdl/elink2_top_wrapper.v"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/elink_testbench.bd"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_bram_ctrl_0_0/elink_testbench_axi_bram_ctrl_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_blk_mem_gen_0_0/elink_testbench_blk_mem_gen_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_elink_gold_0_0/elink_testbench_elink_gold_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eio_tx_0_2/elink_testbench_eio_tx_0_2.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eclock_0_2/elink_testbench_eclock_0_2.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eio_rx_0_2/elink_testbench_eio_rx_0_2.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_ecfg_split_0_0/elink_testbench_ecfg_split_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eCfg_0_0/elink_testbench_eCfg_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_edistrib_0_0/elink_testbench_edistrib_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eproto_rx_0_0/elink_testbench_eproto_rx_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_earb_0_0/elink_testbench_earb_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eproto_tx_0_0/elink_testbench_eproto_tx_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_emaxi_0_0/elink_testbench_emaxi_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_esaxi_0_0/elink_testbench_esaxi_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_emesh_split_0_0/elink_testbench_emesh_split_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eproto_tx_0_0/elink2_top_eproto_tx_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eio_rx_0_0/elink2_top_eio_rx_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eio_tx_0_0/elink2_top_eio_tx_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eclock_0_0/elink2_top_eclock_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_edistrib_0_0/elink2_top_edistrib_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_esaxi_0_0/elink2_top_esaxi_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eproto_rx_0_0/elink2_top_eproto_rx_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_emaxi_0_0/elink2_top_emaxi_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_bram_ctrl_2_0/elink2_top_axi_bram_ctrl_2_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_protocol_converter_0_0/elink2_top_axi_protocol_converter_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_protocol_converter_0_1/elink2_top_axi_protocol_converter_0_1.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_protocol_converter_0_2/elink2_top_axi_protocol_converter_0_2.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eCfg_0_0/elink2_top_eCfg_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_earb_0_0/elink2_top_earb_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_ecfg_split_0_0/elink2_top_ecfg_split_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_emesh_split_0_0/elink2_top_emesh_split_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x16_rdreq_0/elink2_top_fifo_103x16_rdreq_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x16_rresp_0/elink2_top_fifo_103x16_rresp_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x16_write_0/elink2_top_fifo_103x16_write_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x32_rdreq_0/elink2_top_fifo_103x32_rdreq_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x32_rresp_0/elink2_top_fifo_103x32_rresp_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x32_write_0/elink2_top_fifo_103x32_write_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_proc_sys_reset_0_0/elink2_top_proc_sys_reset_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_processing_system7_0_0/elink2_top_processing_system7_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_util_vector_logic_0_0/elink2_top_util_vector_logic_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_bram_ctrl_0_1/elink_testbench_axi_bram_ctrl_0_1.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_bram_ctrl_2_2/elink_testbench_axi_bram_ctrl_2_2.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_protocol_converter_0_0/elink_testbench_axi_protocol_converter_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_protocol_converter_0_1/elink_testbench_axi_protocol_converter_0_1.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_protocol_converter_0_2/elink_testbench_axi_protocol_converter_0_2.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_traffic_controller_0_0/elink_testbench_axi_traffic_controller_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_traffic_controller_0_1/elink_testbench_axi_traffic_controller_0_1.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_traffic_controller_1_0/elink_testbench_axi_traffic_controller_1_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_blk_mem_gen_0_1/elink_testbench_blk_mem_gen_0_1.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x16_0_0/elink_testbench_fifo_103x16_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x16_0_1/elink_testbench_fifo_103x16_0_1.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x32_0_0/elink_testbench_fifo_103x32_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x32_0_1/elink_testbench_fifo_103x32_0_1.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x32_0_2/elink_testbench_fifo_103x32_0_2.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_generator_0_0/elink_testbench_fifo_generator_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_gpio_emio_0_0/elink2_top_parallella_gpio_emio_0_0.upgrade_log"
-#    "./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_i2c_0_0/elink2_top_parallella_i2c_0_0.upgrade_log"
 #    "./7020_hdmi/7020_hdmi.srcs/constrs_1/imports/constraints/parallella_timing.xdc"
 #    "./7020_hdmi/7020_hdmi.srcs/constrs_1/imports/constraints/parallella_z70x0_loc.xdc"
 #    "./7020_hdmi/7020_hdmi.srcs/constrs_1/imports/constraints/parallella_z7020_loc.xdc"
-#    "./7020_hdmi/7020_hdmi.srcs/sim_1/imports/elink_test/elink2new_tb.v"
 #
 #*****************************************************************************************
 
@@ -129,64 +70,6 @@ set obj [get_filesets sources_1]
 set files [list \
  "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd"]"\
  "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/hdl/elink2_top_wrapper.v"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/elink_testbench.bd"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_bram_ctrl_0_0/elink_testbench_axi_bram_ctrl_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_blk_mem_gen_0_0/elink_testbench_blk_mem_gen_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_elink_gold_0_0/elink_testbench_elink_gold_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eio_tx_0_2/elink_testbench_eio_tx_0_2.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eclock_0_2/elink_testbench_eclock_0_2.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eio_rx_0_2/elink_testbench_eio_rx_0_2.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_ecfg_split_0_0/elink_testbench_ecfg_split_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eCfg_0_0/elink_testbench_eCfg_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_edistrib_0_0/elink_testbench_edistrib_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eproto_rx_0_0/elink_testbench_eproto_rx_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_earb_0_0/elink_testbench_earb_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eproto_tx_0_0/elink_testbench_eproto_tx_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_emaxi_0_0/elink_testbench_emaxi_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_esaxi_0_0/elink_testbench_esaxi_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_emesh_split_0_0/elink_testbench_emesh_split_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eproto_tx_0_0/elink2_top_eproto_tx_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eio_rx_0_0/elink2_top_eio_rx_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eio_tx_0_0/elink2_top_eio_tx_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eclock_0_0/elink2_top_eclock_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_edistrib_0_0/elink2_top_edistrib_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_esaxi_0_0/elink2_top_esaxi_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eproto_rx_0_0/elink2_top_eproto_rx_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_emaxi_0_0/elink2_top_emaxi_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_bram_ctrl_2_0/elink2_top_axi_bram_ctrl_2_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_protocol_converter_0_0/elink2_top_axi_protocol_converter_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_protocol_converter_0_1/elink2_top_axi_protocol_converter_0_1.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_protocol_converter_0_2/elink2_top_axi_protocol_converter_0_2.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eCfg_0_0/elink2_top_eCfg_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_earb_0_0/elink2_top_earb_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_ecfg_split_0_0/elink2_top_ecfg_split_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_emesh_split_0_0/elink2_top_emesh_split_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x16_rdreq_0/elink2_top_fifo_103x16_rdreq_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x16_rresp_0/elink2_top_fifo_103x16_rresp_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x16_write_0/elink2_top_fifo_103x16_write_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x32_rdreq_0/elink2_top_fifo_103x32_rdreq_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x32_rresp_0/elink2_top_fifo_103x32_rresp_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x32_write_0/elink2_top_fifo_103x32_write_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_proc_sys_reset_0_0/elink2_top_proc_sys_reset_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_processing_system7_0_0/elink2_top_processing_system7_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_util_vector_logic_0_0/elink2_top_util_vector_logic_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_bram_ctrl_0_1/elink_testbench_axi_bram_ctrl_0_1.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_bram_ctrl_2_2/elink_testbench_axi_bram_ctrl_2_2.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_protocol_converter_0_0/elink_testbench_axi_protocol_converter_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_protocol_converter_0_1/elink_testbench_axi_protocol_converter_0_1.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_protocol_converter_0_2/elink_testbench_axi_protocol_converter_0_2.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_traffic_controller_0_0/elink_testbench_axi_traffic_controller_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_traffic_controller_0_1/elink_testbench_axi_traffic_controller_0_1.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_traffic_controller_1_0/elink_testbench_axi_traffic_controller_1_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_blk_mem_gen_0_1/elink_testbench_blk_mem_gen_0_1.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x16_0_0/elink_testbench_fifo_103x16_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x16_0_1/elink_testbench_fifo_103x16_0_1.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x32_0_0/elink_testbench_fifo_103x32_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x32_0_1/elink_testbench_fifo_103x32_0_1.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x32_0_2/elink_testbench_fifo_103x32_0_2.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_generator_0_0/elink_testbench_fifo_generator_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_gpio_emio_0_0/elink2_top_parallella_gpio_emio_0_0.upgrade_log"]"\
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_i2c_0_0/elink2_top_parallella_i2c_0_0.upgrade_log"]"\
  "[file normalize "$orig_proj_dir/archive_project_summary.txt"]"\
 ]
 add_files -norecurse -fileset $obj $files
@@ -204,301 +87,6 @@ set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/hdl/elink2_top_w
 set file [file normalize $file]
 set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
 set_property "used_in_simulation" "0" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/elink_testbench.bd"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-if { ![get_property "is_locked" $file_obj] } {
-  set_property "generate_synth_checkpoint" "0" $file_obj
-}
-set_property "used_in_implementation" "0" $file_obj
-set_property "used_in_synthesis" "0" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_bram_ctrl_0_0/elink_testbench_axi_bram_ctrl_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_blk_mem_gen_0_0/elink_testbench_blk_mem_gen_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_elink_gold_0_0/elink_testbench_elink_gold_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eio_tx_0_2/elink_testbench_eio_tx_0_2.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eclock_0_2/elink_testbench_eclock_0_2.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eio_rx_0_2/elink_testbench_eio_rx_0_2.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_ecfg_split_0_0/elink_testbench_ecfg_split_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eCfg_0_0/elink_testbench_eCfg_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_edistrib_0_0/elink_testbench_edistrib_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eproto_rx_0_0/elink_testbench_eproto_rx_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_earb_0_0/elink_testbench_earb_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_eproto_tx_0_0/elink_testbench_eproto_tx_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_emaxi_0_0/elink_testbench_emaxi_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_esaxi_0_0/elink_testbench_esaxi_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_emesh_split_0_0/elink_testbench_emesh_split_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eproto_tx_0_0/elink2_top_eproto_tx_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eio_rx_0_0/elink2_top_eio_rx_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eio_tx_0_0/elink2_top_eio_tx_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eclock_0_0/elink2_top_eclock_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_edistrib_0_0/elink2_top_edistrib_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_esaxi_0_0/elink2_top_esaxi_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eproto_rx_0_0/elink2_top_eproto_rx_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_emaxi_0_0/elink2_top_emaxi_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_bram_ctrl_2_0/elink2_top_axi_bram_ctrl_2_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_protocol_converter_0_0/elink2_top_axi_protocol_converter_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_protocol_converter_0_1/elink2_top_axi_protocol_converter_0_1.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_axi_protocol_converter_0_2/elink2_top_axi_protocol_converter_0_2.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_eCfg_0_0/elink2_top_eCfg_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_earb_0_0/elink2_top_earb_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_ecfg_split_0_0/elink2_top_ecfg_split_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_emesh_split_0_0/elink2_top_emesh_split_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x16_rdreq_0/elink2_top_fifo_103x16_rdreq_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x16_rresp_0/elink2_top_fifo_103x16_rresp_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x16_write_0/elink2_top_fifo_103x16_write_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x32_rdreq_0/elink2_top_fifo_103x32_rdreq_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x32_rresp_0/elink2_top_fifo_103x32_rresp_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_fifo_103x32_write_0/elink2_top_fifo_103x32_write_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_proc_sys_reset_0_0/elink2_top_proc_sys_reset_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_processing_system7_0_0/elink2_top_processing_system7_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_util_vector_logic_0_0/elink2_top_util_vector_logic_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_bram_ctrl_0_1/elink_testbench_axi_bram_ctrl_0_1.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_bram_ctrl_2_2/elink_testbench_axi_bram_ctrl_2_2.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_protocol_converter_0_0/elink_testbench_axi_protocol_converter_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_protocol_converter_0_1/elink_testbench_axi_protocol_converter_0_1.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_protocol_converter_0_2/elink_testbench_axi_protocol_converter_0_2.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_traffic_controller_0_0/elink_testbench_axi_traffic_controller_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_traffic_controller_0_1/elink_testbench_axi_traffic_controller_0_1.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_axi_traffic_controller_1_0/elink_testbench_axi_traffic_controller_1_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_blk_mem_gen_0_1/elink_testbench_blk_mem_gen_0_1.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x16_0_0/elink_testbench_fifo_103x16_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x16_0_1/elink_testbench_fifo_103x16_0_1.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x32_0_0/elink_testbench_fifo_103x32_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x32_0_1/elink_testbench_fifo_103x32_0_1.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_103x32_0_2/elink_testbench_fifo_103x32_0_2.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/ip/elink_testbench_fifo_generator_0_0/elink_testbench_fifo_generator_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_gpio_emio_0_0/elink2_top_parallella_gpio_emio_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
-set file "$orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/ip/elink2_top_parallella_i2c_0_0/elink2_top_parallella_i2c_0_0.upgrade_log"
-set file [file normalize $file]
-set file_obj [get_files -of_objects [get_filesets sources_1] [list "*$file"]]
-set_property "file_type" "IP Update Log" $file_obj
-
 
 # Set 'sources_1' fileset file properties for local files
 # None
@@ -549,11 +137,7 @@ if {[string equal [get_filesets -quiet sim_1] ""]} {
 }
 
 # Set 'sim_1' fileset object
-set obj [get_filesets sim_1]
-set files [list \
- "[file normalize "$orig_proj_dir/7020_hdmi.srcs/sim_1/imports/elink_test/elink2new_tb.v"]"\
-]
-add_files -norecurse -fileset $obj $files
+# None
 
 # Set 'sim_1' fileset file properties for remote files
 # None
@@ -562,9 +146,7 @@ add_files -norecurse -fileset $obj $files
 # None
 
 # Set 'sim_1' fileset properties
-set obj [get_filesets sim_1]
-set_property "top" "elink2_tb" $obj
-set_property "xsim.view" "$orig_proj_dir/elink_tb_behav.wcfg" $obj
+# None
 
 # Create 'synth_1' run (if not found)
 if {[string equal [get_runs -quiet synth_1] ""]} {
@@ -597,7 +179,6 @@ current_run -implementation [get_runs impl_1]
 puts "INFO: Project created:7020_hdmi"
 
 update_compile_order -fileset sources_1
-generate_target all [get_files  $orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink_testbench/elink_testbench.bd]
 generate_target -quiet all [get_files  $orig_proj_dir/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd]
 
 open_bd_design {./7020_hdmi/7020_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd}
