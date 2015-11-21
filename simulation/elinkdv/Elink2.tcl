@@ -8,11 +8,11 @@
 set root_dir [pwd]
 puts "vivado was launched in $root_dir, modify Elink2.tcl scripts in an editor to adjust paths accordingly!"
 
-set sources_1 "$root_dir/parallella/parallella-fpga/7020_hdmi/7020_hdmi.srcs/sources_1"
-set imports "$root_dir/parallella/parallella-fpga/7020_hdmi/7020_hdmi.srcs/sim_1/imports"
+set sources_1 "$root_dir/parallella/parallella-fpga/simulation/elinkdv/elinkdv.srcs/sources_1"
+set imports "$root_dir/parallella/parallella-fpga/simulation/elinkdv/elinkdv.srcs/sim_1/imports"
 
 # Open the associated Waveform Configuration quietly so that if its already open the simulation continues
-open_wave_config -quiet $root_dir/parallella/parallella-fpga/7020_hdmi/Elink2.wcfg
+open_wave_config -quiet $root_dir/parallella/parallella-fpga/simulation/elinkdv/Elink2.wcfg
 
 restart
 
