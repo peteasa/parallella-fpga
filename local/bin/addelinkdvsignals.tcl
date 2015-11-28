@@ -12,8 +12,6 @@ gtkwave::/Edit/Toggle_Trace_Hier
 
 # Pull in all the helper procedures
 source [file join [file dirname [info script]] addelink.tcl]
-source [file join [file dirname [info script]] addregisters.tcl]
-source [file join [file dirname [info script]] addmailbox.tcl]
 
 # add top level signals
 addSignals dv_top.clk dv_top.start state dv_top.nreset
@@ -29,16 +27,6 @@ addElink elink0 "dv_top.dut" clk elink1_frm_elink0 elink1_to_elink0 elink0_state
 
 # add elink1
 addElink elink1 "dv_top.dut" clk elink0_frm_elink1 elink0_to_elink1 elink1_state nc_frm_elink1 elink1_to_emem elink0_txo_lclk_p elink0_txo_frame_p elink0_txo_data_p elink0_rxo_wr_wait_p elink0_rxo_rd_wait_p elink1_rxo_wr_wait_p elink1_rxo_rd_wait_p elink1_txo_lclk_p elink1_txo_frame_p elink1_txo_data_p elink1_chipid elink1_cclk_p elink1_chip_resetb elink1_mailbox_not_empty elink1_mailbox_full elink1_timeout elink1_rxwr_access elink1_rxwr_packet elink1_rxrd_access elink1_rxrd_packet elink1_rxrr_access elink1_rxrr_packet elink1_txwr_wait elink1_txrd_wait elink1_txrr_wait elink1_rxwr_wait elink1_rxrd_wait elink1_rxrr_wait elink1_txwr_access elink1_txwr_packet elink1_txrd_access elink1_txrd_packet elink1_txrr_access elink1_txrr_packet
-
-
-# Add registers
-addRegRdWr axielink0RegRdWr "dv_top.dut.elink0.elink"
-
-# Add mailbox
-set name axielink0Mailbox
-set module "dv_top.dut.elink0.elink"
-
-addmailbox $name $module
 
 # Disable the full signal hierarchy for better viewing
 gtkwave::/Edit/UnHighlight_All
