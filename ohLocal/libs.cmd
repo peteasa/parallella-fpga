@@ -23,6 +23,7 @@
 -y ../oh/emesh/hdl
 -y ../oh/emmu/hdl
 -y ../oh/emailbox/hdl
+-y ../oh/etrace/hdl
 -y ../oh/memory/hdl
 -y ../oh/xilibs/hdl
 -y ../oh/xilibs/ip
@@ -34,3 +35,5 @@
 +incdir+../oh/edma/hdl
 +incdir+../oh/emmu/hdl
 +incdir+../oh/emailbox/hdl
++incdir+../oh/etrace/hdl
+

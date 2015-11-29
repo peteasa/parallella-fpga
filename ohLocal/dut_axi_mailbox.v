@@ -46,8 +46,6 @@ module dut(/*AUTOARG*/
    wire 	     elink0_cclk_p;		// From elink0 of elink.v
    wire 	     elink0_chip_resetb;	// From elink0 of elink.v
    wire [11:0] 	     elink0_chipid;		// From elink0 of elink.v
-   wire 	     elink0_mailbox_full;	// From elink0 of elink.v
-   wire 	     elink0_mailbox_not_empty;// From elink0 of elink.v
    wire 	     elink0_timeout;		// From elink0 of elink.v
  
  
@@ -89,12 +87,14 @@ module dut(/*AUTOARG*/
    wire			elink0_m_axi_wlast;	// From elink0 of axi_elink.v
    wire [7:0]		elink0_m_axi_wstrb;	// From elink0 of axi_elink.v
    wire			elink0_m_axi_wvalid;	// From elink0 of axi_elink.v
+   wire			elink0_mailbox_irq;	// From elink0 of axi_elink.v
    wire			elink0_rxo_rd_wait_n;	// From elink0 of axi_elink.v
    wire			elink0_rxo_rd_wait_p;	// From elink0 of axi_elink.v
    wire			elink0_rxo_wr_wait_n;	// From elink0 of axi_elink.v
    wire			elink0_rxo_wr_wait_p;	// From elink0 of axi_elink.v
    wire			elink0_rxrr_access;	// From emaxi of emaxi.v
    wire [PW-1:0]	elink0_rxrr_packet;	// From emaxi of emaxi.v
+   wire			elink0_rxrr_wait;	// From emesh_if of emesh_if.v
    wire [7:0]		elink0_txo_data_n;	// From elink0 of axi_elink.v
    wire [7:0]		elink0_txo_data_p;	// From elink0 of axi_elink.v
    wire			elink0_txo_frame_n;	// From elink0 of axi_elink.v
@@ -152,7 +152,7 @@ module dut(/*AUTOARG*/
    //EMESH INTERFACE
    //######################################################################
 
-   /*emesh_if AUTO_TEMPLATE (//Stimulus
+   /*emesh_if AUTO_Template (//Stimulus
                             .e2c_emesh_\(.*\)_in(\1_in[]),
                             .e2c_emesh_\(.*\)_out(\1_out[]),
                             //Response
@@ -164,7 +164,9 @@ module dut(/*AUTOARG*/
                             .e2c_cmesh_wait_in(elink0_txwr_wait),
                             .e2c_rmesh_\(.*\)_out(elink0_txrd_\1[]),
                             .e2c_rmesh_wait_in(elink0_txrd_wait), 
-                            .c2e_\(.*\)_wait_out(),             
+                            .c2e_cmesh_wait_out(elink0_rxrr_wait),
+                            .c2e_rmesh_wait_out(),  
+                            .c2e_xmesh_wait_out(),
                              );
   */
 
@@ -176,10 +178,10 @@ module dut(/*AUTOARG*/
 				 .c2e_xmesh_packet_in({(PW){1'b0}}),
 				 .e2c_xmesh_wait_in(1'b0),
 				 .e2c_xmesh_access_out(),
-				 .e2c_xmesh_packet_out(),		      
+				 .e2c_xmesh_packet_out(),
 				 /*AUTOINST*/
 				 // Outputs
-				 .c2e_cmesh_wait_out	(),		 // Templated
+				 .c2e_cmesh_wait_out	(elink0_rxrr_wait), // Templated
 				 .e2c_cmesh_access_out	(elink0_txwr_access), // Templated
 				 .e2c_cmesh_packet_out	(elink0_txwr_packet[PW-1:0]), // Templated
 				 .c2e_rmesh_wait_out	(),		 // Templated
@@ -212,7 +214,7 @@ module dut(/*AUTOARG*/
 		//outputs (read response back to monitor)
 		.txrr_access		(elink0_rxrr_access),
 		.txrr_packet		(elink0_rxrr_packet[PW-1:0]),
-		.txrr_wait		(1'b0),
+		.txrr_wait		(elink0_rxrr_wait),
      );          
   */
 
@@ -260,7 +262,7 @@ module dut(/*AUTOARG*/
 	  .rxwr_packet			(elink0_txwr_packet[PW-1:0]), // Templated
 	  .rxrd_access			(elink0_txrd_access),	 // Templated
 	  .rxrd_packet			(elink0_txrd_packet[PW-1:0]), // Templated
-	  .txrr_wait			(1'b0),			 // Templated
+	  .txrr_wait			(elink0_rxrr_wait),	 // Templated
 	  .m_axi_awready		(m_axi_awready),
 	  .m_axi_wready			(m_axi_wready),
 	  .m_axi_bid			(m_axi_bid[M_IDW-1:0]),
@@ -324,8 +326,7 @@ module dut(/*AUTOARG*/
 		     .chip_nreset	(elink0_chip_nreset),	 // Templated
 		     .cclk_p		(elink0_cclk_p),	 // Templated
 		     .cclk_n		(elink0_cclk_n),	 // Templated
-		     .mailbox_not_empty	(elink0_mailbox_not_empty), // Templated
-		     .mailbox_full	(elink0_mailbox_full),	 // Templated
+		     .mailbox_irq	(elink0_mailbox_irq),	 // Templated
 		     .m_axi_awid	(elink0_m_axi_awid[M_IDW-1:0]), // Templated
 		     .m_axi_awaddr	(elink0_m_axi_awaddr[31:0]), // Templated
 		     .m_axi_awlen	(elink0_m_axi_awlen[7:0]), // Templated
@@ -364,7 +365,6 @@ module dut(/*AUTOARG*/
 		     .s_axi_rresp	(m_axi_rresp[1:0]),	 // Templated
 		     .s_axi_rvalid	(m_axi_rvalid),		 // Templated
 		     .s_axi_wready	(m_axi_wready),		 // Templated
-		     .timeout		(elink0_timeout),	 // Templated
 		     // Inputs
 		     .sys_clk		(clk),			 // Templated
 		     .rxi_lclk_p	(elink0_txo_lclk_p),	 // Templated

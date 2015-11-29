@@ -11,7 +11,7 @@ proc addmailboxNoMove {name module} {
 
     set name "$name.erx_mailbox"
     
-    addGroup $name $module.erx.erx_core.erx_mailbox wr_clk emesh_access emesh_write emesh_addr emailbox_write emesh_din rd_clk mi_en mi_rd mi_addr emailbox_read mi_dout mailbox_empty mailbox_full emesh_packet mi_we mi_din 
+    addGroup $name $module.erx.erx_core.erx_mailbox wr_clk emesh_access emesh_write emesh_addr emailbox_write emesh_din rd_clk mi_en mi_rd mi_addr emailbox_read mi_dout mailbox_irq_en mailbox_irq mailbox_empty mailbox_full emesh_packet mi_we mi_din 
     gtkwave::/Edit/Toggle_Group_Open|Close
 }
 

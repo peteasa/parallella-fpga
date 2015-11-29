@@ -32,7 +32,7 @@ module dut(/*AUTOARG*/
    input [N*PW-1:0]  packet_in;
    output [N-1:0]    wait_out;
 
-   //DUT driven transactoin
+   //DUT driven transaction
    output [N-1:0]    access_out;
    output [N*PW-1:0] packet_out;
    input [N-1:0]     wait_in;
@@ -44,15 +44,11 @@ module dut(/*AUTOARG*/
    wire 	     elink0_cclk_p;		// From elink0 of elink.v
    wire 	     elink0_chip_resetb;	// From elink0 of elink.v
    wire [11:0] 	     elink0_chipid;		// From elink0 of elink.v
-   wire 	     elink0_mailbox_full;	// From elink0 of elink.v
-   wire 	     elink0_mailbox_not_empty;// From elink0 of elink.v
    wire 	     elink0_timeout;		// From elink0 of elink.v
    wire 	     elink1_cclk_n;		// From elink1 of elink.v
    wire 	     elink1_cclk_p;		// From elink1 of elink.v
    wire 	     elink1_chip_resetb;	// From elink1 of elink.v
    wire [11:0] 	     elink1_chipid;		// From elink1 of elink.v
-   wire 	     elink1_mailbox_full;	// From elink1 of elink.v
-   wire 	     elink1_mailbox_not_empty;// From elink1 of elink.v
    wire 	     elink1_rxrd_access;	// From elink1 of elink.v
    wire [PW-1:0]     elink1_rxrd_packet;	// From elink1 of elink.v
    wire 	     elink1_rxrr_access;	// From elink1 of elink.v
@@ -75,10 +71,13 @@ module dut(/*AUTOARG*/
    // Beginning of automatic outputs (from unused autoinst outputs)
 
    // End of automatics
-  
+   
+   wire			elink0_rxrr_wait;
+   
    /*AUTOWIRE*/
    // Beginning of automatic wires (for undeclared instantiated-module outputs)
    wire			elink0_chip_nreset;	// From elink0 of elink.v
+   wire			elink0_mailbox_irq;	// From elink0 of elink.v
    wire			elink0_rxo_rd_wait_n;	// From elink0 of elink.v
    wire			elink0_rxo_rd_wait_p;	// From elink0 of elink.v
    wire			elink0_rxo_wr_wait_n;	// From elink0 of elink.v
@@ -137,6 +136,7 @@ module dut(/*AUTOARG*/
    wire			elink1_m_axi_wready;	// From esaxi of esaxi.v
    wire [7:0]		elink1_m_axi_wstrb;	// From elink1 of axi_elink.v
    wire			elink1_m_axi_wvalid;	// From elink1 of axi_elink.v
+   wire			elink1_mailbox_irq;	// From elink1 of axi_elink.v
    wire			elink1_rxo_rd_wait_n;	// From elink1 of axi_elink.v
    wire			elink1_rxo_rd_wait_p;	// From elink1 of axi_elink.v
    wire			elink1_rxo_wr_wait_n;	// From elink1 of axi_elink.v
@@ -226,10 +226,10 @@ module dut(/*AUTOARG*/
 				 .c2e_xmesh_packet_in({(PW){1'b0}}),
 				 .e2c_xmesh_wait_in(1'b0),
 				 .e2c_xmesh_access_out(),
-				 .e2c_xmesh_packet_out(),		      
+				 .e2c_xmesh_packet_out(), 
+				 .c2e_cmesh_wait_out	(elink0_rxrr_wait),		      
 				 /*AUTOINST*/
 				 // Outputs
-				 .c2e_cmesh_wait_out	(),		 // Templated
 				 .e2c_cmesh_access_out	(elink0_txwr_access), // Templated
 				 .e2c_cmesh_packet_out	(elink0_txwr_packet[PW-1:0]), // Templated
 				 .c2e_rmesh_wait_out	(),		 // Templated
@@ -363,14 +363,15 @@ module dut(/*AUTOARG*/
                  .elink_active		(dut_active),
 		 .txrr_access		(1'b0),//not tested
 		 .txrr_packet		({(PW){1'b0}}),	
-		 .txrr_wait		(),    //not tested
+	
 		 .rxwr_access		(),
 		 .rxwr_packet		(),
 		 .rxrd_access		(),
-		 .rxrd_packet		(),
+		 .rxrd_packet		(),	 
+		 .txrr_wait		(),
 		 .rxwr_wait		(1'b0),//not tested
 		 .rxrd_wait		(1'b0),//not tested
-		 .rxrr_wait		(1'b0),//not tested
+		 .rxrr_wait		(elink0_rxrr_wait),
 		 /*AUTOINST*/
 		 // Outputs
 		 .rxo_wr_wait_p		(elink0_rxo_wr_wait_p),	 // Templated
@@ -387,9 +388,7 @@ module dut(/*AUTOARG*/
 		 .cclk_p		(elink0_cclk_p),	 // Templated
 		 .cclk_n		(elink0_cclk_n),	 // Templated
 		 .chip_nreset		(elink0_chip_nreset),	 // Templated
-		 .mailbox_not_empty	(elink0_mailbox_not_empty), // Templated
-		 .mailbox_full		(elink0_mailbox_full),	 // Templated
-		 .timeout		(elink0_timeout),	 // Templated
+		 .mailbox_irq		(elink0_mailbox_irq),	 // Templated
 		 .rxrr_access		(elink0_rxrr_access),	 // Templated
 		 .rxrr_packet		(elink0_rxrr_packet[PW-1:0]), // Templated
 		 .txwr_wait		(elink0_txwr_wait),	 // Templated
@@ -464,8 +463,7 @@ module dut(/*AUTOARG*/
 		     .chip_nreset	(elink1_chip_nreset),	 // Templated
 		     .cclk_p		(elink1_cclk_p),	 // Templated
 		     .cclk_n		(elink1_cclk_n),	 // Templated
-		     .mailbox_not_empty	(elink1_mailbox_not_empty), // Templated
-		     .mailbox_full	(elink1_mailbox_full),	 // Templated
+		     .mailbox_irq	(elink1_mailbox_irq),	 // Templated
 		     .m_axi_awid	(elink1_m_axi_awid[M_IDW-1:0]), // Templated
 		     .m_axi_awaddr	(elink1_m_axi_awaddr[31:0]), // Templated
 		     .m_axi_awlen	(elink1_m_axi_awlen[7:0]), // Templated
@@ -504,7 +502,6 @@ module dut(/*AUTOARG*/
 		     .s_axi_rresp	(stub_m_axi_rresp[1:0]), // Templated
 		     .s_axi_rvalid	(stub_m_axi_rvalid),	 // Templated
 		     .s_axi_wready	(stub_m_axi_wready),	 // Templated
-		     .timeout		(elink1_timeout),	 // Templated
 		     // Inputs
 		     .sys_clk		(clk),			 // Templated
 		     .m_axi_awready	(elink1_m_axi_awready),	 // Templated
@@ -719,23 +716,24 @@ module dut(/*AUTOARG*/
                         .wait_out	  (emem_wait),
                              );
    */
-
-   ememory emem (.wait_in	        (elink1_rxrr_wait),//pushback on reads
-		 .clk		        (clk),
-		 .wait_out		(emem_wait),
-		 .coreid		(12'h0),
-		 /*AUTOINST*/
-		 // Outputs
-		 .access_out		(elink1_rxrr_access),	 // Templated
-		 .packet_out		(elink1_rxrr_packet[PW-1:0]), // Templated
-		 // Inputs
-		 .nreset		(nreset),
-		 .access_in		(emem_access),		 // Templated
-		 .packet_in		(emem_packet[PW-1:0]));	 // Templated
+   
+   ememory #(.WAIT(0)) 
+   emem (.wait_in	        (elink1_rxrr_wait),//pushback on reads
+	 .clk		        (clk),
+	 .wait_out		(emem_wait),
+	 .coreid		(12'h0),
+	 /*AUTOINST*/
+	 // Outputs
+	 .access_out			(elink1_rxrr_access),	 // Templated
+	 .packet_out			(elink1_rxrr_packet[PW-1:0]), // Templated
+	 // Inputs
+	 .nreset			(nreset),
+	 .access_in			(emem_access),		 // Templated
+	 .packet_in			(emem_packet[PW-1:0]));	 // Templated
 
 endmodule // dv_elink
 // Local Variables:
-// verilog-library-directories:("." "../hdl" "../../emesh/dv" "../../axi/dv" "../../emesh/hdl" "../../memory/hdl")
+// verilog-library-directories:("." "../oh/elink/hdl" "../oh/emesh/dv" "../oh/axi/dv" "../oh/emesh/hdl" "../oh/memory/hdl")
 // End:
 
 
