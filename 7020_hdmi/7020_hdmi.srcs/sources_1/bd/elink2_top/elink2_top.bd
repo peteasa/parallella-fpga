@@ -577,7 +577,7 @@
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>parallella_base_0_mailbox_not_empty</spirit:name>
-        <spirit:internalPortReference spirit:componentRef="parallella_base_0" spirit:portRef="mailbox_not_empty"/>
+        <spirit:internalPortReference spirit:componentRef="parallella_base_0" spirit:portRef="mailbox_irq"/>
         <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In13"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>

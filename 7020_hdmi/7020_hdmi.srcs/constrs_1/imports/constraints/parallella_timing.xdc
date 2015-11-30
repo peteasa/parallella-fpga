@@ -1,4 +1,4 @@
-create_clock -period 3.333 -name RX_lclk_p -waveform {0.000 1.666} [get_ports RX_lclk_p]
+create_clock -period 3.33333333 -name RX_lclk_p -waveform {0.000 1.66666667} [get_ports RX_lclk_p]
 
 #set_input_delay -clock [get_clocks RX_lclk_p] -clock_fall -min -add_delay 0.500 [get_ports {RX_data_n[*]}]
 #set_input_delay -clock [get_clocks RX_lclk_p] -clock_fall -max -add_delay 1.166 [get_ports {RX_data_n[*]}]
