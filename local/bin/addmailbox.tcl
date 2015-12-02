@@ -11,7 +11,7 @@ proc addmailboxNoMove {name module} {
 
     set name "$name.erx_mailbox"
     
-    addGroup $name $module.erx.erx_core.erx_mailbox wr_clk emesh_access emesh_write emesh_addr emailbox_write emesh_din rd_clk mi_en mi_rd mi_addr emailbox_read mi_dout mailbox_irq_en mailbox_irq mailbox_empty mailbox_full emesh_packet mi_we mi_din 
+    addGroup $name $module.erx.erx_core.erx_mailbox wr_clk emesh_access emesh_write emesh_addr mailbox_write emesh_din rd_clk mi_en mi_rd mi_addr mailbox_read mi_dout mailbox_irq_en mailbox_irq mailbox_empty mailbox_full emesh_packet mi_we mi_din 
     gtkwave::/Edit/Toggle_Group_Open|Close
 }
 
@@ -23,7 +23,7 @@ proc addmailbox {name module} {
     set erx_protocol "$module.erx.erx_core.erx_protocol"
     set erx_io "$module.erx.erx_io"
 
-    addRxFifo $name $module
+    addTxFifo $name $module
        
     # Create a named group for the new signals
     addGroup $name.Mailbox $erx_fifo $signal

@@ -17,17 +17,17 @@ proc addExfer_Io {name xmit module} {
     set tail_io "_io"
     set tail_lclk_io "_lclk_io"
     set tail_clkin "_clkin"
-    set tail_state "_state"
+    set tail_lclk_div4 "_lclk_div4"
     set tail_access "_access"
     set tail_packet "_packet"
+    set tail_data_slow "_data_slow"
     set tail_burst "_burst"
-    set tail_io_ack "_io_ack"
     set tail_wr_wait "_wr_wait"
     set tail_rd_wait "_rd_wait"
     set name_io $name.e$xmit$tail_io
     set module_io $module.e$xmit.e$xmit$tail_io
     
-    addGroup $name_io $module_io $xmit$tail_lclk_io $xmit$tail_clkin $xmit$tail_state $xmit$tail_access $xmit$tail_packet $xmit$tail_burst $xmit$tail_io_ack $xmit$tail_wr_wait $xmit$tail_rd_wait
+    addGroup $name_io $module_io $xmit$tail_lclk_io $xmit$tail_lclk_div4 firstedge $xmit$tail_clkin $xmit$tail_access $xmit$tail_packet tx_data tx_frame $xmit$tail_burst $xmit$tail_wr_wait $xmit$tail_rd_wait
 }
 
 proc addEtx_Protocol {name module} {
@@ -74,16 +74,16 @@ proc addEcfg_If {name xmit module} {
 }
 
 proc addEcfg {name xmit module} {
-    
+
     set tail_cfg "_cfg"
     set tail_core "_core"
-    set tail_config_reg "_config_reg"
     set tail_reg "_reg"
-    set tail_test_access "_test_access"
+    set tail_cfg_reg $tail_cfg$tail_reg
+    set tail_testdata_reg _testdata$tail_reg
     set name_ecfg $name.e$xmit$tail_cfg
     set module_ecfg $module.e$xmit.e$xmit$tail_core.e$xmit$tail_cfg
  
-    addGroup $name_ecfg $module_ecfg clk mi_en mi_we mi_addr ecfg_write mi_din ecfg_$xmit$tail_config_reg ecfg_$xmit$tail_reg ecfg_read mi_dout e$xmit$tail_test_access test_mode
+    addGroup $name_ecfg $module_ecfg clk mi_en mi_we mi_addr ecfg_write mi_din $xmit$tail_cfg_reg ecfg_read mi_dout test_mode $xmit$tail_testdata_reg 
 }
 
 proc addRegRdWr {name module} {

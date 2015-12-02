@@ -11,10 +11,12 @@ proc addTransaction {grp module signal access packet wait} {
     # create response dv_elink.v to elink0
     addGroup $grp $module $access $wait
     moveSetFocus $module.$signal
+    # nc
+    addVector $module.$wait $module.$packet 7 7
     # ctrlmode
-    addVector $module.$wait $module.$packet 7 4
+    addVector $module.$wait $module.$packet 6 3
     # datamode
-    addVector $module.$wait $module.$packet 3 2
+    addVector $module.$wait $module.$packet 2 1
     # src_addr (less need to split it up)
     addVector $module.$wait $module.$packet 103 72
     # data
@@ -24,7 +26,7 @@ proc addTransaction {grp module signal access packet wait} {
     # dest.Id
     addVector $module.$access $module.$packet 39 28
     # write
-    addVector $module.$access $module.$packet 1 1
+    addVector $module.$access $module.$packet 0 0
 }
 
 proc addElinkNoDelete {name module signal txfer rxfer state intran outtran rxi_lclk_p rxi_frame_p rxi_data_p txi_wr_wait_p txi_rd_wait_p rxo_wr_wait_p rxo_rd_wait_p txo_lclk_p txo_frame_p txo_data_p chipid cclk_p chip_resetb mailbox_not_empty mailbox_full timeout rxwr_access rxwr_packet rxrd_access rxrd_packet rxrr_access rxrr_packet txwr_wait txrd_wait txrr_wait rxwr_wait rxrd_wait rxrr_wait txwr_access txwr_packet txrd_access txrd_packet txrr_access txrr_packet} {
