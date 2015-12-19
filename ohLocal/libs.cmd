@@ -16,7 +16,6 @@
 -y ../oh/axi/dv
 
 #HDL
--y .
 -y ../oh/common/hdl
 -y ../oh/elink/hdl
 -y ../oh/edma/hdl
@@ -26,6 +25,7 @@
 -y ../oh/etrace/hdl
 -y ../oh/memory/hdl
 -y ../oh/xilibs/hdl
+-y ../oh/axi/hdl
 -y ../oh/xilibs/ip
 -y ../oh/parallella/hdl
 

@@ -1,3 +1,5 @@
+// module using the slave axi interface
+//
 module dut(/*AUTOARG*/
    // Outputs
    dut_active, wait_out, access_out, packet_out,
@@ -439,7 +441,7 @@ module dut(/*AUTOARG*/
    //Fifo hack to avoid waits...
    wire [PW-1:0] 	elink1_txwr_packet;
    
-   fifo_cdc 
+   oh_fifo_cdc 
      #(.DW(104),
      .DEPTH(32))
    fifo_cdc (

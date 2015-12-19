@@ -1,12 +1,14 @@
-00000000_11111111_80000000_05_0020 // Write to EMEM (just for sim)
-00000000_22222222_80000004_05_0020 // 
-00000000_33333333_80000008_05_0020 // Write to EMEM (just for sim)
-00000000_44444444_8000000c_05_0020 // 
-810f0310_DEADBEEF_80000000_06_0080 // Crazy readback (just for sim)
-810f0310_DEADBEEF_80000008_06_0080 // Crazy readback (just for sim)
-81D00000_DEADBEEF_810f0310_04_0010 // Read from lo mailbox (from host)
-81D00004_DEADFEEF_810f0314_04_0010 // Read from hi mailbox (from host)
-81D00000_DEADBEEF_810f0310_04_0010 // Read from lo mailbox (from host)
-81D00004_DEADFEEF_810f0314_04_0010 // Read from hi mailbox (from host)
-
-
+00000000_0810FF04_810f0300_05_0010 //Configure remap ERX_CFG Static(01) Sel(0xFF0) Pattern (0x810)
+82000000_33333333_800f0320_05_0000 // write mailbox 64bit: control mode 0; data mode 2'b10; write & ext_access
+83000000_44444444_800f0320_05_0000 // write mailbox 64bit: control mode 0; data mode 2'b10; write & ext_access
+810D0000_DEADBEEF_810f0300_04_0000 // read ERX_CFG: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0324_04_0000 // read mailbox Hi: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0320_04_0000 // read mailbox Lo: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0324_04_0000 // read mailbox Hi: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0320_04_0000 // read mailbox Lo: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0324_04_0000 // read mailbox Hi: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0320_04_0000 // read mailbox Lo: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0328_04_0000 // read mailbox Stat: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0300_04_0000 // read ERX_CFG: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0300_04_0000 // read ERX_CFG: control mode 0; data mode 2'b10; read
+810D0000_DEADBEEF_810f0300_04_0000 // read ERX_CFG: control mode 0; data mode 2'b10; read

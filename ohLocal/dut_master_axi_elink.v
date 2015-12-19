@@ -1,3 +1,5 @@
+// DUT based on oh/elink/dv/dut_axi_elink.v
+//
 module dut(/*AUTOARG*/
    // Outputs
    dut_active, wait_out, access_out, packet_out,

@@ -1,3 +1,4 @@
+// module using the slave axi interface but with loopback on the elink connection
 module dut(/*AUTOARG*/
    // Outputs
    dut_active, wait_out, access_out, packet_out,
@@ -56,8 +57,6 @@ module dut(/*AUTOARG*/
   
    /*AUTOWIRE*/
    // Beginning of automatic wires (for undeclared instantiated-module outputs)
-   wire			chip_nreset;		// From elink1 of elink.v
-   wire [11:0]		chipid;			// From elink1 of elink.v
    wire			elink0_chip_nreset;	// From elink0 of axi_elink.v
    wire [31:0]		elink0_m_axi_araddr;	// From elink0 of axi_elink.v
    wire [1:0]		elink0_m_axi_arburst;	// From elink0 of axi_elink.v
@@ -106,26 +105,6 @@ module dut(/*AUTOARG*/
    wire			elink0_txwr_access;	// From emesh_if of emesh_if.v
    wire [PW-1:0]	elink0_txwr_packet;	// From emesh_if of emesh_if.v
    wire			elink0_txwr_wait;	// From emaxi of emaxi.v
-   wire			elink1_rxo_rd_wait_n;	// From elink1 of elink.v
-   wire			elink1_rxo_rd_wait_p;	// From elink1 of elink.v
-   wire			elink1_rxo_wr_wait_n;	// From elink1 of elink.v
-   wire			elink1_rxo_wr_wait_p;	// From elink1 of elink.v
-   wire [7:0]		elink1_txo_data_n;	// From elink1 of elink.v
-   wire [7:0]		elink1_txo_data_p;	// From elink1 of elink.v
-   wire			elink1_txo_frame_n;	// From elink1 of elink.v
-   wire			elink1_txo_frame_p;	// From elink1 of elink.v
-   wire			elink1_txo_lclk_n;	// From elink1 of elink.v
-   wire			elink1_txo_lclk_p;	// From elink1 of elink.v
-   wire			elink1_txrd_access;	// From elink1 of elink.v
-   wire [PW-1:0]	elink1_txrd_packet;	// From elink1 of elink.v
-   wire			elink1_txrd_wait;	// From elink1 of elink.v
-   wire			elink1_txrr_access;	// From elink1 of elink.v
-   wire [PW-1:0]	elink1_txrr_packet;	// From elink1 of elink.v
-   wire			elink1_txrr_wait;	// From elink1 of elink.v
-   wire			elink1_txwr_access;	// From elink1 of elink.v
-   wire [PW-1:0]	elink1_txwr_packet;	// From elink1 of elink.v
-   wire			elink1_txwr_wait;	// From elink1 of elink.v
-   wire			elink_active;		// From elink1 of elink.v
    wire [31:0]		m_axi_araddr;		// From emaxi of emaxi.v
    wire [1:0]		m_axi_arburst;		// From emaxi of emaxi.v
    wire [3:0]		m_axi_arcache;		// From emaxi of emaxi.v
@@ -164,7 +143,6 @@ module dut(/*AUTOARG*/
    wire			m_axi_wready;		// From elink0 of axi_elink.v
    wire [7:0]		m_axi_wstrb;		// From emaxi of emaxi.v
    wire			m_axi_wvalid;		// From emaxi of emaxi.v
-   wire			mailbox_irq;		// From elink1 of elink.v
    // End of automatics
    
   
@@ -305,8 +283,8 @@ module dut(/*AUTOARG*/
                           // Outputs                        
                           .sys_clk            (clk),
                           
-                          .rxi_\(.*\)         (elink1_txo_\1[]),
-                          .txi_\(.*\)         (elink1_rxo_\1[]),
+                          .rxi_\(.*\)         (elink0_txo_\1[]),
+                          .txi_\(.*\)         (elink0_rxo_\1[]),
                           .s_\(.*\)           (m_\1[]),
                           .\(.*\)             (@"(substring vl-cell-name  0 6)"_\1[]),
 
@@ -387,16 +365,16 @@ module dut(/*AUTOARG*/
 		     .s_axi_wready	(m_axi_wready),		 // Templated
 		     // Inputs
 		     .sys_clk		(clk),			 // Templated
-		     .rxi_lclk_p	(elink1_txo_lclk_p),	 // Templated
-		     .rxi_lclk_n	(elink1_txo_lclk_n),	 // Templated
-		     .rxi_frame_p	(elink1_txo_frame_p),	 // Templated
-		     .rxi_frame_n	(elink1_txo_frame_n),	 // Templated
-		     .rxi_data_p	(elink1_txo_data_p[7:0]), // Templated
-		     .rxi_data_n	(elink1_txo_data_n[7:0]), // Templated
-		     .txi_wr_wait_p	(elink1_rxo_wr_wait_p),	 // Templated
-		     .txi_wr_wait_n	(elink1_rxo_wr_wait_n),	 // Templated
-		     .txi_rd_wait_p	(elink1_rxo_rd_wait_p),	 // Templated
-		     .txi_rd_wait_n	(elink1_rxo_rd_wait_n),	 // Templated
+		     .rxi_lclk_p	(elink0_txo_lclk_p),	 // Templated
+		     .rxi_lclk_n	(elink0_txo_lclk_n),	 // Templated
+		     .rxi_frame_p	(elink0_txo_frame_p),	 // Templated
+		     .rxi_frame_n	(elink0_txo_frame_n),	 // Templated
+		     .rxi_data_p	(elink0_txo_data_p[7:0]), // Templated
+		     .rxi_data_n	(elink0_txo_data_n[7:0]), // Templated
+		     .txi_wr_wait_p	(elink0_rxo_wr_wait_p),	 // Templated
+		     .txi_wr_wait_n	(elink0_rxo_wr_wait_n),	 // Templated
+		     .txi_rd_wait_p	(elink0_rxo_rd_wait_p),	 // Templated
+		     .txi_rd_wait_n	(elink0_rxo_rd_wait_n),	 // Templated
 		     .s_axi_arid	(m_axi_arid[S_IDW-1:0]), // Templated
 		     .s_axi_araddr	(m_axi_araddr[31:0]),	 // Templated
 		     .s_axi_arburst	(m_axi_arburst[1:0]),	 // Templated
@@ -424,85 +402,9 @@ module dut(/*AUTOARG*/
 		     .s_axi_wlast	(m_axi_wlast),		 // Templated
 		     .s_axi_wvalid	(m_axi_wvalid));		 // Templated
 
-
-   //######################################################################
-   //2ND ELINK 
-   //######################################################################
-
-   /*elink AUTO_TEMPLATE (
-                          // Outputs                        
-                          .sys_clk            (clk),
-                          .sys_nreset         (nreset),
-                          .cclk_\(.*\)        (elink1_cclk_\1[]),
-                          .txo_\(.*\)         (elink1_txo_\1[]),
-                          .rxo_\(.*\)         (elink1_rxo_\1[]),
-                          .rxi_\(.*\)         (elink0_txo_\1[]),
-                          .txi_\(.*\)         (elink0_rxo_\1[]),
-                          .rxwr_\(.*\)        (elink1_txwr_\1[]),
-                          .txwr_\(.*\)        (elink1_txwr_\1[]),
-                          .rxrd_\(.*\)        (elink1_txrd_\1[]),
-                          .txrd_\(.*\)        (elink1_txrd_\1[]),
-                          .rxrr_\(.*\)        (elink1_txrr_\1[]),
-                          .txrr_\(.*\)        (elink1_txrr_\1[]),
-                                 )
-  */
-   defparam elink1.ID = 12'h820;   
-   defparam elink1.ETYPE = 0; 
-
-   elink elink1 ( 	 
-		 /*AUTOINST*/
-		 // Outputs
-		 .elink_active		(elink_active),
-		 .rxo_wr_wait_p		(elink1_rxo_wr_wait_p),	 // Templated
-		 .rxo_wr_wait_n		(elink1_rxo_wr_wait_n),	 // Templated
-		 .rxo_rd_wait_p		(elink1_rxo_rd_wait_p),	 // Templated
-		 .rxo_rd_wait_n		(elink1_rxo_rd_wait_n),	 // Templated
-		 .txo_lclk_p		(elink1_txo_lclk_p),	 // Templated
-		 .txo_lclk_n		(elink1_txo_lclk_n),	 // Templated
-		 .txo_frame_p		(elink1_txo_frame_p),	 // Templated
-		 .txo_frame_n		(elink1_txo_frame_n),	 // Templated
-		 .txo_data_p		(elink1_txo_data_p[7:0]), // Templated
-		 .txo_data_n		(elink1_txo_data_n[7:0]), // Templated
-		 .chipid		(chipid[11:0]),
-		 .cclk_p		(elink1_cclk_p),	 // Templated
-		 .cclk_n		(elink1_cclk_n),	 // Templated
-		 .chip_nreset		(chip_nreset),
-		 .mailbox_irq		(mailbox_irq),
-		 .rxwr_access		(elink1_txwr_access),	 // Templated
-		 .rxwr_packet		(elink1_txwr_packet[PW-1:0]), // Templated
-		 .rxrd_access		(elink1_txrd_access),	 // Templated
-		 .rxrd_packet		(elink1_txrd_packet[PW-1:0]), // Templated
-		 .rxrr_access		(elink1_txrr_access),	 // Templated
-		 .rxrr_packet		(elink1_txrr_packet[PW-1:0]), // Templated
-		 .txwr_wait		(elink1_txwr_wait),	 // Templated
-		 .txrd_wait		(elink1_txrd_wait),	 // Templated
-		 .txrr_wait		(elink1_txrr_wait),	 // Templated
-		 // Inputs
-		 .sys_nreset		(nreset),		 // Templated
-		 .sys_clk		(clk),			 // Templated
-		 .rxi_lclk_p		(elink0_txo_lclk_p),	 // Templated
-		 .rxi_lclk_n		(elink0_txo_lclk_n),	 // Templated
-		 .rxi_frame_p		(elink0_txo_frame_p),	 // Templated
-		 .rxi_frame_n		(elink0_txo_frame_n),	 // Templated
-		 .rxi_data_p		(elink0_txo_data_p[7:0]), // Templated
-		 .rxi_data_n		(elink0_txo_data_n[7:0]), // Templated
-		 .txi_wr_wait_p		(elink0_rxo_wr_wait_p),	 // Templated
-		 .txi_wr_wait_n		(elink0_rxo_wr_wait_n),	 // Templated
-		 .txi_rd_wait_p		(elink0_rxo_rd_wait_p),	 // Templated
-		 .txi_rd_wait_n		(elink0_rxo_rd_wait_n),	 // Templated
-		 .rxwr_wait		(elink1_txwr_wait),	 // Templated
-		 .rxrd_wait		(elink1_txrd_wait),	 // Templated
-		 .rxrr_wait		(elink1_txrr_wait),	 // Templated
-		 .txwr_access		(elink1_txwr_access),	 // Templated
-		 .txwr_packet		(elink1_txwr_packet[PW-1:0]), // Templated
-		 .txrd_access		(elink1_txrd_access),	 // Templated
-		 .txrd_packet		(elink1_txrd_packet[PW-1:0]), // Templated
-		 .txrr_access		(elink1_txrr_access),	 // Templated
-		 .txrr_packet		(elink1_txrr_packet[PW-1:0])); // Templated
-        
 endmodule // dv_elink
 // Local Variables:
-// verilog-library-directories:("." "../oh/common/dv" "../oh/common/hdl" "../oh/emesh/dv" "../oh/emesh/hdl" "../oh/memory/hdl" "../oh/elink/hdl")
+// verilog-library-directories:("." "../oh/common/dv" "../oh/common/hdl" "../oh/emesh/dv" "../oh/emesh/hdl" "../oh/memory/hdl" "../oh/elink/hdl" "../oh/axi/hdl")
 // End:
 
 
