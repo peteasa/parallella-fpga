@@ -28,10 +28,16 @@ addGroup stimulus "dv_top.dv_driver.stim\[0\].genblk2.stimulus" stim_count stim_
 addGroup results "dv_top.dut" dut_active access_out packet_out wait_in access_in packet_in wait_out
 
 # add axi elink
-addAxiElink axielink0 "dv_top.dut.elink0" sys_clk emaxi_to_esaxi nc_frm_emaxi elink0_to_elink1 elink0_frm_elink1 elink_state esaxi_to_elink elink_to_esaxi
+set axi_elink elink0
+addAxiElink axi$axi_elink "dv_top.dut.$axi_elink" sys_clk emaxi_to_esaxi nc_frm_emaxi elink1_frm_$axi_elink elink1_to_$axi_elink elink_state esaxi_to_elink elink_to_esaxi
 
 # add elink1
-addElink elink1 "dv_top.dut" clk elink0_frm_elink1 elink0_to_elink1 elink1_state nc_from_elink1 elink1_to_emem elink0_txo_lclk_p elink0_txo_frame_p elink0_txo_data_p elink0_rxo_wr_wait_p elink0_rxo_rd_wait_p elink1_rxo_wr_wait_p elink1_rxo_rd_wait_p elink1_txo_lclk_p elink1_txo_frame_p elink1_txo_data_p elink1_chipid elink1_cclk_p elink1_chip_resetb elink1_mailbox_not_empty elink1_mailbox_full elink1_timeout elink1_rxwr_access elink1_rxwr_packet elink1_rxrd_access elink1_rxrd_packet elink1_rxrr_access elink1_rxrr_packet elink1_txwr_wait elink1_txrd_wait elink1_txrr_wait elink1_rxwr_wait elink1_rxrd_wait elink1_rxrr_wait elink1_txwr_access elink1_txwr_packet elink1_txrd_access elink1_txrd_packet elink1_txrr_access elink1_txrr_packet
+set elink elink1
+set frm_elink elink0
+set tail_frm _frm_
+set tail_to _to_
+set tail_state _state
+addElink $elink $frm_elink "dv_top.dut" clk $frm_elink$tail_frm$elink $frm_elink$tail_to$elink $elink$tail_state nc_from_$elink emem_frm_$elink 
 
 #
 # add emaxi group .. cheat because m_axi_areset does not exist use nreset

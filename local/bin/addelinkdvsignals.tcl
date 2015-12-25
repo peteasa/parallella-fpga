@@ -23,10 +23,20 @@ addGroup stimulus "dv_top.dv_driver.stim\[0\].genblk2.stimulus" stim_count stim_
 addGroup results "dv_top.dut" dut_active access_out packet_out wait_in access_in packet_in wait_out
 
 # add elink0
-addElink elink0 "dv_top.dut" clk elink1_frm_elink0 elink1_to_elink0 elink0_state stimulus_to_elink0 results_frm_elink0 elink1_txo_lclk_p elink1_txo_frame_p elink1_txo_data_p elink1_rxo_wr_wait_p elink1_rxo_rd_wait_p elink0_rxo_wr_wait_p elink0_rxo_rd_wait_p elink0_txo_lclk_p elink0_txo_frame_p elink0_txo_data_p elink0_chipid elink0_cclk_p elink0_chip_resetb elink0_mailbox_not_empty elink0_mailbox_full elink0_timeout elink0_rxwr_access elink0_rxwr_packet elink0_rxrd_access elink0_rxrd_packet elink0_rxrr_access elink0_rxrr_packet elink0_txwr_wait elink0_txrd_wait elink0_txrr_wait elink0_rxwr_wait elink0_rxrd_wait elink0_rxrr_wait elink0_txwr_access elink0_txwr_packet elink0_txrd_access elink0_txrd_packet elink0_txrr_access elink0_txrr_packet
+set elink elink0
+set frm_elink elink1
+set tail_frm _frm_
+set tail_to _to_
+set tail_state _state
+addElink $elink $frm_elink "dv_top.dut" clk $frm_elink$tail_frm$elink $frm_elink$tail_to$elink $elink$tail_state stimulus_to_$elink results_frm_$elink
 
 # add elink1
-addElink elink1 "dv_top.dut" clk elink0_frm_elink1 elink0_to_elink1 elink1_state nc_frm_elink1 elink1_to_emem elink0_txo_lclk_p elink0_txo_frame_p elink0_txo_data_p elink0_rxo_wr_wait_p elink0_rxo_rd_wait_p elink1_rxo_wr_wait_p elink1_rxo_rd_wait_p elink1_txo_lclk_p elink1_txo_frame_p elink1_txo_data_p elink1_chipid elink1_cclk_p elink1_chip_resetb elink1_mailbox_not_empty elink1_mailbox_full elink1_timeout elink1_rxwr_access elink1_rxwr_packet elink1_rxrd_access elink1_rxrd_packet elink1_rxrr_access elink1_rxrr_packet elink1_txwr_wait elink1_txrd_wait elink1_txrr_wait elink1_rxwr_wait elink1_rxrd_wait elink1_rxrr_wait elink1_txwr_access elink1_txwr_packet elink1_txrd_access elink1_txrd_packet elink1_txrr_access elink1_txrr_packet
+set elink elink1
+set frm_elink elink0
+#set tail_frm _frm_
+#set tail_to _to_
+#set tail_state _state
+addElink $elink $frm_elink "dv_top.dut" clk $frm_elink$tail_frm$elink $frm_elink$tail_to$elink $elink$tail_state nc_frm_$elink emem_frm_$elink
 
 # Disable the full signal hierarchy for better viewing
 gtkwave::/Edit/UnHighlight_All

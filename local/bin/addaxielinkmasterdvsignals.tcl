@@ -28,11 +28,17 @@ addGroup stimulus "dv_top.dv_driver.stim\[0\].genblk2.stimulus" stim_count stim_
 addGroup results "dv_top.dut" dut_active access_out packet_out wait_in access_in packet_in wait_out
 
 # add axi elink
-addAxiElink axielink1 "dv_top.dut.elink1" sys_clk emaxi_to_esaxi nc_frm_emaxi elink0_to_elink1 elink0_frm_elink1 elink_state esaxi_to_elink elink_to_esaxi
+set axi_elink elink1
+addAxiElink axi$axi_elink "dv_top.dut.$axi_elink" sys_clk emaxi_to_esaxi nc_frm_emaxi elink0_to_$axi_elink elink0_frm_$axi_elink elink_state esaxi_to_elink elink_to_esaxi
 
 # add elink0 note that in the dut some elink0 signals are not used
 # so direct the script to load the signal from elink0
-addElink elink0 "dv_top.dut" clk elink1_frm_elink0 elink1_to_elink0 elink0_state stim_to_elink0 elink0RxNC elink1_txo_lclk_p elink1_txo_frame_p elink1_txo_data_p elink1_rxo_wr_wait_p elink1_rxo_rd_wait_p elink0_rxo_wr_wait_p elink0_rxo_rd_wait_p elink0_txo_lclk_p elink0_txo_frame_p elink0_txo_data_p elink0_chipid elink0_cclk_p elink0_chip_resetb elink0_mailbox_not_empty elink0_mailbox_full elink0_timeout elink0.rxwr_access elink0.rxwr_packet elink0.rxrd_access elink0.rxrd_packet elink0_rxrr_access elink0_rxrr_packet elink0_txwr_wait elink0_txrd_wait elink0.txrr_wait elink0.rxwr_wait elink0.rxrd_wait elink0.rxrr_wait elink0_txwr_access elink0_txwr_packet elink0_txrd_access elink0_txrd_packet elink0.txrr_access elink0.txrr_packet
+set elink elink0
+set frm_elink elink1
+set tail_frm _frm_
+set tail_to _to_
+set tail_state _state
+addElink $elink $frm_elink "dv_top.dut" clk $frm_elink$tail_frm$elink $frm_elink$tail_to$elink $elink$tail_state stimulus_to_$elink elink0RxNC
 
 ## Now add the emem loopback
 addEmem emem "dv_top.dut.emem" clk
