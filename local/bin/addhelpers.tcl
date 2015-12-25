@@ -55,14 +55,19 @@ proc addGroup {name module args} {
     gtkwave::/Edit/Toggle_Group_Open|Close
 }
 
+# Procedure to set focus on a specific group
+proc SetFocus {name} {
+    gtkwave::/Edit/UnHighlight_All
+    gtkwave::setTraceHighlightFromNameMatch $name on
+}
+
 # Procedure to move the previously selected group at a given signal position
 # leaving the group open
 # Using a signal name it is possible to anchor all additions into specific
 # locations in the groups
 proc moveSetFocus {name} {
     gtkwave::/Edit/Cut
-    gtkwave::/Edit/UnHighlight_All
-    gtkwave::setTraceHighlightFromNameMatch $name on
+    SetFocus $name
     gtkwave::/Edit/Paste
 }
 

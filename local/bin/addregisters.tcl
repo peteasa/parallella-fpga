@@ -46,6 +46,53 @@ proc addErx_Protocol {name module} {
     addGroup $name_erx_protocol $module_erx_protocol read_response erx_rdwr_access erx_rr_access erx_packet test_mode erx_test_access erx_test_data
 }
 
+proc addMMU {name module} {
+
+    addGroup $name $module mi_wr_vec mi_addr mi_wr_data emesh_access_in emesh_packet_in emesh_access_out emesh_rd_wait emesh_wr_wait
+
+    set emmu_rd_addr emmu_rd_addr
+    set signal emesh_access_in
+    addVector $module.$signal $module.$emmu_rd_addr 31 20
+    moveSetFocus $module.$signal
+
+    SetFocus $module.$signal
+    set emmu_lookup_data emmu_lookup_data
+    addSignals $module.$emmu_lookup_data
+
+    set emesh_packet_reg emesh_packet_reg
+    set signal emesh_access_out
+    addVector $module.$signal $module.$emesh_packet_reg 7 0
+    moveSetFocus $module.$signal
+
+    set emesh_dstaddr_out emesh_dstaddr_out
+    set signal emesh_access_out
+    addVector $module.$signal $module.$emesh_dstaddr_out 31 0
+    moveSetFocus $module.$signal
+   
+    set emesh_packet_reg emesh_packet_reg
+    set signal emesh_access_out
+    addVector $module.$signal $module.$emesh_packet_reg 103 40
+    moveSetFocus $module.$signal
+    
+    SetFocus $name
+}
+
+proc addEtx_MMU {name module} {
+    
+    set name_etx_mmu $name.etx_mmu
+    set module_etx_mmu $module.etx.etx_core.etx_mmu
+
+    addMMU $name_etx_mmu $module_etx_mmu 
+}
+
+proc addErx_MMU {name module} {
+    
+    set name_erx_mmu $name.erx_mmu
+    set module_erx_mmu $module.erx.erx_core.erx_mmu
+    
+    addMMU $name_erx_mmu $module_erx_mmu 
+}
+
 proc addEtx_Arbiter {name module} {
     
     set name_etx_arbiter $name.etx_arbiter
@@ -100,6 +147,9 @@ proc addRegRdWr {name module} {
 
     addEtx_Protocol $name.Tx $module
     moveSetFocus $module.$signal
+
+    addEtx_MMU $name.Tx $module
+    moveSetFocus $module.$signal
     
     addEcfg $name.Tx tx $module
     moveSetFocus $module.$signal
@@ -132,6 +182,9 @@ proc addRegRdWr {name module} {
     moveSetFocus $module.$signal
     
     addErx_Arbiter $name.Rx $module
+    moveSetFocus $module.$signal
+
+    addErx_MMU $name.Rx $module
     moveSetFocus $module.$signal
     
     addErx_Protocol $name.Rx $module
