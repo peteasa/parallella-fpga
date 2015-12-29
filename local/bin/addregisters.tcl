@@ -43,7 +43,7 @@ proc addErx_Protocol {name module} {
     set name_erx_protocol $name.erx_protocol
     set module_erx_protocol $module.erx.erx_core.erx_protocol
     
-    addGroup $name_erx_protocol $module_erx_protocol read_response erx_rdwr_access erx_rr_access erx_packet test_mode erx_test_access erx_test_data
+    addGroup $name_erx_protocol $module_erx_protocol rx_access rx_packet rx_burst dst_addr_reg read_response erx_rdwr_access erx_rr_access erx_access erx_packet test_mode erx_test_access erx_test_data
 }
 
 proc addMMU {name module} {
@@ -125,12 +125,18 @@ proc addEcfg {name xmit module} {
     set tail_cfg "_cfg"
     set tail_core "_core"
     set tail_reg "_reg"
+    set tail_version_reg "_version_reg"
     set tail_cfg_reg $tail_cfg$tail_reg
-    set tail_testdata_reg _testdata$tail_reg
+    set tail_gpio_reg "_gpio_reg"
+    set tail_status_reg "_status_reg"
+    set tail_offset_reg "_offset_reg"
+    set tail_monitor_reg "_monitor_reg"
+    set tail_packet_reg "_packet_reg"
+    set tail_testdata_reg "_testdata_reg"
     set name_ecfg $name.e$xmit$tail_cfg
     set module_ecfg $module.e$xmit.e$xmit$tail_core.e$xmit$tail_cfg
  
-    addGroup $name_ecfg $module_ecfg clk mi_en mi_we mi_addr ecfg_write mi_din $xmit$tail_cfg_reg ecfg_read mi_dout test_mode $xmit$tail_testdata_reg 
+    addGroup $name_ecfg $module_ecfg clk mi_en mi_we mi_addr ecfg_write mi_din $xmit$tail_version_reg $xmit$tail_cfg_reg $xmit$tail_gpio_reg $xmit$tail_status_reg $xmit$tail_offset_reg $xmit$tail_monitor_reg $xmit$tail_packet_reg ecfg_read mi_dout test_mode $xmit$tail_testdata_reg 
 }
 
 proc addRegRdWr {name module} {
