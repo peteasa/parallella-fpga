@@ -62,7 +62,11 @@ if {[string equal [get_filesets -quiet sources_1] ""]} {
 
 # Set IP repository paths
 set obj [get_filesets sources_1]
-set_property "ip_repo_paths" "[file normalize "$origin_dir/AdaptevaLib"] [file normalize "$origin_dir/AdiHDLLib/library"]" $obj
+set_property "ip_repo_paths" "[file normalize "$origin_dir/oh/parallella/fpga/parallella_base"]" $obj
+set_property "ip_repo_paths" "[file normalize "$origin_dir/AdiHDLLib"]" $obj
+
+# Rebuild user ip_repo's index before adding any source files
+update_ip_catalog -rebuild
 
 # Set 'sources_1' fileset object
 set obj [get_filesets sources_1]
@@ -128,16 +132,13 @@ if {[string equal [get_filesets -quiet sim_1] ""]} {
 }
 
 # Set 'sim_1' fileset object
-# None
-
-# Set 'sim_1' fileset file properties for remote files
-# None
-
-# Set 'sim_1' fileset file properties for local files
-# None
+set obj [get_filesets sim_1]
+# Empty (no sources present)
 
 # Set 'sim_1' fileset properties
-# None
+set obj [get_filesets sim_1]
+set_property "xelab.nosort" "1" $obj
+set_property "xelab.unifast" "" $obj
 
 # Create 'synth_1' run (if not found)
 if {[string equal [get_runs -quiet synth_1] ""]} {
@@ -163,6 +164,8 @@ if {[string equal [get_runs -quiet impl_1] ""]} {
 set obj [get_runs impl_1]
 set_property "needs_refresh" "1" $obj
 set_property "part" "xc7z010clg400-1" $obj
+set_property "steps.write_bitstream.args.readback_file" "0" $obj
+set_property "steps.write_bitstream.args.verbose" "0" $obj
 
 # set the current impl run
 current_run -implementation [get_runs impl_1]
@@ -172,21 +175,12 @@ puts "INFO: Project created:7010_hdmi"
 update_compile_order -fileset sources_1
 generate_target -quiet all [get_files $orig_proj_dir/7010_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd]
 
-open_bd_design {./7010_hdmi/7010_hdmi.srcs/sources_1/bd/elink2_top/elink2_top.bd}
-startgroup
-set_property -dict [list CONFIG.NUM_MI {5}] [get_bd_cells axi_interconnect_0]
-endgroup
-
-startgroup
-set_property -dict [list CONFIG.NUM_MI {1}] [get_bd_cells /HDMI_0/axi_interconnect_0]
-endgroup
-
-startgroup
-set_property -dict [list CONFIG.NUM_GPIO_PAIRS {12}] [get_bd_cells parallella_gpio_emio_0]
-endgroup
-set_property LEFT 11 [get_bd_ports GPIO_P]
-set_property LEFT 11 [get_bd_ports GPIO_N]
-
-save_bd_design
-
 puts "INFO: Generated Output Products:7010_hdmi"
+
+reset_run synth_1
+launch_runs synth_1
+wait_on_run synth_1
+launch_runs impl_1
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream
+wait_on_run impl_1
