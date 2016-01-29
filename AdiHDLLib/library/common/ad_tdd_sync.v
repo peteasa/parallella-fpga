@@ -1,9 +1,9 @@
 // ***************************************************************************
 // ***************************************************************************
-// Copyright 2011(c) Analog Devices, Inc.
-// 
+// Copyright 2015(c) Analog Devices, Inc.
+//
 // All rights reserved.
-// 
+//
 // Redistribution and use in source and binary forms, with or without modification,
 // are permitted provided that the following conditions are met:
 //     - Redistributions of source code must retain the above copyright
@@ -21,74 +21,74 @@
 //       patent holders to use this software.
 //     - Use of the software either in source or binary form, must be run
 //       on or directly connected to an Analog Devices Inc. component.
-//    
+//
 // THIS SOFTWARE IS PROVIDED BY ANALOG DEVICES "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
 // INCLUDING, BUT NOT LIMITED TO, NON-INFRINGEMENT, MERCHANTABILITY AND FITNESS FOR A
 // PARTICULAR PURPOSE ARE DISCLAIMED.
 //
 // IN NO EVENT SHALL ANALOG DEVICES BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
 // EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, INTELLECTUAL PROPERTY
-// RIGHTS, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR 
+// RIGHTS, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
 // BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
-// STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF 
+// STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 // THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // ***************************************************************************
 // ***************************************************************************
+// ***************************************************************************
+// ***************************************************************************
+`timescale 1ns/1ps
 
-`timescale 1ns/100ps
+module ad_tdd_sync (
 
-module ad_jesd_align (
+  clk,                                           // system clock (100 Mhz)
+  rstn,
 
-  // jesd interface
+  sync                                           // re-synchronization signal
+);
 
-  rx_clk,
-  rx_ip_sof,
-  rx_ip_data,
-  rx_sof,
-  rx_data);
+  localparam      PULSE_CNTR_WIDTH  = 7;
+  parameter       TDD_SYNC_PERIOD   = 100000000; // t_period * clk_freq - 1
 
-  // jesd interface
-
-  input           rx_clk;
-  input   [ 3:0]  rx_ip_sof;
-  input   [31:0]  rx_ip_data;
-
-  // aligned data
-
-  output          rx_sof;
-  output  [31:0]  rx_data;
+  input           clk;
+  input           rstn;
+  output          sync;
 
   // internal registers
 
-  reg     [31:0]  rx_ip_data_d = 'd0;
-  reg     [ 3:0]  rx_ip_sof_hold = 'd0;
-  reg             rx_sof = 'd0;
-  reg             rx_ip_sof_d = 'd0;
-  reg     [31:0]  rx_data = 'd0;
+  reg     [(PULSE_CNTR_WIDTH-1):0]  pulse_counter   =  {PULSE_CNTR_WIDTH{1'b1}};
+  reg     [31:0]                    sync_counter    = 32'h0;
+  reg                               sync_pulse      =  1'b0;
+  reg                               sync_period_eof =  1'b0;
 
-  // dword may contain more than one frame per clock
+  assign sync = sync_pulse;
 
-  always @(posedge rx_clk) begin
-    rx_ip_data_d <= rx_ip_data;
-    rx_ip_sof_d <= rx_ip_sof;
-    if (rx_ip_sof != 4'h0) begin
-      rx_ip_sof_hold <= rx_ip_sof;
-    end
-    rx_sof <= |rx_ip_sof_d;
-    if (rx_ip_sof_hold[0] == 1'b1) begin
-      rx_data <= rx_ip_data;
-    end else if (rx_ip_sof_hold[1] == 1'b1) begin
-      rx_data <= {rx_ip_data[ 7:0], rx_ip_data_d[31: 8]};
-    end else if (rx_ip_sof_hold[2] == 1'b1) begin
-      rx_data <= {rx_ip_data[15:0], rx_ip_data_d[31:16]};
-    end else if (rx_ip_sof_hold[3] == 1'b1) begin
-      rx_data <= {rx_ip_data[23:0], rx_ip_data_d[31:24]};
+  // a free running sync pulse generator
+
+  always @(posedge clk) begin
+    if (rstn == 1'b0) begin
+      sync_counter <= 32'h0;
+      sync_period_eof <= 1'b0;
     end else begin
-      rx_data <= 32'd0;
+      sync_counter <= (sync_counter < TDD_SYNC_PERIOD) ? (sync_counter + 1) : 32'b0;
+      sync_period_eof <= (sync_counter == (TDD_SYNC_PERIOD - 1)) ? 1'b1 : 1'b0;
+    end
+  end
+
+  // generate pulse with a specified width
+
+  always @(posedge clk) begin
+    if (rstn == 1'b0) begin
+      pulse_counter <= 0;
+      sync_pulse <= 0;
+    end else begin
+      pulse_counter <= (sync_pulse == 1'b1) ? pulse_counter + 1 : {PULSE_CNTR_WIDTH{1'h0}};
+      if(sync_period_eof == 1'b1) begin
+        sync_pulse <= 1'b1;
+      end else if(pulse_counter == {PULSE_CNTR_WIDTH{1'b1}}) begin
+        sync_pulse <= 1'b0;
+      end
     end
   end
 
 endmodule
 
-// ***************************************************************************
-// ***************************************************************************
