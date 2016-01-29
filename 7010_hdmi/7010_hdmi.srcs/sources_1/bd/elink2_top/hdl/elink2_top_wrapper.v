@@ -89,8 +89,8 @@ module elink2_top_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
-  inout [23:0]GPIO_N;
-  inout [23:0]GPIO_P;
+  inout [11:0]GPIO_N;
+  inout [11:0]GPIO_P;
   output HDMI_CLK;
   output [15:0]HDMI_D;
   output HDMI_DE;
@@ -145,8 +145,8 @@ module elink2_top_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
-  wire [23:0]GPIO_N;
-  wire [23:0]GPIO_P;
+  wire [11:0]GPIO_N;
+  wire [11:0]GPIO_P;
   wire HDMI_CLK;
   wire [15:0]HDMI_D;
   wire HDMI_DE;

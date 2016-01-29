@@ -140,7 +140,7 @@
           <spirit:wire>
             <spirit:direction>inout</spirit:direction>
             <spirit:vector>
-              <spirit:left>23</spirit:left>
+              <spirit:left>11</spirit:left>
               <spirit:right>0</spirit:right>
             </spirit:vector>
           </spirit:wire>
@@ -150,7 +150,7 @@
           <spirit:wire>
             <spirit:direction>inout</spirit:direction>
             <spirit:vector>
-              <spirit:left>23</spirit:left>
+              <spirit:left>11</spirit:left>
               <spirit:right>0</spirit:right>
             </spirit:vector>
           </spirit:wire>
@@ -423,6 +423,7 @@
         <spirit:componentRef spirit:library="user" spirit:name="parallella_base" spirit:vendor="www.parallella.org" spirit:version="1.0"/>
         <spirit:configurableElementValues>
           <spirit:configurableElementValue spirit:referenceId="bd:xciName">elink2_top_parallella_base_0_0</spirit:configurableElementValue>
+          <spirit:configurableElementValue spirit:referenceId="NGPIO">12</spirit:configurableElementValue>
         </spirit:configurableElementValues>
       </spirit:componentInstance>
       <spirit:componentInstance>
