@@ -33,10 +33,12 @@ create_clock -period 3.333 -name RX_lclk_p -waveform {0.000 1.666} [get_ports RX
 #set_output_delay -clock [get_clocks VIRTUAL_lclk_s_src] -min -add_delay 0.100 [get_ports TX_frame_p]
 #set_output_delay -clock [get_clocks VIRTUAL_lclk_s_src] -max -add_delay 1.567 [get_ports TX_frame_p]
 
-set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks cclk_p_src]
-set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks lclk_p_src]
-set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks eio_rx_0_rxlclk_p]
-set_false_path -from [get_clocks eio_rx_0_rxlclk_p] -to [get_clocks clk_fpga_0]
+## commented out the following 4 to avoid errors
+## TODO work out what they are and how to fix
+#set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks cclk_p_src]
+#set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks lclk_p_src]
+#set_false_path -from [get_clocks clk_fpga_0] -to [get_clocks eio_rx_0_rxlclk_p]
+#set_false_path -from [get_clocks eio_rx_0_rxlclk_p] -to [get_clocks clk_fpga_0]
 
 #set_false_path -from [get_pins {elink2_top_i/proc_sys_reset_0/U0/PR_OUT_DFF[0].peripheral_reset_reg[0]/C}] -to [get_pins {elink2_top_i/elink2/eio_rx_0/inst/rxenb_sync_reg[*]/CLR}]
 #set_false_path -from [get_pins {elink2_top_i/proc_sys_reset_0/U0/PR_OUT_DFF[0].peripheral_reset_reg[0]/C}] -to [get_pins {elink2_top_i/elink2/eproto_tx_0/inst/txdata_p_reg[*]/CLR}]

@@ -71,7 +71,16 @@ set_property PACKAGE_PIN G14 [get_ports {DSP_RESET_N[0]}]
 set_property IOSTANDARD LVCMOS25 [get_ports {DSP_RESET_N[0]}]
 set_property DRIVE 4 [get_ports {DSP_RESET_N[0]}]
 
+#####################
+# Epiphany Clock
+#####################
+set_property IOSTANDARD LVDS_25 [get_ports {CCLK*}]
 set_property PACKAGE_PIN H17 [get_ports CCLK_N]
+
+#####################
+# Epiphany TX
+#####################
+set_property IOSTANDARD LVDS_25 [get_ports {TX_*}]
 set_property PACKAGE_PIN F17 [get_ports TX_lclk_n]
 set_property PACKAGE_PIN A20 [get_ports {TX_data_n[0]}]
 set_property PACKAGE_PIN B20 [get_ports {TX_data_n[1]}]
@@ -82,10 +91,19 @@ set_property PACKAGE_PIN F20 [get_ports {TX_data_n[5]}]
 set_property PACKAGE_PIN G18 [get_ports {TX_data_n[6]}]
 set_property PACKAGE_PIN G20 [get_ports {TX_data_n[7]}]
 set_property PACKAGE_PIN G15 [get_ports TX_frame_n]
-set_property PACKAGE_PIN J15 [get_ports TX_rd_wait_p]
-set_property IOSTANDARD LVCMOS25 [get_ports TX_rd_wait_p]
+
+#####################
+# Wait signals
+#####################
+set_property IOSTANDARD LVCMOS25 [get_ports TXi_*]
+set_property PACKAGE_PIN J15 [get_ports TXi_rd_wait_p]
 #NET "RXO_RD_WAIT_N" LOC = "H17";
 set_property PACKAGE_PIN H18 [get_ports TX_wr_wait_n]
+
+#####################
+# Epiphany RX 
+#####################
+set_property IOSTANDARD LVDS_25 [get_ports {RX*}]
 set_property PACKAGE_PIN K18 [get_ports RX_lclk_n]
 set_property PACKAGE_PIN J19 [get_ports {RX_data_n[0]}]
 set_property PACKAGE_PIN L15 [get_ports {RX_data_n[1]}]
@@ -103,6 +121,7 @@ set_property PACKAGE_PIN J16 [get_ports RX_wr_wait_n]
 # GPIO
 #  First 12 pairs are present on all parts, next 12 on 7020 only
 #######################
+set_property IOSTANDARD LVCMOS25 [get_ports {GPIO*}]
 set_property PACKAGE_PIN T16 [get_ports {GPIO_P[0]}]
 set_property PACKAGE_PIN U17 [get_ports {GPIO_N[0]}]
 set_property PACKAGE_PIN V16 [get_ports {GPIO_P[1]}]
