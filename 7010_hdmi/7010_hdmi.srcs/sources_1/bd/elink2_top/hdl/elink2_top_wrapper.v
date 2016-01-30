@@ -61,10 +61,10 @@ module elink2_top_wrapper
     TX_frame_p,
     TX_lclk_n,
     TX_lclk_p,
-    TX_rd_wait_n,
-    TX_rd_wait_p,
     TX_wr_wait_n,
-    TX_wr_wait_p);
+    TX_wr_wait_p,
+    TXi_rd_wait_n,
+    TXi_rd_wait_p);
   output CCLK_N;
   output CCLK_P;
   inout [14:0]DDR_addr;
@@ -116,10 +116,10 @@ module elink2_top_wrapper
   output TX_frame_p;
   output TX_lclk_n;
   output TX_lclk_p;
-  input TX_rd_wait_n;
-  input TX_rd_wait_p;
   input TX_wr_wait_n;
   input TX_wr_wait_p;
+  input TXi_rd_wait_n;
+  input TXi_rd_wait_p;
 
   wire CCLK_N;
   wire CCLK_P;
@@ -172,10 +172,10 @@ module elink2_top_wrapper
   wire TX_frame_p;
   wire TX_lclk_n;
   wire TX_lclk_p;
-  wire TX_rd_wait_n;
-  wire TX_rd_wait_p;
   wire TX_wr_wait_n;
   wire TX_wr_wait_p;
+  wire TXi_rd_wait_n;
+  wire TXi_rd_wait_p;
 
 elink2_top elink2_top_i
        (.CCLK_N(CCLK_N),
@@ -229,8 +229,8 @@ elink2_top elink2_top_i
         .TX_frame_p(TX_frame_p),
         .TX_lclk_n(TX_lclk_n),
         .TX_lclk_p(TX_lclk_p),
-        .TX_rd_wait_n(TX_rd_wait_n),
-        .TX_rd_wait_p(TX_rd_wait_p),
         .TX_wr_wait_n(TX_wr_wait_n),
-        .TX_wr_wait_p(TX_wr_wait_p));
+        .TX_wr_wait_p(TX_wr_wait_p),
+        .TXi_rd_wait_n(TXi_rd_wait_n),
+        .TXi_rd_wait_p(TXi_rd_wait_p));
 endmodule
