@@ -3,9 +3,10 @@ module dv_top();
    
    //static variables
    parameter TIMEOUT = 100;
-   parameter PW  = 104;
    parameter N   = 1;
    parameter IDW = 12;
+   parameter AW  = 32;   
+   parameter PW  = 2*AW+40;
 
    //local variables
    integer r;   
@@ -57,7 +58,6 @@ module dv_top();
    // -create your own module named dut to include at compile time 
    //#############################################################   
 
-
    /*dut AUTO_TEMPLATE(
                         .\(.*\)_out (dut_\1[]),
                         .\(.*\)_in  (stim_\1[]),
@@ -95,7 +95,7 @@ module dv_top();
             );
     */
    
-   dv_driver #(.PW(PW), 
+   dv_driver #(.AW(AW), 
 	       .N(N), 
 	       .NAME("test"),
 	       .IDW(IDW)

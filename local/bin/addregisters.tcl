@@ -35,7 +35,7 @@ proc addEtx_Protocol {name module} {
     set name_etx_protocol $name.etx_protocol
     set module_etx_protocol $module.etx.etx_core.etx_protocol
     
-    addGroup $name_etx_protocol $module_etx_protocol etx_access etx_packet tx_enable etx_valid tx_io_wait tx_access tx_packet clk tx_wr_wait tx_rd_wait etx_wr_wait etx_rd_wait
+    addGroup $name_etx_protocol $module_etx_protocol etx_access etx_packet tx_enable etx_valid tx_io_wait tx_access tx_packet clk tx_ack_wait tx_wr_wait tx_rd_wait etx_wr_wait etx_rd_wait
 }
 
 proc addErx_Protocol {name module} {
@@ -48,11 +48,11 @@ proc addErx_Protocol {name module} {
 
 proc addMMU {name module} {
 
-    addGroup $name $module mi_wr_vec mi_addr mi_wr_data emesh_access_in emesh_packet_in emesh_access_out emesh_rd_wait emesh_wr_wait
+    addGroup $name $module mem_wem mem_write reg_dstaddr mem_data emesh_access_in emesh_packet_in emesh_access_out emesh_rd_wait emesh_wr_wait
 
-    set emmu_rd_addr emmu_rd_addr
+    set emesh_dstaddr_in emesh_dstaddr_in
     set signal emesh_access_in
-    addVector $module.$signal $module.$emmu_rd_addr 31 20
+    addVector $module.$signal $module.$emesh_dstaddr_in 31 20
     moveSetFocus $module.$signal
 
     SetFocus $module.$signal
@@ -117,7 +117,7 @@ proc addEcfg_If {name xmit module} {
     set module_ecfg_if $module.e$xmit.e$xmit$tail_core.e$xmit$tail_cfgif
 
     # same clock as arbiter
-    addGroup $name_ecfg_if $module_ecfg_if mi_match access_out data_out dstaddr mi_cfg_en mi_dma_en mi_mmu_en mi_en mi_rd mi_we mi_rx_en
+    addGroup $name_ecfg_if $module_ecfg_if wait_in tx_ack_wait wait_out access_in access_wait packet_in mi_match mi_cfg_en mi_dma_en mi_mmu_en mi_en mi_rd mi_we mi_rx_en access_out dstaddr_reg write_reg data_out
 }
 
 proc addEcfg {name xmit module} {
@@ -136,7 +136,7 @@ proc addEcfg {name xmit module} {
     set name_ecfg $name.e$xmit$tail_cfg
     set module_ecfg $module.e$xmit.e$xmit$tail_core.e$xmit$tail_cfg
  
-    addGroup $name_ecfg $module_ecfg clk mi_en mi_we mi_addr ecfg_write mi_din $xmit$tail_version_reg $xmit$tail_cfg_reg $xmit$tail_gpio_reg $xmit$tail_status_reg $xmit$tail_offset_reg $xmit$tail_monitor_reg $xmit$tail_packet_reg ecfg_read mi_dout test_mode $xmit$tail_testdata_reg 
+    addGroup $name_ecfg $module_ecfg clk ecfg_write dstaddr_in $xmit$tail_version_reg $xmit$tail_cfg_reg $xmit$tail_gpio_reg $xmit$tail_status_reg $xmit$tail_offset_reg $xmit$tail_monitor_reg $xmit$tail_packet_reg ecfg_read cfg_dout cfg_rdata test_mode $xmit$tail_testdata_reg 
 }
 
 proc addRegRdWr {name module} {
@@ -159,10 +159,7 @@ proc addRegRdWr {name module} {
     
     addEcfg $name.Tx tx $module
     moveSetFocus $module.$signal
-        
-    addEcfg_If $name.Tx tx $module
-    moveSetFocus $module.$signal
-    
+ 
     addEtx_Arbiter $name.Tx $module
     moveSetFocus $module.$signal
     
@@ -184,9 +181,6 @@ proc addRegRdWr {name module} {
     addEcfg $name.Rx rx $module
     moveSetFocus $module.$signal
 
-    addEcfg_If $name.Rx rx $module
-    moveSetFocus $module.$signal
-    
     addErx_Arbiter $name.Rx $module
     moveSetFocus $module.$signal
 
@@ -205,25 +199,47 @@ proc addRegRdWr {name module} {
     collapseGroup $name.Rx
 }
 
-proc addIoWait {name module} {
+proc addIoWait {module axielink elink} {
 
-    set signal sys_clk
+    set signal clk
+    set name waitSignals
 	
     # Create a named group for the new signals
     addGroup $name $module $signal
     gtkwave::/Edit/Toggle_Group_Open|Close
     moveSetFocus $module.$signal
 
-    addTxFifo $name $module
-    moveSetFocus $module.$signal
-    
-    addEtx_Arbiter $name $module
-    moveSetFocus $module.$signal
-    
-    addEtx_Protocol $name $module
+    set arbitername axielink.erx_arbiter
+    addGroup $arbitername $module.$axielink.elink.erx.erx_core.erx_arbiter clk rx_rd_wait rx_wr_wait edma_wait ecfg_wait rxwr_access rxrd_access rxrr_access rxwr_packet rxrd_packet rxrr_packet
     moveSetFocus $module.$signal
 
-    addEtx_Io $name $module
+    set arbitername axielink.etx_arbiter
+    addGroup $arbitername $module.$axielink.elink.etx.etx_core.etx_arbiter clk etx_wr_wait etx_rd_wait etx_cfg_wait etx_access
+    moveSetFocus $module.$signal
+
+    set arbitername elink.erx_arbiter
+    addGroup $arbitername $module.$elink.erx.erx_core.erx_arbiter clk rx_rd_wait rx_wr_wait edma_wait ecfg_wait rxwr_access rxrd_access rxrr_access rxwr_packet rxrd_packet rxrr_packet
+    moveSetFocus $module.$signal
+
+    set arbitername elink.etx_arbiter
+    addGroup $arbitername $module.$elink.etx.etx_core.etx_arbiter clk etx_wr_wait etx_rd_wait etx_cfg_wait etx_access
+    moveSetFocus $module.$signal
+
+    set cfgifname axielink.erx_cfgif
+    addGroup $cfgifname $module.$axielink.elink.erx.erx_core.erx_cfgif access_in packet_in wait_in mi_match access_out_reg access_forward_reg access_out packet_out
+    moveSetFocus $module.$signal
+
+    set cfgifname axielink.etx_cfgif
+    addGroup $cfgifname $module.$axielink.elink.etx.etx_core.etx_cfgif access_in packet_in wait_in mi_match access_out_reg access_forward_reg access_out packet_out
+    moveSetFocus $module.$signal
+
+    set cfgifname elink.erx_cfgif
+    addGroup $cfgifname $module.$elink.erx.erx_core.erx_cfgif access_in packet_in wait_in mi_match access_out_reg access_forward_reg access_out packet_out
+    moveSetFocus $module.$signal
+
+
+    set cfgifname elink.etx_cfgif
+    addGroup $cfgifname $module.$elink.etx.etx_core.etx_cfgif access_in packet_in wait_in mi_match access_out_reg access_forward_reg access_out packet_out
     moveSetFocus $module.$signal
 
     collapseGroup $name

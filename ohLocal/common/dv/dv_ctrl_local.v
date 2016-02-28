@@ -1,3 +1,4 @@
+/* verilator lint_off STMTDLY */
 module dv_ctrl_local(/*AUTOARG*/
    // Outputs
    nreset, clk, start,
@@ -18,45 +19,46 @@ module dv_ctrl_local(/*AUTOARG*/
    input  test_done;  //test is done
    
    //signal declarations
-   reg 	  nreset = 1'b0;
-   reg 	  clk    = 1'b0;
+   reg 	  nreset;
    reg 	  start;
+   reg 	  clk=0;
    
-   //init
+   //RESET
    initial
      begin	
+	#(1)
+	nreset   = 'b0;	
 	#(CLK_PERIOD*20)   //hold reset for 20 cycles
-	  nreset   = 'b1;
+	nreset   = 'b1;
      end
 
+   //START TEST
    always @ (posedge clk or negedge nreset)
      if(!nreset)
        start = 1'b0;
      else if(dut_active)       
        start = 1'b1;
-   
-   //finish circuitry
-   always @*
+
+   //STOP SIMULATION
+   always @ (posedge clk)
+     //if(stim_done & test_done)
      if(nreset)
-       begin
-	  #(TIMEOUT) $finish;
-       end
-	   
-   //Clock generator
+       #(TIMEOUT) $finish;
+
+   //CLOCK GENERATOR
    always
      #(CLK_PHASE) clk = ~clk;
    
-   //Waveform dump
+   //WAVEFORM DUMP
    //Better solution?
-`ifdef NOVCD
-`else
+`ifndef VERILATOR 
    initial
      begin
-        $dumpfile("waveform.vcd");
-        $dumpvars(0, dv_top);
+	$dumpfile("waveform.vcd");
+	$dumpvars(0, dv_top);
      end
 `endif
-               
+   
 endmodule // dv_ctrl
 
 

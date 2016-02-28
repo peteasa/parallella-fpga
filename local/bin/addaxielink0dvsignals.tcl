@@ -5,11 +5,11 @@
 # See gtkwave/src/tcl_commands.c for list of supported commands
 #
 # run like this (or isert the correct path to the script):
-#     gtkwave test.vcd -S addelinkmasterdvsignals.tcl &
+#     gtkwave test.vcd -S addelinkslavedvsignals.tcl &
 #
 # this script is used to display signals when the axi elink is
-# configured to write to memory via the master interface
-# the slave interface (TX path) is stubbed)
+# configured so that stimulus is written to the slave interface
+# the master interface (RX path) is stubbed or ignored)
 
 # Enable the full signal hierarchy for better name matching
 gtkwave::/Edit/Toggle_Trace_Hier
@@ -17,6 +17,7 @@ gtkwave::/Edit/Toggle_Trace_Hier
 # Pull in all the helper procedures
 source [file join [file dirname [info script]] addaxielink.tcl]
 source [file join [file dirname [info script]] addemem.tcl]
+source [file join [file dirname [info script]] addregisters.tcl]
 
 # add top level signals
 addSignals dv_top.clk dv_top.start state dv_top.nreset
@@ -28,20 +29,16 @@ addGroup stimulus "dv_top.dv_driver.stim\[0\].genblk2.stimulus" stim_count stim_
 addGroup results "dv_top.dut" dut_active access_out packet_out wait_in access_in packet_in wait_out
 
 # add axi elink
-set axi_elink elink1
-addAxiElink axi$axi_elink "dv_top.dut.$axi_elink" sys_clk emaxi_to_esaxi nc_frm_emaxi elink0_to_$axi_elink elink0_frm_$axi_elink elink_state esaxi_to_elink elink_to_esaxi
+set axi_elink elink0
+set fullelinkpath $axi_elink.elink
 
-# add elink0 note that in the dut some elink0 signals are not used
-# so direct the script to load the signal from elink0
-set elink elink0
-set frm_elink elink1
-set tail_frm _frm_
-set tail_to _to_
-set tail_state _state
-addElink $elink $frm_elink "dv_top.dut" clk $frm_elink$tail_frm$elink $frm_elink$tail_to$elink $elink$tail_state stimulus_to_$elink elink0RxNC
+addAxiElink axi$axi_elink "dv_top.dut.$axi_elink" sys_clk emaxi_to_esaxi frm_emaxi elink1_frm_$axi_elink elink1_to_$axi_elink elink_state esaxi_to_elink elink_to_esaxi
+
+# Display the Rx and Tx register accesses
+addRegRdWr $axi_elink.RegRdWr "dv_top.dut.$fullelinkpath"
 
 ## Now add the emem loopback
-addEmem emem "dv_top.dut.emem" clk
+addEmem emem "dv_top.dut.ememory" clk
 
 # Disable the full signal hierarchy for better viewing
 gtkwave::/Edit/UnHighlight_All
@@ -51,10 +48,10 @@ gtkwave::/Edit/Toggle_Trace_Hier
 
 # Prepare the screen for use
 gtkwave::setWindowStartTime 1.5us
-gtkwave::setZoomRangeTimes 1.5us 6us
+gtkwave::setZoomRangeTimes 1.5us 30us
 # gtkwave::setZoomFactor zoom_value
 
-# Copyright (C) 2015 Peter Saunderson
+# Copyright (C) 2015-2016 Peter Saunderson
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or

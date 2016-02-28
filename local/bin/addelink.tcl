@@ -29,7 +29,7 @@ proc addTransaction {grp module signal access packet wait} {
     addVector $module.$access $module.$packet 0 0
 }
 
-proc addElinkNoDelete {name module signal txfer rxfer state intran outtran rxi_lclk_p rxi_frame_p rxi_data_p txi_wr_wait_p txi_rd_wait_p rxo_wr_wait_p rxo_rd_wait_p txo_lclk_p txo_frame_p txo_data_p chipid cclk_p chip_resetb mailbox_not_empty mailbox_full timeout rxwr_access rxwr_packet rxrd_access rxrd_packet rxrr_access rxrr_packet txwr_wait txrd_wait txrr_wait rxwr_wait rxrd_wait rxrr_wait txwr_access txwr_packet txrd_access txrd_packet txrr_access txrr_packet} {
+proc addElinkNoDelete {name module signal txfer rxfer state intran outtran rxi_lclk_p rxi_frame_p rxi_data_p txi_wr_wait_p txi_rd_wait_p rxo_wr_wait_p rxo_rd_wait_p txo_lclk_p txo_frame_p txo_data_p chipid cclk_p chip_resetb mailbox_irq rxwr_access rxwr_packet rxrd_access rxrd_packet rxrr_access rxrr_packet txwr_wait txrd_wait txrr_wait rxwr_wait rxrd_wait rxrr_wait txwr_access txwr_packet txrd_access txrd_packet txrr_access txrr_packet} {
     # create a group for $name
     addGroup $name $module $signal
     gtkwave::/Edit/Toggle_Group_Open|Close
@@ -52,7 +52,7 @@ proc addElinkNoDelete {name module signal txfer rxfer state intran outtran rxi_l
     addTransaction $intran.wrt $module $signal $txwr_access $txwr_packet  $txwr_wait
 
     # create outputs of generic stuff from elink0
-    addGroup $state $module $mailbox_not_empty $mailbox_full $timeout
+    addGroup $state $module $mailbox_irq
     moveSetFocus $module.$signal
         
     # create inputs to elink0 from elink1
@@ -82,9 +82,7 @@ proc addElink {elink frm_elink module signal txfer rxfer state intran outtran} {
     set tail_chipid _chipid
     set tail_cclk_p _cclk_p
     set tail_chip_resetb _chip_resetb
-    set tail_mailbox_not_empty _mailbox_not_empty
-    set tail_mailbox_full _mailbox_full
-    set tail_timeout _timeout
+    set tail_mailbox_irq _mailbox_irq
     set tail_rxwr_access _rxwr_access
     set tail_rxwr_packet _rxwr_packet
     set tail_rxrd_access _rxrd_access
@@ -104,7 +102,7 @@ proc addElink {elink frm_elink module signal txfer rxfer state intran outtran} {
     set tail_txrr_access _txrr_access
     set tail_txrr_packet _txrr_packet
 	
-    addElinkNoDelete $elink $module $signal $txfer $rxfer $state $intran $outtran $frm_elink$tail_txo_lclk_p $frm_elink$tail_txo_frame_p $frm_elink$tail_txo_data_p $frm_elink$tail_rxo_wr_wait_p $frm_elink$tail_rxo_rd_wait_p $elink$tail_rxo_wr_wait_p $elink$tail_rxo_rd_wait_p $elink$tail_txo_lclk_p $elink$tail_txo_frame_p $elink$tail_txo_data_p $elink$tail_chipid $elink$tail_cclk_p $elink$tail_chip_resetb $elink$tail_mailbox_not_empty $elink$tail_mailbox_full $elink$tail_timeout $elink$tail_rxwr_access $elink$tail_rxwr_packet $elink$tail_rxrd_access $elink$tail_rxrd_packet $elink$tail_rxrr_access $elink$tail_rxrr_packet $elink$tail_txwr_wait $elink$tail_txrd_wait $elink$tail_txrr_wait $elink$tail_rxwr_wait $elink$tail_rxrd_wait $elink$tail_rxrr_wait $elink$tail_txwr_access $elink$tail_txwr_packet $elink$tail_txrd_access $elink$tail_txrd_packet $elink$tail_txrr_access $elink$tail_txrr_packet
+    addElinkNoDelete $elink $module $signal $txfer $rxfer $state $intran $outtran $frm_elink$tail_txo_lclk_p $frm_elink$tail_txo_frame_p $frm_elink$tail_txo_data_p $frm_elink$tail_rxo_wr_wait_p $frm_elink$tail_rxo_rd_wait_p $elink$tail_rxo_wr_wait_p $elink$tail_rxo_rd_wait_p $elink$tail_txo_lclk_p $elink$tail_txo_frame_p $elink$tail_txo_data_p $elink$tail_chipid $elink$tail_cclk_p $elink$tail_chip_resetb $elink$tail_mailbox_irq $elink$tail_rxwr_access $elink$tail_rxwr_packet $elink$tail_rxrd_access $elink$tail_rxrd_packet $elink$tail_rxrr_access $elink$tail_rxrr_packet $elink$tail_txwr_wait $elink$tail_txrd_wait $elink$tail_txrr_wait $elink$tail_rxwr_wait $elink$tail_rxrd_wait $elink$tail_rxrr_wait $elink$tail_txwr_access $elink$tail_txwr_packet $elink$tail_txrd_access $elink$tail_txrd_packet $elink$tail_txrr_access $elink$tail_txrr_packet
     
     # close the elink0 group
     closeGroupDeleteSignal $module.$signal

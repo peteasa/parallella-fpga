@@ -5,7 +5,7 @@
 -y ./common/dv
 
 #DV simple fifo
--y ./memory/dv
+# -y ./memory/dv
 
 #DV oh version
 -y ../oh/common/dv
@@ -17,6 +17,7 @@
 
 #HDL
 -y ../oh/common/hdl
+-y ../oh/accelerator/hdl
 -y ../oh/elink/hdl
 -y ../oh/edma/hdl
 -y ../oh/emesh/hdl
@@ -35,5 +36,6 @@
 +incdir+../oh/edma/hdl
 +incdir+../oh/emmu/hdl
 +incdir+../oh/emailbox/hdl
++incdir+../oh/accelerator/hdl
 +incdir+../oh/etrace/hdl
 
