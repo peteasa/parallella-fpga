@@ -1,11 +1,11 @@
 // DUT based on oh/elink/dv/dut_axi_elink.v
 //
-`include "elink_regmap.v"
+`include "elink_regmap.vh"
 module dut(/*AUTOARG*/
    // Outputs
-   dut_active, wait_out, access_out, packet_out,
+   clkout, dut_active, wait_out, access_out, packet_out,
    // Inputs
-   clk, nreset, vdd, vss, access_in, packet_in, wait_in
+   clk1, clk2, nreset, vdd, vss, access_in, packet_in, wait_in
    );
 
    //##########################################################################
@@ -26,7 +26,9 @@ module dut(/*AUTOARG*/
 			    16'b0};          // axi return addr
 
    //clock,reset
-   input            clk;
+   input            clk1;
+   input            clk2;
+   output            clkout;
    input            nreset;
    input [N*N-1:0]  vdd;
    input 	    vss;
@@ -125,82 +127,82 @@ module dut(/*AUTOARG*/
    wire			elink1_txo_frame_p;	// From elink1 of axi_elink.v
    wire			elink1_txo_lclk_n;	// From elink1 of axi_elink.v
    wire			elink1_txo_lclk_p;	// From elink1 of axi_elink.v
-   wire [31:0]		ext1_m_axi_araddr;	// From emaxi of emaxi.v
-   wire [1:0]		ext1_m_axi_arburst;	// From emaxi of emaxi.v
-   wire [3:0]		ext1_m_axi_arcache;	// From emaxi of emaxi.v
-   wire [M_IDW-1:0]	ext1_m_axi_arid;	// From emaxi of emaxi.v
-   wire [7:0]		ext1_m_axi_arlen;	// From emaxi of emaxi.v
-   wire			ext1_m_axi_arlock;	// From emaxi of emaxi.v
-   wire [2:0]		ext1_m_axi_arprot;	// From emaxi of emaxi.v
-   wire [3:0]		ext1_m_axi_arqos;	// From emaxi of emaxi.v
+   wire [31:0]		ext1_m_axi_araddr;	// From emaxi1 of emaxi.v
+   wire [1:0]		ext1_m_axi_arburst;	// From emaxi1 of emaxi.v
+   wire [3:0]		ext1_m_axi_arcache;	// From emaxi1 of emaxi.v
+   wire [M_IDW-1:0]	ext1_m_axi_arid;	// From emaxi1 of emaxi.v
+   wire [7:0]		ext1_m_axi_arlen;	// From emaxi1 of emaxi.v
+   wire			ext1_m_axi_arlock;	// From emaxi1 of emaxi.v
+   wire [2:0]		ext1_m_axi_arprot;	// From emaxi1 of emaxi.v
+   wire [3:0]		ext1_m_axi_arqos;	// From emaxi1 of emaxi.v
    wire			ext1_m_axi_arready;	// From elink1 of axi_elink.v
-   wire [2:0]		ext1_m_axi_arsize;	// From emaxi of emaxi.v
-   wire			ext1_m_axi_arvalid;	// From emaxi of emaxi.v
-   wire [31:0]		ext1_m_axi_awaddr;	// From emaxi of emaxi.v
-   wire [1:0]		ext1_m_axi_awburst;	// From emaxi of emaxi.v
-   wire [3:0]		ext1_m_axi_awcache;	// From emaxi of emaxi.v
-   wire [M_IDW-1:0]	ext1_m_axi_awid;	// From emaxi of emaxi.v
-   wire [7:0]		ext1_m_axi_awlen;	// From emaxi of emaxi.v
-   wire			ext1_m_axi_awlock;	// From emaxi of emaxi.v
-   wire [2:0]		ext1_m_axi_awprot;	// From emaxi of emaxi.v
-   wire [3:0]		ext1_m_axi_awqos;	// From emaxi of emaxi.v
+   wire [2:0]		ext1_m_axi_arsize;	// From emaxi1 of emaxi.v
+   wire			ext1_m_axi_arvalid;	// From emaxi1 of emaxi.v
+   wire [31:0]		ext1_m_axi_awaddr;	// From emaxi1 of emaxi.v
+   wire [1:0]		ext1_m_axi_awburst;	// From emaxi1 of emaxi.v
+   wire [3:0]		ext1_m_axi_awcache;	// From emaxi1 of emaxi.v
+   wire [M_IDW-1:0]	ext1_m_axi_awid;	// From emaxi1 of emaxi.v
+   wire [7:0]		ext1_m_axi_awlen;	// From emaxi1 of emaxi.v
+   wire			ext1_m_axi_awlock;	// From emaxi1 of emaxi.v
+   wire [2:0]		ext1_m_axi_awprot;	// From emaxi1 of emaxi.v
+   wire [3:0]		ext1_m_axi_awqos;	// From emaxi1 of emaxi.v
    wire			ext1_m_axi_awready;	// From elink1 of axi_elink.v
-   wire [2:0]		ext1_m_axi_awsize;	// From emaxi of emaxi.v
-   wire			ext1_m_axi_awvalid;	// From emaxi of emaxi.v
+   wire [2:0]		ext1_m_axi_awsize;	// From emaxi1 of emaxi.v
+   wire			ext1_m_axi_awvalid;	// From emaxi1 of emaxi.v
    wire [S_IDW-1:0]	ext1_m_axi_bid;		// From elink1 of axi_elink.v
-   wire			ext1_m_axi_bready;	// From emaxi of emaxi.v
+   wire			ext1_m_axi_bready;	// From emaxi1 of emaxi.v
    wire [1:0]		ext1_m_axi_bresp;	// From elink1 of axi_elink.v
    wire			ext1_m_axi_bvalid;	// From elink1 of axi_elink.v
    wire [31:0]		ext1_m_axi_rdata;	// From elink1 of axi_elink.v
    wire [S_IDW-1:0]	ext1_m_axi_rid;		// From elink1 of axi_elink.v
    wire			ext1_m_axi_rlast;	// From elink1 of axi_elink.v
-   wire			ext1_m_axi_rready;	// From emaxi of emaxi.v
+   wire			ext1_m_axi_rready;	// From emaxi1 of emaxi.v
    wire [1:0]		ext1_m_axi_rresp;	// From elink1 of axi_elink.v
    wire			ext1_m_axi_rvalid;	// From elink1 of axi_elink.v
-   wire [63:0]		ext1_m_axi_wdata;	// From emaxi of emaxi.v
-   wire [M_IDW-1:0]	ext1_m_axi_wid;		// From emaxi of emaxi.v
-   wire			ext1_m_axi_wlast;	// From emaxi of emaxi.v
+   wire [63:0]		ext1_m_axi_wdata;	// From emaxi1 of emaxi.v
+   wire [M_IDW-1:0]	ext1_m_axi_wid;		// From emaxi1 of emaxi.v
+   wire			ext1_m_axi_wlast;	// From emaxi1 of emaxi.v
    wire			ext1_m_axi_wready;	// From elink1 of axi_elink.v
-   wire [7:0]		ext1_m_axi_wstrb;	// From emaxi of emaxi.v
-   wire			ext1_m_axi_wvalid;	// From emaxi of emaxi.v
-   wire [31:0]		m_axi_araddr;		// From emaxi of emaxi.v
-   wire [1:0]		m_axi_arburst;		// From emaxi of emaxi.v
-   wire [3:0]		m_axi_arcache;		// From emaxi of emaxi.v
-   wire [M_IDW-1:0]	m_axi_arid;		// From emaxi of emaxi.v
-   wire [7:0]		m_axi_arlen;		// From emaxi of emaxi.v
-   wire			m_axi_arlock;		// From emaxi of emaxi.v
-   wire [2:0]		m_axi_arprot;		// From emaxi of emaxi.v
-   wire [3:0]		m_axi_arqos;		// From emaxi of emaxi.v
+   wire [7:0]		ext1_m_axi_wstrb;	// From emaxi1 of emaxi.v
+   wire			ext1_m_axi_wvalid;	// From emaxi1 of emaxi.v
+   wire [31:0]		m_axi_araddr;		// From emaxi0 of emaxi.v
+   wire [1:0]		m_axi_arburst;		// From emaxi0 of emaxi.v
+   wire [3:0]		m_axi_arcache;		// From emaxi0 of emaxi.v
+   wire [M_IDW-1:0]	m_axi_arid;		// From emaxi0 of emaxi.v
+   wire [7:0]		m_axi_arlen;		// From emaxi0 of emaxi.v
+   wire			m_axi_arlock;		// From emaxi0 of emaxi.v
+   wire [2:0]		m_axi_arprot;		// From emaxi0 of emaxi.v
+   wire [3:0]		m_axi_arqos;		// From emaxi0 of emaxi.v
    wire			m_axi_arready;		// From elink0 of axi_elink.v
-   wire [2:0]		m_axi_arsize;		// From emaxi of emaxi.v
-   wire			m_axi_arvalid;		// From emaxi of emaxi.v
-   wire [31:0]		m_axi_awaddr;		// From emaxi of emaxi.v
-   wire [1:0]		m_axi_awburst;		// From emaxi of emaxi.v
-   wire [3:0]		m_axi_awcache;		// From emaxi of emaxi.v
-   wire [M_IDW-1:0]	m_axi_awid;		// From emaxi of emaxi.v
-   wire [7:0]		m_axi_awlen;		// From emaxi of emaxi.v
-   wire			m_axi_awlock;		// From emaxi of emaxi.v
-   wire [2:0]		m_axi_awprot;		// From emaxi of emaxi.v
-   wire [3:0]		m_axi_awqos;		// From emaxi of emaxi.v
+   wire [2:0]		m_axi_arsize;		// From emaxi0 of emaxi.v
+   wire			m_axi_arvalid;		// From emaxi0 of emaxi.v
+   wire [31:0]		m_axi_awaddr;		// From emaxi0 of emaxi.v
+   wire [1:0]		m_axi_awburst;		// From emaxi0 of emaxi.v
+   wire [3:0]		m_axi_awcache;		// From emaxi0 of emaxi.v
+   wire [M_IDW-1:0]	m_axi_awid;		// From emaxi0 of emaxi.v
+   wire [7:0]		m_axi_awlen;		// From emaxi0 of emaxi.v
+   wire			m_axi_awlock;		// From emaxi0 of emaxi.v
+   wire [2:0]		m_axi_awprot;		// From emaxi0 of emaxi.v
+   wire [3:0]		m_axi_awqos;		// From emaxi0 of emaxi.v
    wire			m_axi_awready;		// From elink0 of axi_elink.v
-   wire [2:0]		m_axi_awsize;		// From emaxi of emaxi.v
-   wire			m_axi_awvalid;		// From emaxi of emaxi.v
+   wire [2:0]		m_axi_awsize;		// From emaxi0 of emaxi.v
+   wire			m_axi_awvalid;		// From emaxi0 of emaxi.v
    wire [S_IDW-1:0]	m_axi_bid;		// From elink0 of axi_elink.v
-   wire			m_axi_bready;		// From emaxi of emaxi.v
+   wire			m_axi_bready;		// From emaxi0 of emaxi.v
    wire [1:0]		m_axi_bresp;		// From elink0 of axi_elink.v
    wire			m_axi_bvalid;		// From elink0 of axi_elink.v
    wire [31:0]		m_axi_rdata;		// From elink0 of axi_elink.v
    wire [S_IDW-1:0]	m_axi_rid;		// From elink0 of axi_elink.v
    wire			m_axi_rlast;		// From elink0 of axi_elink.v
-   wire			m_axi_rready;		// From emaxi of emaxi.v
+   wire			m_axi_rready;		// From emaxi0 of emaxi.v
    wire [1:0]		m_axi_rresp;		// From elink0 of axi_elink.v
    wire			m_axi_rvalid;		// From elink0 of axi_elink.v
-   wire [63:0]		m_axi_wdata;		// From emaxi of emaxi.v
-   wire [M_IDW-1:0]	m_axi_wid;		// From emaxi of emaxi.v
-   wire			m_axi_wlast;		// From emaxi of emaxi.v
+   wire [63:0]		m_axi_wdata;		// From emaxi0 of emaxi.v
+   wire [M_IDW-1:0]	m_axi_wid;		// From emaxi0 of emaxi.v
+   wire			m_axi_wlast;		// From emaxi0 of emaxi.v
    wire			m_axi_wready;		// From elink0 of axi_elink.v
-   wire [7:0]		m_axi_wstrb;		// From emaxi of emaxi.v
-   wire			m_axi_wvalid;		// From emaxi of emaxi.v
+   wire [7:0]		m_axi_wstrb;		// From emaxi0 of emaxi.v
+   wire			m_axi_wvalid;		// From emaxi0 of emaxi.v
    wire [31:0]		mem_m_axi_araddr;	// From elink1 of axi_elink.v
    wire [1:0]		mem_m_axi_arburst;	// From elink1 of axi_elink.v
    wire [3:0]		mem_m_axi_arcache;	// From elink1 of axi_elink.v
@@ -247,12 +249,19 @@ module dut(/*AUTOARG*/
    wire			mem_wait;		// From ememory of ememory.v
    wire			mem_wr_access;		// From esaxi of esaxi.v
    wire [PW-1:0]	mem_wr_packet;		// From esaxi of esaxi.v
-   wire			rd_wait;		// From emaxi of emaxi.v, ...
-   wire			rr_access;		// From emaxi of emaxi.v
-   wire [PW-1:0]	rr_packet;		// From emaxi of emaxi.v
-   wire			wr_wait;		// From emaxi of emaxi.v, ...
+   wire			rd_wait0;		// From emaxi0 of emaxi.v
+   wire			rd_wait1;		// From emaxi1 of emaxi.v
+   wire			rr_access;		// From emaxi1 of emaxi.v
+   wire [PW-1:0]	rr_packet;		// From emaxi1 of emaxi.v
+   wire			wr_wait0;		// From emaxi0 of emaxi.v
+   wire			wr_wait1;		// From emaxi1 of emaxi.v
    // End of automatics
 
+   //###################
+   // GLUE
+   //###################
+   assign clkout = clk1;
+ 
    // Provide an easy way to send mailbox messages to elink0 via the 0x910 address
    wire 		elink0_access_in;
    wire 		elink1_access_in;
@@ -279,7 +288,7 @@ module dut(/*AUTOARG*/
    wire 		read_in;
    
    //Split stimulus to read/write
-   assign wait_out = wr_wait | rd_wait;
+   assign wait_out = wr_wait0 | rd_wait0 | wr_wait1 | rd_wait1;
    assign write_in = elink0_access_in & packet_in[0];
    assign read_in  = elink0_access_in & ~packet_in[0];
 
@@ -288,7 +297,7 @@ module dut(/*AUTOARG*/
    //######################################################################
     /*emaxi AUTO_TEMPLATE (//Stimulus
                .m_axi_aresetn		(nreset),
-               .m_axi_aclk		(clk),
+               .m_axi_aclk		(clk1),
                .m_axi_rdata		({m_axi_rdata[31:0],m_axi_rdata[31:0]}),
                .m_\(.*\)           	(m_\1[]),
                .rr_wait		   	(wait_in),
@@ -298,62 +307,64 @@ module dut(/*AUTOARG*/
                .wr_packet		(packet_in[PW-1:0]),
                .rd_access		(read_in),
                .rd_packet		(packet_in[PW-1:0]),
+               .wr_wait			(wr_wait0),
+               .rd_wait			(rd_wait0),
      );
      */
 
    emaxi #(.M_IDW(M_IDW))
    emaxi0 (/*AUTOINST*/
-	  // Outputs
-	  .wr_wait			(wr_wait),
-	  .rd_wait			(rd_wait),
-	  .rr_access			(access_out),		 // Templated
-	  .rr_packet			(packet_out[PW-1:0]),	 // Templated
-	  .m_axi_awid			(m_axi_awid[M_IDW-1:0]), // Templated
-	  .m_axi_awaddr			(m_axi_awaddr[31:0]),	 // Templated
-	  .m_axi_awlen			(m_axi_awlen[7:0]),	 // Templated
-	  .m_axi_awsize			(m_axi_awsize[2:0]),	 // Templated
-	  .m_axi_awburst		(m_axi_awburst[1:0]),	 // Templated
-	  .m_axi_awlock			(m_axi_awlock),		 // Templated
-	  .m_axi_awcache		(m_axi_awcache[3:0]),	 // Templated
-	  .m_axi_awprot			(m_axi_awprot[2:0]),	 // Templated
-	  .m_axi_awqos			(m_axi_awqos[3:0]),	 // Templated
-	  .m_axi_awvalid		(m_axi_awvalid),	 // Templated
-	  .m_axi_wid			(m_axi_wid[M_IDW-1:0]),	 // Templated
-	  .m_axi_wdata			(m_axi_wdata[63:0]),	 // Templated
-	  .m_axi_wstrb			(m_axi_wstrb[7:0]),	 // Templated
-	  .m_axi_wlast			(m_axi_wlast),		 // Templated
-	  .m_axi_wvalid			(m_axi_wvalid),		 // Templated
-	  .m_axi_bready			(m_axi_bready),		 // Templated
-	  .m_axi_arid			(m_axi_arid[M_IDW-1:0]), // Templated
-	  .m_axi_araddr			(m_axi_araddr[31:0]),	 // Templated
-	  .m_axi_arlen			(m_axi_arlen[7:0]),	 // Templated
-	  .m_axi_arsize			(m_axi_arsize[2:0]),	 // Templated
-	  .m_axi_arburst		(m_axi_arburst[1:0]),	 // Templated
-	  .m_axi_arlock			(m_axi_arlock),		 // Templated
-	  .m_axi_arcache		(m_axi_arcache[3:0]),	 // Templated
-	  .m_axi_arprot			(m_axi_arprot[2:0]),	 // Templated
-	  .m_axi_arqos			(m_axi_arqos[3:0]),	 // Templated
-	  .m_axi_arvalid		(m_axi_arvalid),	 // Templated
-	  .m_axi_rready			(m_axi_rready),		 // Templated
-	  // Inputs
-	  .wr_access			(write_in),		 // Templated
-	  .wr_packet			(packet_in[PW-1:0]),	 // Templated
-	  .rd_access			(read_in),		 // Templated
-	  .rd_packet			(packet_in[PW-1:0]),	 // Templated
-	  .rr_wait			(wait_in),		 // Templated
-	  .m_axi_aclk			(clk),			 // Templated
-	  .m_axi_aresetn		(nreset),		 // Templated
-	  .m_axi_awready		(m_axi_awready),	 // Templated
-	  .m_axi_wready			(m_axi_wready),		 // Templated
-	  .m_axi_bid			(m_axi_bid[M_IDW-1:0]),	 // Templated
-	  .m_axi_bresp			(m_axi_bresp[1:0]),	 // Templated
-	  .m_axi_bvalid			(m_axi_bvalid),		 // Templated
-	  .m_axi_arready		(m_axi_arready),	 // Templated
-	  .m_axi_rid			(m_axi_rid[M_IDW-1:0]),	 // Templated
-	  .m_axi_rdata			({m_axi_rdata[31:0],m_axi_rdata[31:0]}), // Templated
-	  .m_axi_rresp			(m_axi_rresp[1:0]),	 // Templated
-	  .m_axi_rlast			(m_axi_rlast),		 // Templated
-	  .m_axi_rvalid			(m_axi_rvalid));		 // Templated
+	   // Outputs
+	   .wr_wait			(wr_wait0),		 // Templated
+	   .rd_wait			(rd_wait0),		 // Templated
+	   .rr_access			(access_out),		 // Templated
+	   .rr_packet			(packet_out[PW-1:0]),	 // Templated
+	   .m_axi_awid			(m_axi_awid[M_IDW-1:0]), // Templated
+	   .m_axi_awaddr		(m_axi_awaddr[31:0]),	 // Templated
+	   .m_axi_awlen			(m_axi_awlen[7:0]),	 // Templated
+	   .m_axi_awsize		(m_axi_awsize[2:0]),	 // Templated
+	   .m_axi_awburst		(m_axi_awburst[1:0]),	 // Templated
+	   .m_axi_awlock		(m_axi_awlock),		 // Templated
+	   .m_axi_awcache		(m_axi_awcache[3:0]),	 // Templated
+	   .m_axi_awprot		(m_axi_awprot[2:0]),	 // Templated
+	   .m_axi_awqos			(m_axi_awqos[3:0]),	 // Templated
+	   .m_axi_awvalid		(m_axi_awvalid),	 // Templated
+	   .m_axi_wid			(m_axi_wid[M_IDW-1:0]),	 // Templated
+	   .m_axi_wdata			(m_axi_wdata[63:0]),	 // Templated
+	   .m_axi_wstrb			(m_axi_wstrb[7:0]),	 // Templated
+	   .m_axi_wlast			(m_axi_wlast),		 // Templated
+	   .m_axi_wvalid		(m_axi_wvalid),		 // Templated
+	   .m_axi_bready		(m_axi_bready),		 // Templated
+	   .m_axi_arid			(m_axi_arid[M_IDW-1:0]), // Templated
+	   .m_axi_araddr		(m_axi_araddr[31:0]),	 // Templated
+	   .m_axi_arlen			(m_axi_arlen[7:0]),	 // Templated
+	   .m_axi_arsize		(m_axi_arsize[2:0]),	 // Templated
+	   .m_axi_arburst		(m_axi_arburst[1:0]),	 // Templated
+	   .m_axi_arlock		(m_axi_arlock),		 // Templated
+	   .m_axi_arcache		(m_axi_arcache[3:0]),	 // Templated
+	   .m_axi_arprot		(m_axi_arprot[2:0]),	 // Templated
+	   .m_axi_arqos			(m_axi_arqos[3:0]),	 // Templated
+	   .m_axi_arvalid		(m_axi_arvalid),	 // Templated
+	   .m_axi_rready		(m_axi_rready),		 // Templated
+	   // Inputs
+	   .wr_access			(write_in),		 // Templated
+	   .wr_packet			(packet_in[PW-1:0]),	 // Templated
+	   .rd_access			(read_in),		 // Templated
+	   .rd_packet			(packet_in[PW-1:0]),	 // Templated
+	   .rr_wait			(wait_in),		 // Templated
+	   .m_axi_aclk			(clk1),			 // Templated
+	   .m_axi_aresetn		(nreset),		 // Templated
+	   .m_axi_awready		(m_axi_awready),	 // Templated
+	   .m_axi_wready		(m_axi_wready),		 // Templated
+	   .m_axi_bid			(m_axi_bid[M_IDW-1:0]),	 // Templated
+	   .m_axi_bresp			(m_axi_bresp[1:0]),	 // Templated
+	   .m_axi_bvalid		(m_axi_bvalid),		 // Templated
+	   .m_axi_arready		(m_axi_arready),	 // Templated
+	   .m_axi_rid			(m_axi_rid[M_IDW-1:0]),	 // Templated
+	   .m_axi_rdata			({m_axi_rdata[31:0],m_axi_rdata[31:0]}), // Templated
+	   .m_axi_rresp			(m_axi_rresp[1:0]),	 // Templated
+	   .m_axi_rlast			(m_axi_rlast),		 // Templated
+	   .m_axi_rvalid		(m_axi_rvalid));		 // Templated
 
    //######################################################################
    //ELINK
@@ -363,7 +374,7 @@ module dut(/*AUTOARG*/
                               .s_axi_aresetn      (nreset),
                               .sys_nreset         (nreset),
                               .s_\(.*\)           (m_\1[]),
-                              .sys_clk            (clk),
+                              .sys_clk            (clk1),
                               .rxi_\(.*\)         (elink1_txo_\1[]),
                               .txi_\(.*\)         (elink1_rxo_\1[]),
                               .\(.*\)             (@"(substring vl-cell-name  0 6)"_\1[]),
@@ -432,7 +443,7 @@ module dut(/*AUTOARG*/
 	   .s_axi_wready		(m_axi_wready),		 // Templated
 	   // Inputs
 	   .sys_nreset			(nreset),		 // Templated
-	   .sys_clk			(clk),			 // Templated
+	   .sys_clk			(clk1),			 // Templated
 	   .rxi_lclk_p			(elink1_txo_lclk_p),	 // Templated
 	   .rxi_lclk_n			(elink1_txo_lclk_n),	 // Templated
 	   .rxi_frame_p			(elink1_txo_frame_p),	 // Templated
@@ -492,7 +503,7 @@ module dut(/*AUTOARG*/
     */
 
    defparam axislave_stub.S_IDW = S_IDW;
-   axislave_stub  axislave_stub (.s_axi_aclk	(clk),
+   axislave_stub  axislave_stub (.s_axi_aclk	(clk1),
 				 .s_axi_aresetn	(nreset),
 				 /*AUTOINST*/
 				 // Outputs
@@ -542,69 +553,71 @@ module dut(/*AUTOARG*/
    //######################################################################
     /*emaxi AUTO_TEMPLATE (//Stimulus
                .m_axi_aresetn		(nreset),
-               .m_axi_aclk		(clk),
+               .m_axi_aclk		(clk1),
                .m_\(.*\)           	(ext1_m_\1[]),
                .rr_wait			(1'b0),
                .wr_access		(ext1_write_in),
                .wr_packet		(packet_in[PW-1:0]),
                .rd_access		(ext1_read_in),
                .rd_packet		(packet_in[PW-1:0]),
+               .wr_wait			(wr_wait1),
+               .rd_wait			(rd_wait1),
      );
      */
 
    emaxi #(.M_IDW(M_IDW))
    emaxi1 (/*AUTOINST*/
-	  // Outputs
-	  .wr_wait			(wr_wait),
-	  .rd_wait			(rd_wait),
-	  .rr_access			(rr_access),
-	  .rr_packet			(rr_packet[PW-1:0]),
-	  .m_axi_awid			(ext1_m_axi_awid[M_IDW-1:0]), // Templated
-	  .m_axi_awaddr			(ext1_m_axi_awaddr[31:0]), // Templated
-	  .m_axi_awlen			(ext1_m_axi_awlen[7:0]), // Templated
-	  .m_axi_awsize			(ext1_m_axi_awsize[2:0]), // Templated
-	  .m_axi_awburst		(ext1_m_axi_awburst[1:0]), // Templated
-	  .m_axi_awlock			(ext1_m_axi_awlock),	 // Templated
-	  .m_axi_awcache		(ext1_m_axi_awcache[3:0]), // Templated
-	  .m_axi_awprot			(ext1_m_axi_awprot[2:0]), // Templated
-	  .m_axi_awqos			(ext1_m_axi_awqos[3:0]), // Templated
-	  .m_axi_awvalid		(ext1_m_axi_awvalid),	 // Templated
-	  .m_axi_wid			(ext1_m_axi_wid[M_IDW-1:0]), // Templated
-	  .m_axi_wdata			(ext1_m_axi_wdata[63:0]), // Templated
-	  .m_axi_wstrb			(ext1_m_axi_wstrb[7:0]), // Templated
-	  .m_axi_wlast			(ext1_m_axi_wlast),	 // Templated
-	  .m_axi_wvalid			(ext1_m_axi_wvalid),	 // Templated
-	  .m_axi_bready			(ext1_m_axi_bready),	 // Templated
-	  .m_axi_arid			(ext1_m_axi_arid[M_IDW-1:0]), // Templated
-	  .m_axi_araddr			(ext1_m_axi_araddr[31:0]), // Templated
-	  .m_axi_arlen			(ext1_m_axi_arlen[7:0]), // Templated
-	  .m_axi_arsize			(ext1_m_axi_arsize[2:0]), // Templated
-	  .m_axi_arburst		(ext1_m_axi_arburst[1:0]), // Templated
-	  .m_axi_arlock			(ext1_m_axi_arlock),	 // Templated
-	  .m_axi_arcache		(ext1_m_axi_arcache[3:0]), // Templated
-	  .m_axi_arprot			(ext1_m_axi_arprot[2:0]), // Templated
-	  .m_axi_arqos			(ext1_m_axi_arqos[3:0]), // Templated
-	  .m_axi_arvalid		(ext1_m_axi_arvalid),	 // Templated
-	  .m_axi_rready			(ext1_m_axi_rready),	 // Templated
-	  // Inputs
-	  .wr_access			(ext1_write_in),	 // Templated
-	  .wr_packet			(packet_in[PW-1:0]),	 // Templated
-	  .rd_access			(ext1_read_in),		 // Templated
-	  .rd_packet			(packet_in[PW-1:0]),	 // Templated
-	  .rr_wait			(1'b0),			 // Templated
-	  .m_axi_aclk			(clk),			 // Templated
-	  .m_axi_aresetn		(nreset),		 // Templated
-	  .m_axi_awready		(ext1_m_axi_awready),	 // Templated
-	  .m_axi_wready			(ext1_m_axi_wready),	 // Templated
-	  .m_axi_bid			(ext1_m_axi_bid[M_IDW-1:0]), // Templated
-	  .m_axi_bresp			(ext1_m_axi_bresp[1:0]), // Templated
-	  .m_axi_bvalid			(ext1_m_axi_bvalid),	 // Templated
-	  .m_axi_arready		(ext1_m_axi_arready),	 // Templated
-	  .m_axi_rid			(ext1_m_axi_rid[M_IDW-1:0]), // Templated
-	  .m_axi_rdata			(ext1_m_axi_rdata[63:0]), // Templated
-	  .m_axi_rresp			(ext1_m_axi_rresp[1:0]), // Templated
-	  .m_axi_rlast			(ext1_m_axi_rlast),	 // Templated
-	  .m_axi_rvalid			(ext1_m_axi_rvalid));	 // Templated
+	   // Outputs
+	   .wr_wait			(wr_wait1),		 // Templated
+	   .rd_wait			(rd_wait1),		 // Templated
+	   .rr_access			(rr_access),
+	   .rr_packet			(rr_packet[PW-1:0]),
+	   .m_axi_awid			(ext1_m_axi_awid[M_IDW-1:0]), // Templated
+	   .m_axi_awaddr		(ext1_m_axi_awaddr[31:0]), // Templated
+	   .m_axi_awlen			(ext1_m_axi_awlen[7:0]), // Templated
+	   .m_axi_awsize		(ext1_m_axi_awsize[2:0]), // Templated
+	   .m_axi_awburst		(ext1_m_axi_awburst[1:0]), // Templated
+	   .m_axi_awlock		(ext1_m_axi_awlock),	 // Templated
+	   .m_axi_awcache		(ext1_m_axi_awcache[3:0]), // Templated
+	   .m_axi_awprot		(ext1_m_axi_awprot[2:0]), // Templated
+	   .m_axi_awqos			(ext1_m_axi_awqos[3:0]), // Templated
+	   .m_axi_awvalid		(ext1_m_axi_awvalid),	 // Templated
+	   .m_axi_wid			(ext1_m_axi_wid[M_IDW-1:0]), // Templated
+	   .m_axi_wdata			(ext1_m_axi_wdata[63:0]), // Templated
+	   .m_axi_wstrb			(ext1_m_axi_wstrb[7:0]), // Templated
+	   .m_axi_wlast			(ext1_m_axi_wlast),	 // Templated
+	   .m_axi_wvalid		(ext1_m_axi_wvalid),	 // Templated
+	   .m_axi_bready		(ext1_m_axi_bready),	 // Templated
+	   .m_axi_arid			(ext1_m_axi_arid[M_IDW-1:0]), // Templated
+	   .m_axi_araddr		(ext1_m_axi_araddr[31:0]), // Templated
+	   .m_axi_arlen			(ext1_m_axi_arlen[7:0]), // Templated
+	   .m_axi_arsize		(ext1_m_axi_arsize[2:0]), // Templated
+	   .m_axi_arburst		(ext1_m_axi_arburst[1:0]), // Templated
+	   .m_axi_arlock		(ext1_m_axi_arlock),	 // Templated
+	   .m_axi_arcache		(ext1_m_axi_arcache[3:0]), // Templated
+	   .m_axi_arprot		(ext1_m_axi_arprot[2:0]), // Templated
+	   .m_axi_arqos			(ext1_m_axi_arqos[3:0]), // Templated
+	   .m_axi_arvalid		(ext1_m_axi_arvalid),	 // Templated
+	   .m_axi_rready		(ext1_m_axi_rready),	 // Templated
+	   // Inputs
+	   .wr_access			(ext1_write_in),	 // Templated
+	   .wr_packet			(packet_in[PW-1:0]),	 // Templated
+	   .rd_access			(ext1_read_in),		 // Templated
+	   .rd_packet			(packet_in[PW-1:0]),	 // Templated
+	   .rr_wait			(1'b0),			 // Templated
+	   .m_axi_aclk			(clk1),			 // Templated
+	   .m_axi_aresetn		(nreset),		 // Templated
+	   .m_axi_awready		(ext1_m_axi_awready),	 // Templated
+	   .m_axi_wready		(ext1_m_axi_wready),	 // Templated
+	   .m_axi_bid			(ext1_m_axi_bid[M_IDW-1:0]), // Templated
+	   .m_axi_bresp			(ext1_m_axi_bresp[1:0]), // Templated
+	   .m_axi_bvalid		(ext1_m_axi_bvalid),	 // Templated
+	   .m_axi_arready		(ext1_m_axi_arready),	 // Templated
+	   .m_axi_rid			(ext1_m_axi_rid[M_IDW-1:0]), // Templated
+	   .m_axi_rdata			(ext1_m_axi_rdata[63:0]), // Templated
+	   .m_axi_rresp			(ext1_m_axi_rresp[1:0]), // Templated
+	   .m_axi_rlast			(ext1_m_axi_rlast),	 // Templated
+	   .m_axi_rvalid		(ext1_m_axi_rvalid));	 // Templated
 
    //######################################################################
    //2ND ELINK 
@@ -613,7 +626,7 @@ module dut(/*AUTOARG*/
    /*axi_elink AUTO_TEMPLATE (.m_axi_aresetn      (nreset),
                               .s_axi_aresetn      (nreset),
                               .sys_nreset         (nreset),
-                          .sys_clk            (clk),
+                          .sys_clk            (clk1),
                           .rxi_\(.*\)         (elink0_txo_\1[]),
                           .txi_\(.*\)         (elink0_rxo_\1[]),
                           .s_\(.*\)           (ext1_m_\1[]),
@@ -686,7 +699,7 @@ module dut(/*AUTOARG*/
 		     .s_axi_wready	(ext1_m_axi_wready),	 // Templated
 		     // Inputs
 		     .sys_nreset	(nreset),		 // Templated
-		     .sys_clk		(clk),			 // Templated
+		     .sys_clk		(clk1),			 // Templated
 		     .rxi_lclk_p	(elink0_txo_lclk_p),	 // Templated
 		     .rxi_lclk_n	(elink0_txo_lclk_n),	 // Templated
 		     .rxi_frame_p	(elink0_txo_frame_p),	 // Templated
@@ -748,7 +761,7 @@ module dut(/*AUTOARG*/
      */
 
    esaxi #(.S_IDW(S_IDW), .RETURN_ADDR(RETURN_ADDR))
-   esaxi (.s_axi_aclk	        (clk),
+   esaxi (.s_axi_aclk	        (clk1),
 	  .s_axi_aresetn	(nreset),
 	  .s_axi_wstrb	        (mem_m_axi_wstrb[7:4] | mem_m_axi_wstrb[3:0]),
 	  /*AUTOINST*/
@@ -827,7 +840,7 @@ module dut(/*AUTOARG*/
    
    ememory #(.WAIT(0),
 	     .MON(1))
-   ememory (.clk	        (clk),
+   ememory (.clk	        (clk1),
 	    .coreid		(12'h0),
 	    /*AUTOINST*/
 	    // Outputs

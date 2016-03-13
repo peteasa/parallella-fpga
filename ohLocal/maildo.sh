@@ -6,5 +6,5 @@
 
 echo "now try"
 echo "gtkwave waveform.vcd -S ../local/bin/addaxielink0dvsignals.tcl &"
-#echo "or try"
-#echo "gtkwave waveform.vcd -S ../local/bin/addaxielink1dvsignals.tcl &"
+echo "or try"
+echo "gtkwave waveform.vcd -S ../local/bin/addaxielink1dvsignals.tcl &"

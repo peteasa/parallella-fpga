@@ -1,6 +1,6 @@
 // DUT based on oh/elink/dv/dut_axi_elink.v
 //
-`include "elink_regmap.v"
+`include "elink_regmap.vh"
 module dut(/*AUTOARG*/
    // Outputs
    dut_active, wait_out, access_out, packet_out,

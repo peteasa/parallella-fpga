@@ -17,7 +17,7 @@ gtkwave::/Edit/Toggle_Trace_Hier
 # Pull in all the helper procedures
 source [file join [file dirname [info script]] addaxielinkxdvsignals.tcl]
 
-addAxiElinkXDVSignals elink0
+addAxiElinkXDVSignals elink1
 
 # Disable the full signal hierarchy for better viewing
 gtkwave::/Edit/UnHighlight_All

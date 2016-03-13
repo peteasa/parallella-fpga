@@ -13,8 +13,8 @@ proc addEmem {name module signal} {
     addGroup $name $module $signal
     gtkwave::/Edit/Toggle_Group_Open|Close
 
-    addTransaction $name.out $module $signal access_out packet_out wait_out
-    addTransaction $name.in $module $signal access_in packet_in wait_in
+    addTransaction $name.out $module $signal access_out packet_out wait_in
+    addTransaction $name.in $module $signal access_in packet_in wait_out
 
     # close the group
     closeGroupDeleteSignal $module.$signal

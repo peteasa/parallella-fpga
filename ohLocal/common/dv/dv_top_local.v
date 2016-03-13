@@ -13,14 +13,17 @@ module dv_top();
    wire [IDW-1:0]   dv_coreid;
    wire [N*N-1:0]   vdd;
    wire 	    vss;
+   wire 	    clkout;
+   wire 	    dut_active;
+   wire [N-1:0]     dut_wait;
+   wire [N-1:0]     dut_access;
+   wire [N*PW-1:0]  dut_packet;
    
+  
    /*AUTOWIRE*/
    // Beginning of automatic wires (for undeclared instantiated-module outputs)
-   wire			clk;			// From dv_ctrl of dv_ctrl.v
-   wire [N-1:0]		dut_access;		// From dut of dut.v
-   wire			dut_active;		// From dut of dut.v
-   wire [N*PW-1:0]	dut_packet;		// From dut of dut.v
-   wire [N-1:0]		dut_wait;		// From dut of dut.v
+   wire			clk1;			// From dv_ctrl of dv_ctrl.v
+   wire			clk2;			// From dv_ctrl of dv_ctrl.v
    wire			nreset;			// From dv_ctrl of dv_ctrl.v
    wire			start;			// From dv_ctrl of dv_ctrl.v
    wire [N-1:0]		stim_access;		// From dv_driver of dv_driver.v
@@ -43,11 +46,12 @@ module dv_top();
    // -dumps stimulus
    //############################################################
    defparam dv_ctrl.TIMEOUT = (`TIMEOUT);
-   dv_ctrl_local dv_ctrl (.test_done		(1'b1),     //optimize later
+   dv_ctrl_local dv_ctrl (.test_done		(1'b1),   //optimize later
 		    /*AUTOINST*/
 		    // Outputs
 		    .nreset		(nreset),
-		    .clk		(clk),
+		    .clk1		(clk1),
+		    .clk2		(clk2),
 		    .start		(start),
 		    // Inputs
 		    .dut_active		(dut_active),
@@ -57,32 +61,25 @@ module dv_top();
    // DEVICE UNDER TEST
    // -create your own module named dut to include at compile time 
    //#############################################################   
-
-   /*dut AUTO_TEMPLATE(
-                        .\(.*\)_out (dut_\1[]),
-                        .\(.*\)_in  (stim_\1[]),
-                        .clk        (clk),
-            );
-    */
-   
+      
    dut #(.PW(PW), 
-	 .N(N)
-	 ) 
-   dut (/*AUTOINST*/
-	// Outputs
-	.dut_active			(dut_active),
-	.access_out			(dut_access[N-1:0]),	 // Templated
-	.packet_out			(dut_packet[N*PW-1:0]),	 // Templated
-	.wait_out			(dut_wait[N-1:0]),	 // Templated
+	  .N(N)
+	  ) 
+   dut (// Outputs
+	.dut_active	(dut_active),
+	.clkout		(clkout),
+	.wait_out	(dut_wait[N-1:0]),
+	.access_out	(dut_access[N-1:0]),
+	.packet_out	(dut_packet[N*PW-1:0]),
 	// Inputs
-	.clk				(clk),			 // Templated
-	.nreset				(nreset),
-	.vdd				(vdd[N*N-1:0]),
-	.vss				(vss),
-	.access_in			(stim_access[N-1:0]),	 // Templated
-	.packet_in			(stim_packet[N*PW-1:0]), // Templated
-	.wait_in			(stim_wait[N-1:0]));	 // Templated
-   
+	.clk1		(clk1),
+	.clk2		(clk2),
+	.nreset		(nreset),
+	.vdd		(vdd[N*N-1:0]),
+	.vss	        (vss),
+	.access_in	(stim_access[N-1:0]),
+	.packet_in	(stim_packet[N*PW-1:0]),
+	.wait_in	(stim_wait[N-1:0]));
    
    //##############################
    //# STIMULUS + MONITORS
@@ -90,8 +87,6 @@ module dv_top();
    /*dv_driver AUTO_TEMPLATE(
     .name         (@"(substring vl-cell-name  0 2)"_name[]),
     .coreid	  (@"(substring vl-cell-name  0 2)"_coreid[IDW-1:0]),
-    .clk          (clk),
-    .reset        (reset),
             );
     */
    
@@ -101,6 +96,7 @@ module dv_top();
 	       .IDW(IDW)
 	     ) 
    dv_driver (.coreid			(dv_coreid[IDW-1:0]),
+	      .clkin			(clk1),
 	      /*AUTOINST*/
 	      // Outputs
 	      .stim_access		(stim_access[N-1:0]),
@@ -108,7 +104,7 @@ module dv_top();
 	      .stim_wait		(stim_wait[N-1:0]),
 	      .stim_done		(stim_done),
 	      // Inputs
-	      .clk			(clk),			 // Templated
+	      .clkout			(clkout),
 	      .nreset			(nreset),
 	      .start			(start),
 	      .dut_access		(dut_access[N-1:0]),

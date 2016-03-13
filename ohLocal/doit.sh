@@ -23,7 +23,7 @@ echo $dutsrc
 # iverilog -g2005 -DTIMEOUT=20000 -DTARGET_SIM=1 -DTARGET_XILINX=1  ./memory/dv/xilinx/fifo_generator_v12_0/simulation/fifo_generator_vlog_beh.v  ./memory/dv/xilinx/sim/fifo_async_104x32.v  $top ${dutsrc} -f ./libs.cmd -o ${dut}.vvp
 
 ## OR use the fifo from the oh folders
-iverilog -g2005 -DTIMEOUT=20000 -DTARGET_SIM=1 -DTARGET_XILINX=1 $top ${dutsrc} -f ./libs.cmd -o ${dut}.vvp
+iverilog -g2005 -DTIMEOUT=20000 -DTARGET_SIM=1 ../oh/elink/hdl/elink_constants.vh $top ${dutsrc} -f ./libs.cmd -o ${dut}.vvp
 
 #-pfileline=1
 #-Wall
