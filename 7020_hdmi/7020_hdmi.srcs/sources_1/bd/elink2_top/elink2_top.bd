@@ -618,8 +618,8 @@
         <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In8"/>
         <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In9"/>
         <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In10"/>
-        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In11"/>
         <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In12"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In13"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>Net2</spirit:name>
@@ -689,7 +689,7 @@
       <spirit:adHocConnection>
         <spirit:name>parallella_base_0_mailbox_not_empty</spirit:name>
         <spirit:internalPortReference spirit:componentRef="parallella_base_0" spirit:portRef="mailbox_irq"/>
-        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In13"/>
+        <spirit:internalPortReference spirit:componentRef="xlconcat_0" spirit:portRef="In11"/>
       </spirit:adHocConnection>
       <spirit:adHocConnection>
         <spirit:name>parallella_base_0_txo_data_n</spirit:name>
