@@ -1,8 +1,8 @@
-//Copyright 1986-2014 Xilinx, Inc. All Rights Reserved.
+//Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
-//Tool Version: Vivado v.2014.4.1 (lin64) Build 1149489 Thu Feb 19 16:01:47 MST 2015
-//Date        : Fri Sep  4 18:22:50 2015
-//Host        : HomeMegaUbuntu running 64-bit Ubuntu 15.04
+//Tool Version: Vivado v.2015.2.1 (lin64) Build 1302555 Wed Aug  5 13:06:02 MDT 2015
+//Date        : Wed Aug 17 16:30:57 2016
+//Host        : HomeMegaUbuntu running 64-bit Ubuntu 16.04.1 LTS
 //Command     : generate_target elink2_top_wrapper.bd
 //Design      : elink2_top_wrapper
 //Purpose     : IP block netlist
