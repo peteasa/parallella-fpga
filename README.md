@@ -14,7 +14,7 @@ Note each of these sources is likely to be covered by a different license.  Plea
 
 ### References:
 
-[Parallella HW project](https://github.com/parallella/parallella-hw.git) - PARALLELLA: Supercomputing for Everyone - open source board and FPGA designs associated with the Parallella project.
-[Analog Devices Inc HDL IP](https://github.com/analogdevicesinc/hdl) - Analog Devices HDL libraries and projects used in this project
-[Xilinx device tree scripts](https://github.com/Xilinx/device-tree-xlnx) - used to create the device tree template from the FPGA design
+- [OH!](https://github.com/parallella/oh.git) - Open Hardware for Chip Designers
+- [Analog Devices Inc HDL IP](https://github.com/analogdevicesinc/hdl) - Analog Devices HDL libraries and projects used in this project
+- [Xilinx device tree scripts](https://github.com/Xilinx/device-tree-xlnx) - used to create the device tree template from the FPGA design
 
